@@ -1,0 +1,26 @@
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\bin\Debug\MusicStreamer.exe
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\bin\Debug\MusicStreamer.pdb
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\MainWindow.baml
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\MainWindow.g.cs
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\App.g.cs
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer_MarkupCompile.cache
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.g.resources
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.Properties.Resources.resources
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.exe
+c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.pdb
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.exe
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.pdb
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\bin\Debug\MusicStreamer.exe
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\bin\Debug\MusicStreamer.pdb
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\ResolveAssemblyReference.cache
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\MainWindow.baml
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\MainWindow.g.cs
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\App.g.cs
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer_MarkupCompile.cache
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.g.resources
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.Properties.Resources.resources
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.read.1.tlog
+\\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.write.1.tlog
