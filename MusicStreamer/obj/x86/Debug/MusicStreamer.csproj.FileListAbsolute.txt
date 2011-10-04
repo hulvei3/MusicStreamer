@@ -24,3 +24,16 @@ c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\o
 \\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.Properties.Resources.resources
 \\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.read.1.tlog
 \\nas\OpenShare\Dev\C# .NET\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.write.1.tlog
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.exe
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.pdb
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\bin\Debug\MusicStreamer.exe
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\bin\Debug\MusicStreamer.pdb
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\ResolveAssemblyReference.cache
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MainWindow.baml
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MainWindow.g.cs
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\App.g.cs
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer_MarkupCompile.cache
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.g.resources
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.Properties.Resources.resources
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.read.1.tlog
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.write.1.tlog
