@@ -23,7 +23,7 @@
             <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
             <TextBox Name="textBoxUser" Text="Username..." Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
             <TextBox Name="textBoxPassword" Text="Password..." Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
-            <Button Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" />
+            <Button Content="TEST: update time" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" Click="buttonConnect_Click" />
         </Grid>
         <Grid Height="124" Name="gridPlayer" VerticalAlignment="Top" HorizontalAlignment="Left" Width="457">
             <Grid.RowDefinitions>
@@ -44,12 +44,12 @@
                 <ColumnDefinition Width="52*" />
             </Grid.ColumnDefinitions>
             <Button Content="Prev" Height="32" Name="buttonPrev" VerticalAlignment="Top" />
-            <Button Content="Stop" Grid.Column="1" Height="32" Name="buttonStop" VerticalAlignment="Top" />
-            <Button Content="Play" Grid.Column="2" Height="32" Name="buttonPlay" VerticalAlignment="Top" />
+            <Button Content="Stop" Grid.Column="1" Height="32" Name="buttonStop" VerticalAlignment="Top" Click="buttonStop_Click" />
+            <Button Content="Play" Grid.Column="2" Height="32" Name="buttonPlay" VerticalAlignment="Top" Click="buttonPlay_Click" />
             <Button Content="Next" Grid.Column="3" Height="32" Name="buttonNext" VerticalAlignment="Top" />
             <Button Content="Shuffle" Grid.Column="5" Height="32" Name="buttonShuffle" VerticalAlignment="Top" />
             <Button Content="Repeat" Grid.Column="6" Height="32" Name="buttonRepeat" VerticalAlignment="Top" />
-            <TextBox Grid.Column="4" Height="32" Margin="6,0" Name="textBoxTime" VerticalAlignment="Top" Text="00:00" FontSize="18" FontWeight="Bold" TextAlignment="Center" IsReadOnly="True" Opacity="0.7" />
+            <TextBox Grid.Column="4" Height="32" Name="textBoxTime" VerticalAlignment="Top" Text="00:00:00" FontSize="18" FontWeight="Bold" TextAlignment="Center" IsReadOnly="True" Opacity="0.7" />
         </Grid>
         <Slider Height="23" HorizontalAlignment="Left" Margin="12,99,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="386" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="12,15,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="386" Text="Artist - Title..." IsReadOnly="True" />
