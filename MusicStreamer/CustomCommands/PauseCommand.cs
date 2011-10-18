@@ -7,27 +7,25 @@ using MusicStreamer.ViewModels;
 
 namespace MusicStreamer.CustomCommands
 {
-    class StopCommand : ICommand
+    class PauseCommand : ICommand
     {
         private readonly CurrentSongViewModel _vm;
 
-        public StopCommand(CurrentSongViewModel vm)
+        public PauseCommand(CurrentSongViewModel vm)
         {
             _vm = vm;
         }
 
         public void Execute(object parameter)
         {
-            _vm.StopCurrentSong();
+            _vm.PauseCurrentSong();
         }
+
         public bool CanExecute(object parameter)
         {
-            // stopping an extra time can't hurt
             return true;
         }
 
         public event EventHandler CanExecuteChanged;
-
-        
     }
 }

@@ -2,38 +2,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 using MusicStreamer.Models;
 using MusicStreamer.Exceptions;
 
 namespace MusicStreamer.ViewModels
 {
-    class PlayerEngineViewModel : PropertyAndErrorHandler
+    // service class for volume and balance settings. Also provides an media-error handler
+    class PlayerEngineViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler
     {
+
         // backing fields
         private WMPLib.IWMPSettings _settings;
 
-        // constructor
+        // constructors
+        public PlayerEngineViewModel()
+        { }
         public PlayerEngineViewModel(PlayerEngineModel player)
         {
             _settings = player.MediaPlayer.settings;
+
+            player.MediaPlayer.MediaError += new WMPLib._WMPOCXEvents_MediaErrorEventHandler(MediaPlayer_MediaError);
+
+        }
+        // eventhandler for media-errors
+        void MediaPlayer_MediaError(object pMediaObject)
+        {
+            throw new NotImplementedException();
         }
 
-        // properties (ICommands)
-        public int Volume
+        // properties
+        public double Volume
         {
-            get;
-            set;
+            get { return Convert.ToDouble(_settings.volume); }
+            set
+            {
+                _settings.volume = Convert.ToInt32(value);
+                OnPropertyChanged("Volume");
+            }
         }
         public int Balance
         {
             get;
             set;
         }
-
-
-        // properties
-
-
     }
 }

@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.ComponentModel;
 
 using MusicStreamer.Models;
+using MusicStreamer.CustomCommands;
 
 namespace MusicStreamer.ViewModels
 {
@@ -13,18 +14,23 @@ namespace MusicStreamer.ViewModels
     {
 
         // backing fields
-        private string _currentSongUrl;
+
+        //private String _currentSongUrl;
         private WMPLib.IWMPControls _controls;
         private WMPLib.IWMPMedia _currentMedia;
+        private WMPLib.WindowsMediaPlayer _player;
 
         //contructor
         public CurrentSongViewModel(PlayerEngineModel playerModel)
         {
-            Controls = playerModel.MediaPlayer.controls;
-            CurrentMedia = playerModel.MediaPlayer.currentMedia;
+            _controls = playerModel.MediaPlayer.controls;
+            _currentMedia = playerModel.MediaPlayer.currentMedia;
+            _player = playerModel.MediaPlayer;
 
-            PlayCommand = new MusicStreamer.CustomCommands.PlayCommand(this);
-            StopCommand = new CustomCommands.StopCommand(this);
+            PlayCommand = new PlayCommand(this);
+            PauseCommand = new PauseCommand(this);
+            StopCommand = new StopCommand(this);
+            
         }
 
         // properties (ICommands)
@@ -33,30 +39,37 @@ namespace MusicStreamer.ViewModels
             get;
             set;
         }
+        public ICommand PauseCommand
+        { 
+            get;
+            set; 
+        }
         public ICommand StopCommand
         {
             get;
             set;
         }
 
-        // properties
-        public String CurrentSongUrl
+        // PROPERTIES
+
+        // current url set in player (can be empty)
+        public String Url
         {
-            get;
-            set;
+            get { return _player.URL; }
+            set
+            {
+                _player.URL = value;
+                OnPropertyChanged("Url");
+            }
         }
-        public WMPLib.IWMPControls Controls 
-        { get; set; }
-        public WMPLib.IWMPMedia CurrentMedia 
-        { get; set; }
 
 
-        // gets remaining time of current song (in seconds)
+        // remaining time of current song (in seconds)
         public double RemainingTime
         {
             get
             {
-                return Math.Floor(CurrentMedia.duration - Controls.currentPosition);
+                return Math.Floor(_currentMedia.duration - _controls.currentPosition);
             }
         }
 
@@ -67,14 +80,14 @@ namespace MusicStreamer.ViewModels
         {
             get
             {
-                return Controls.currentPosition;
+                return _controls.currentPosition;
             }
             set
             {
                 double newPosition = Convert.ToDouble(value);
 
                 // checks if new position is within limit of current media duration
-                Controls.currentPosition = newPosition <= CurrentMedia.duration ? newPosition : Controls.currentPosition;
+                _controls.currentPosition = newPosition <= _currentMedia.duration ? newPosition : _controls.currentPosition;
                 OnPropertyChanged("CurrentTime");
                 
             }
@@ -87,20 +100,23 @@ namespace MusicStreamer.ViewModels
         internal void PlayCurrentSong()
         {
             _controls.play();
+            DebugText = "Playing..";
         }
         internal void PlayCurrentSong(String url)
         {
-            CurrentSongUrl = url;
-            _controls.play();
+            Url = url;
+            PlayCurrentSong();
         }
         internal void StopCurrentSong()
         {
             _controls.stop();
+            DebugText = "Stopping";
             // maybe also close the player to release resources ??
         }
         internal void PauseCurrentSong()
         {
             _controls.pause();
+            DebugText = "Player paused";
         }
 
 

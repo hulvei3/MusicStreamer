@@ -12,6 +12,8 @@ namespace MusicStreamer.ViewModels
     class MainWindowViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler
     {
 
+        //MusicStreamer.Exceptions.PropertyAndErrorHandler
+
         //backing fields
         private PlaylistViewModel _playlist;
         private CurrentSongViewModel _currentSong;
@@ -50,13 +52,14 @@ namespace MusicStreamer.ViewModels
         public MainWindowViewModel()
         {
 
-            PlayerEngineModel playerEngine = new PlayerEngineModel(false);
+            PlayerEngineModel playerEngine = new PlayerEngineModel(false,false);
 
             Player = new PlayerEngineViewModel(playerEngine);
             CurrentSong = new CurrentSongViewModel(playerEngine);
             Playlist = new PlaylistViewModel(playerEngine);
-            
 
+
+            Player.Volume = 50;
             
 
 
@@ -67,9 +70,11 @@ namespace MusicStreamer.ViewModels
             
         }
 
+
+
+
+
+
         
-
-
-
     }
 }

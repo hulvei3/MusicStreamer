@@ -18,13 +18,13 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            _vm.PlayCurrentSong();
+            //_vm.PlayCurrentSong(@"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3");
+            _vm.PlayCurrentSong((string)parameter);
         }
-
 
         public bool CanExecute(object parameter)
         {
-            return _vm.CurrentSongUrl == null;
+            return true;
         }
 
         public event EventHandler CanExecuteChanged;

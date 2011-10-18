@@ -6,6 +6,8 @@ using System.Windows.Input;
 
 namespace MusicStreamer.CustomCommands
 {
+
+    // maybe this class should be spiltted into serveral "server-commands"
     class ServerCommands /*: ICommand*/
     {
     }

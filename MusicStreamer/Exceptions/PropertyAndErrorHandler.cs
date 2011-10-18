@@ -9,17 +9,16 @@ namespace MusicStreamer.Exceptions
     // This class can be used as global handler to propertynotification and errorhandling
     public abstract class PropertyAndErrorHandler : INotifyPropertyChanged
     {
-        private string _debugText = "ready";
+        private string _debugText = "Ready";
 
-        [Obsolete]
-        private static string _ON_PROPERTY_CHANGED_STRING_NOTIFICATION;
+        public const string _STD_DEBUG_TEXT = "Ready";
 
         public string DebugText
         {
             get { return _debugText; }
             set
             {
-                _debugText = value;
+                _debugText = value.Length == 0 ? _STD_DEBUG_TEXT : value;
                 OnPropertyChanged("DebugText");
             }
         }
