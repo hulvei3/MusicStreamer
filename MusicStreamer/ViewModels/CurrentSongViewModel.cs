@@ -101,6 +101,9 @@ namespace MusicStreamer.ViewModels
         {
             _controls.play();
             DebugText = "Playing..";
+
+            new System.Threading.Thread(new System.Threading.ThreadStart(RunTimeService)).Start();
+
         }
         internal void PlayCurrentSong(String url)
         {
@@ -119,6 +122,24 @@ namespace MusicStreamer.ViewModels
             DebugText = "Player paused";
         }
 
+        // seperate thread for updating time counter
+        private void RunTimeService()
+        {
+            System.Threading.Thread.CurrentThread.Name = "Time Updater Service Thread";
+            
+            // sets new thread to be a background-thread, so it stops when application closes.
+            // If not this thread whould keep the app running, though it is closing..
+            System.Threading.Thread.CurrentThread.IsBackground = true;
+
+
+            // notifies the View every second that the "CurrentTime"-property has been updated (should pause together with the player??)
+            while (true)
+            {
+                OnPropertyChanged("CurrentTime");
+                System.Threading.Thread.Yield();
+                System.Threading.Thread.Sleep(1000);
+            }
+        }
 
     }
 }

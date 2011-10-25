@@ -18,7 +18,7 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            //_vm.PlayCurrentSong(@"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3");
+            // parameter comes from the view (textBoxCurrentSong
             _vm.PlayCurrentSong((string)parameter);
         }
 

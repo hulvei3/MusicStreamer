@@ -29,6 +29,7 @@ namespace MusicStreamer.ViewModels
         // eventhandler for media-errors
         void MediaPlayer_MediaError(object pMediaObject)
         {
+            DebugText = "ERROR: " + pMediaObject.ToString();
             throw new NotImplementedException();
         }
 

@@ -47,6 +47,8 @@ namespace MusicStreamer.ViewModels
             get { return _player; } 
             set { _player = value; } 
         }
+
+        public Server.ServerNavigationViewModel Navigation { get; set; }
         
 
         public MainWindowViewModel()
