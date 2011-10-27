@@ -30,7 +30,7 @@ namespace MusicStreamer.ViewModels
         void MediaPlayer_MediaError(object pMediaObject)
         {
             DebugText = "ERROR: " + pMediaObject.ToString();
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         // properties

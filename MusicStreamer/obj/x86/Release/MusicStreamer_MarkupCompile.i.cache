@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Release\
 MusicStreamer
 none
 false
-DEBUG;TRACE
+TRACE
 \\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\App.xaml
 11892971807
 
-261102315299
-14-279471510
+26454552225
+14-108575951
 Views\MainWindow.xaml;
 
 False
