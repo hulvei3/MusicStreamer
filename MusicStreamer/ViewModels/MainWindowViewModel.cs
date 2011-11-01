@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 
 using MusicStreamer.Models;
+using MusicStreamer.CustomCommands;
 
 namespace MusicStreamer.ViewModels
 {
@@ -48,9 +49,15 @@ namespace MusicStreamer.ViewModels
             set { _player = value; } 
         }
 
-        public Server.ServerNavigationViewModel Navigation { get; set; }
+        public Server.ServerNavigationViewModel Navigation { get; set; } 
         
-
+        public ICommand ConnectCommand
+        {
+            get;
+            set;
+        }
+        
+            
         public MainWindowViewModel()
         {
 
@@ -60,6 +67,11 @@ namespace MusicStreamer.ViewModels
             CurrentSong = new CurrentSongViewModel(playerEngine);
             Playlist = new PlaylistViewModel(playerEngine);
 
+            //Smides i egen metode, som ConnectCommand bruger
+            //Models.Server.ServerConnectionModel serverConnection = new Models.Server.ServerConnectionModel();
+            //Navigation = new Server.ServerNavigationViewModel();
+
+            ConnectCommand = new ConnectCommand();
 
             Player.Volume = 50;
             
@@ -71,6 +83,8 @@ namespace MusicStreamer.ViewModels
             
             
         }
+
+        
 
 
 

@@ -32,7 +32,7 @@
             <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
             <TextBox Name="textBoxUser" Text="Username..." Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
             <TextBox Name="textBoxPassword" Text="Password..." Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
-            <Button Content="indsæt url" Name="buttonConnect" Click="buttonConnect_Click" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" />
+            <Button Command="{Binding ConnectCommand}" Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" />
         </Grid>
         
         <!-- Player Area -->

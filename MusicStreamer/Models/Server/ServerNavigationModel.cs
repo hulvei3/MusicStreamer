@@ -9,5 +9,17 @@ namespace MusicStreamer.Models.Server
     class ServerNavigationModel
     {
 
+        private String _currentLocation;
+
+        public ServerNavigationModel(String currentLocation)
+        {
+            this._currentLocation = currentLocation; 
+        }
+
+        public String CurrentLocation
+        {
+            get;
+            set;
+        }
     }
 }

@@ -75,11 +75,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomCommands\ConnectCommand.cs" />
     <Compile Include="CustomCommands\PauseCommand.cs" />
     <Compile Include="CustomCommands\PlayPauseCommand.cs" />
     <Compile Include="CustomCommands\PlaylistCommands.cs" />
     <Compile Include="CustomCommands\PrevCommand.cs" />
-    <Compile Include="CustomCommands\ServerCommands.cs" />
+    <Compile Include="CustomCommands\NavigateCommand.cs" />
     <Compile Include="CustomCommands\SkipCommand.cs" />
     <Compile Include="Exceptions\MusicStreamerException.cs" />
     <Compile Include="Models\PlaylistModel.cs" />
