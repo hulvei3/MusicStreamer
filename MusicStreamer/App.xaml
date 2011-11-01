@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
-    </Application.Resources>
+    <LinearGradientBrush x:Key="GradientHoriBackground" EndPoint="1,0.5" StartPoint="0,0.5">
+      <GradientStop Color="Black" Offset="0" />
+      <GradientStop Color="White" Offset="0.828" />
+    </LinearGradientBrush>
+  </Application.Resources>
 </Application>

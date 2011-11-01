@@ -40,3 +40,4 @@ c:\users\sha\documents\visual studio 2010\Projects\MusicStreamer\MusicStreamer\o
 \\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\GenerateResource.write.1.tlog
 \\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.exe
 \\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\MusicStreamer.pdb
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Debug\App.baml

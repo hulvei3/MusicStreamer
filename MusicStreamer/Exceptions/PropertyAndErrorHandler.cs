@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Windows;
 
 namespace MusicStreamer.Exceptions
 {
     // This class can be used as global handler to propertynotification and errorhandling
-    public abstract class PropertyAndErrorHandler : INotifyPropertyChanged
+    public abstract class PropertyAndErrorHandler : DependencyObject, INotifyPropertyChanged
     {
         private string _debugText = "Ready";
 
