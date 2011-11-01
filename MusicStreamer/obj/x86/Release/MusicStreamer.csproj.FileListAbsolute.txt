@@ -1,0 +1,2 @@
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Release\Interop.WMPLib.dll
+\\psf\Home\Documents\dev\Git\MusicStreamer\MusicStreamer\obj\x86\Release\MusicStreamer.csproj.ResolveComReference.cache

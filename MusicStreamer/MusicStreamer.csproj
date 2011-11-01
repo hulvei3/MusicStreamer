@@ -76,7 +76,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CustomCommands\PauseCommand.cs" />
-    <Compile Include="CustomCommands\PlayCommand.cs" />
+    <Compile Include="CustomCommands\PlayPauseCommand.cs" />
     <Compile Include="CustomCommands\PlaylistCommands.cs" />
     <Compile Include="CustomCommands\PrevCommand.cs" />
     <Compile Include="CustomCommands\ServerCommands.cs" />
@@ -126,6 +126,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="ClassDiagramMVVM.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
