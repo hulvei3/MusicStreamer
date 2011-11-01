@@ -18,10 +18,15 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
+            // parameter comes from the view (textBoxCurrentSong.Content)
             if (_vm.IsPlaying)
-                // parameter comes from the view (textBoxCurrentSong
+                // pause current song
                 _vm.PauseCurrentSong();
             else if (_vm.HasPlayed)
+                // resume current song
+                _vm.PlayCurrentSong();
+            else
+                // play this new song
                 _vm.PlayCurrentSong((string)parameter);
             
         }

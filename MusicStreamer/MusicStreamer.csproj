@@ -86,12 +86,12 @@
     <Compile Include="Models\PlaylistModel.cs" />
     <Compile Include="Models\Server\ServerConnectionModel.cs" />
     <Compile Include="Models\Server\ServerNavigationModel.cs" />
-    <Compile Include="ViewModels\CurrentSongViewModel.cs" />
+    <Compile Include="ViewModels\Player\CurrentSongViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Services\PlayerEngineService.cs" />
     <Compile Include="Exceptions\PropertyAndErrorHandler.cs" />
-    <Compile Include="ViewModels\PlayerEngineViewModel.cs" />
-    <Compile Include="ViewModels\PlaylistViewModel.cs" />
+    <Compile Include="ViewModels\Player\PlayerEngineViewModel.cs" />
+    <Compile Include="ViewModels\Playlist\PlaylistViewModel.cs" />
     <Compile Include="CustomCommands\StopCommand.cs" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -171,9 +171,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\Playlist\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
