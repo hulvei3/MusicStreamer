@@ -14,6 +14,21 @@ namespace MusicStreamer.ViewModels
     class CurrentSongViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler
     {
 
+
+
+        #region dependecyobject
+
+        public bool IsPlaying
+        {
+            get { return (bool)GetValue(IsPLayingProperty); }
+            set { SetValue(IsPLayingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPLaying.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPLayingProperty =
+            DependencyProperty.Register("IsPLaying", typeof(bool), typeof(CurrentSongViewModel), new UIPropertyMetadata(""));
+        #endregion
+
         // backing fields
 
         //private String _currentSongUrl;
@@ -92,7 +107,7 @@ namespace MusicStreamer.ViewModels
                 _controls.currentPosition = newPosition <= CurrentMedia.duration ? newPosition : _controls.currentPosition;
                 
                 // maybe this if media is paused??
-                //OnPropertyChanged("CurrentTime");
+                OnPropertyChanged("CurrentTime");
             }
         }
 
@@ -116,11 +131,11 @@ namespace MusicStreamer.ViewModels
             set; 
         }
 
-        public bool IsPlaying
-        {
-            get;
-            set;
-        }
+        //public bool IsPlaying
+        //{
+        //    get;
+        //    set;
+        //}
 
         public bool HasPlayed
         {
