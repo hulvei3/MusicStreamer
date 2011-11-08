@@ -7,6 +7,7 @@ using System.IO;
 
 using MusicStreamer.Exceptions;
 using MusicStreamer.Models.Server;
+using System.Collections.Specialized;
 
 namespace MusicStreamer.ViewModels.Server
 {
@@ -14,6 +15,7 @@ namespace MusicStreamer.ViewModels.Server
     {
         private String _currentLocation;
         private ServerConnectionViewModel _scvm;
+        private ServerList _currentList;
 
         public ServerNavigationViewModel(ServerConnectionModel scm)
         {
@@ -21,32 +23,53 @@ namespace MusicStreamer.ViewModels.Server
             CurrentLocation = scm.Host;
         }
 
+        //Property for current list of files to show
+        public ServerList CurrentList
+        {
+            get { return _currentList; }
+            set
+            {
+                _currentList = value;
+                OnPropertyChanged("CurrentList");
+            }
+        }
 
+
+        //URL
         public String CurrentLocation
         {
             get { return _currentLocation; }
             set{_currentLocation = value + "/";}
         }
 
-        public List<String> Navigate(string url)
+        public ServerList Navigate(string url)
         {
             // set new cuurent dir to new url
             _scvm.NewURL(CurrentLocation + url);
             CurrentLocation = CurrentLocation + url;
+            return Navigate();
+        }
+        public ServerList Navigate()
+        {
+            // set new cuurent dir to new url
+            _scvm.NewURL(CurrentLocation);
             FtpWebResponse resp = _scvm.ListCurrentDir();
-            return listFiles(resp, false);
+            CurrentList = listFiles(resp, false);
+            //CurrentList = new ServerList();
+            return CurrentList;
         }
 
         //Sorts the files and only shows the files you want.
-        private List<String> listFiles(FtpWebResponse files, Boolean showAllFiles)
+        private ServerList listFiles(FtpWebResponse files, Boolean showAllFiles)
         {
             Stream responseStream = files.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
             String filesFolders = reader.ReadToEnd();
 
+            
 
-            List<String> fileArray = filesFolders.Split('\n').ToList<String>();
-            List<String> newList = new List<string>();
+            IList<String> fileArray = filesFolders.Split('\n').ToList<String>();
+            ServerList serverList = new ServerList();
 
             if (!showAllFiles)
             {
@@ -61,7 +84,7 @@ namespace MusicStreamer.ViewModels.Server
                             {
                                 if (c[i] == ':')
                                 {
-                                    newList.Add(s.Substring(i + 4));
+                                    serverList.Add(new Song(s.Substring(i + 4), 0.0));
                                 }
                             }
                         }
@@ -72,17 +95,16 @@ namespace MusicStreamer.ViewModels.Server
             {
                 foreach (String s in fileArray)
                 {
-                    newList.Add(s); //Adds all directorydetails
+                    serverList.Add(new Song(s,0.0)); //Adds all directorydetails
                 }
             }
-            newList.Sort();
-            return newList;
+            //newList.Sort();
+            return serverList;
         }
 
         public void levelUp(String url)
         {
-
+            
         }
-
     }
 }

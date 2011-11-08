@@ -13,7 +13,7 @@ namespace MusicStreamer.Models.Server
 
         public ServerConnectionModel(String hostIP, String userName, String userPassword)
         {
-            this._hostIP = hostIP;
+            Host = hostIP;
             User = userName;
             Password = userPassword;
         }
@@ -21,7 +21,7 @@ namespace MusicStreamer.Models.Server
         public String Host
         {
             get { return _hostIP; }
-            set { _hostIP = "ftp://" + value; }
+            private set { _hostIP = "ftp://" + value; }
         }
 
         public String User

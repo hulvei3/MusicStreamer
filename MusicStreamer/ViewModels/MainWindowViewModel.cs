@@ -7,6 +7,8 @@ using System.Windows.Input;
 
 using MusicStreamer.Models;
 using MusicStreamer.CustomCommands;
+using MusicStreamer.ViewModels.Server;
+using MusicStreamer.Models.Server;
 
 namespace MusicStreamer.ViewModels
 {
@@ -49,13 +51,18 @@ namespace MusicStreamer.ViewModels
             set { _player = value; } 
         }
 
-        public Server.ServerNavigationViewModel Navigation { get; set; } 
+        public Server.ServerNavigationViewModel Navigation 
+        { 
+            get; 
+            set; 
+        } 
         
         public ICommand ConnectCommand
         {
             get;
             set;
         }
+
         
             
         public MainWindowViewModel()
@@ -71,7 +78,7 @@ namespace MusicStreamer.ViewModels
             //Models.Server.ServerConnectionModel serverConnection = new Models.Server.ServerConnectionModel();
             //Navigation = new Server.ServerNavigationViewModel();
 
-            ConnectCommand = new ConnectCommand();
+            ConnectCommand = new ConnectCommand(this);
 
             Player.Volume = 50;
             

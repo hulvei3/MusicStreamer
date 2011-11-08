@@ -33,14 +33,14 @@ namespace MusicStreamer
         }
 
         // this is only here for testing
-        private void buttonConnect_Click(object sender, RoutedEventArgs e)
-        {
-            // TEST
+        //private void buttonConnect_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // TEST
 
-            textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
+        //    textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
 
 
-        }
+        //}
 
         //private void buttonPlay_Click(object sender, RoutedEventArgs e)
         //{

@@ -6,17 +6,19 @@ using System.Net;
 using System.IO;
 using MusicStreamer.Models.Server;
 using System.Windows.Input;
+using System.Windows;
 
 namespace MusicStreamer.ViewModels.Server
 {
-    class ServerConnectionViewModel
+    class ServerConnectionViewModel : Exceptions.PropertyAndErrorHandler
     {
         private ServerConnectionModel _model;
+  
 
         public ServerConnectionViewModel(ServerConnectionModel _model)
         {
-            this._model = _model;
-            NewURL(_model.Host);
+            this._model = _model;          
+            NewURL(_model.Host);   
         }
 
         private FtpWebRequest Request
@@ -30,6 +32,7 @@ namespace MusicStreamer.ViewModels.Server
             Request = (FtpWebRequest)WebRequest.Create(url);
             Request.Credentials = new NetworkCredential(_model.User, _model.Password);
             Request.Proxy = null;
+
         }
 
         public FtpWebResponse ListCurrentDir()
