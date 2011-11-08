@@ -18,7 +18,8 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            _vm.StopCurrentSong();
+            if (_vm.PlayerState != WMPLib.WMPPlayState.wmppsUndefined)
+                _vm.StopCurrentSong();
         }
         public bool CanExecute(object parameter)
         {
@@ -27,7 +28,6 @@ namespace MusicStreamer.CustomCommands
         }
 
         public event EventHandler CanExecuteChanged;
-
         
     }
 }

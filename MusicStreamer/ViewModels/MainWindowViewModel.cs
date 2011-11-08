@@ -7,6 +7,7 @@ using System.Windows.Input;
 
 using MusicStreamer.Models;
 using MusicStreamer.CustomCommands;
+using System.Windows;
 
 namespace MusicStreamer.ViewModels
 {
@@ -73,14 +74,13 @@ namespace MusicStreamer.ViewModels
 
             ConnectCommand = new ConnectCommand();
 
-            Player.Volume = 50;
-            
-
+            Player.Volume = 50;            
 
             // FTPservice should startup here
             // other startups ?
 
-            
+
+            Playlist = new PlaylistViewModel(playerEngine);
             
         }
 

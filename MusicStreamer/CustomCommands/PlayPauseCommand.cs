@@ -19,16 +19,43 @@ namespace MusicStreamer.CustomCommands
         public void Execute(object parameter)
         {
             // parameter comes from the view (textBoxCurrentSong.Content)
-            if (_vm.IsPlaying)
-                // pause current song
-                _vm.PauseCurrentSong();
-            else if (_vm.HasPlayed)
-                // resume current song
-                _vm.PlayCurrentSong();
-            else
-                // play this new song
-                _vm.PlayCurrentSong((string)parameter);
-            
+            switch (_vm.PlayerState)
+            {
+                case WMPLib.WMPPlayState.wmppsBuffering:
+                    break;
+                case WMPLib.WMPPlayState.wmppsLast:
+                    break;
+                case WMPLib.WMPPlayState.wmppsMediaEnded:
+                    break;
+                case WMPLib.WMPPlayState.wmppsPaused:
+                    _vm.PlayCurrentSong();
+                    break;
+                case WMPLib.WMPPlayState.wmppsPlaying:
+                    _vm.PauseCurrentSong();
+                    break;
+                case WMPLib.WMPPlayState.wmppsReady:
+                    //play new song passing the new url
+                    _vm.PlayCurrentSong((string)parameter);
+                    break;
+                case WMPLib.WMPPlayState.wmppsReconnecting:
+                    break;
+                case WMPLib.WMPPlayState.wmppsScanForward:
+                    break;
+                case WMPLib.WMPPlayState.wmppsScanReverse:
+                    break;
+                case WMPLib.WMPPlayState.wmppsStopped:
+                    _vm.PlayCurrentSong();
+                    break;
+                case WMPLib.WMPPlayState.wmppsTransitioning:
+                    break;
+                case WMPLib.WMPPlayState.wmppsUndefined:
+                    _vm.PlayCurrentSong((string)parameter);
+                    break;
+                case WMPLib.WMPPlayState.wmppsWaiting:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public bool CanExecute(object parameter)

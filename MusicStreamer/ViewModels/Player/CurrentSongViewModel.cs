@@ -16,18 +16,6 @@ namespace MusicStreamer.ViewModels
 
 
 
-        #region dependecyobject
-
-        public bool IsPlaying
-        {
-            get { return (bool)GetValue(IsPLayingProperty); }
-            set { SetValue(IsPLayingProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IsPLaying.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsPLayingProperty =
-            DependencyProperty.Register("IsPLaying", typeof(bool), typeof(CurrentSongViewModel), new UIPropertyMetadata(""));
-        #endregion
 
         // backing fields
 
@@ -40,15 +28,20 @@ namespace MusicStreamer.ViewModels
         public CurrentSongViewModel(PlayerEngineModel playerModel)
         {
             _player = playerModel.MediaPlayer;
-            _controls = _player.controls;
 
-            IsPlaying = false;
-            HasPlayed = false;
+            init();
+        }
+
+        private void init()
+        {
+            _controls = _player.controls;
+            //handle er nede i bunden
+            _player.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(_player_PlayStateChange);
 
             PlayPauseCommand = new PlayPauseCommand(this);
             StopCommand = new StopCommand(this);
-            
         }
+
 
         // properties (ICommands)
         public ICommand PlayPauseCommand
@@ -131,16 +124,9 @@ namespace MusicStreamer.ViewModels
             set; 
         }
 
-        //public bool IsPlaying
-        //{
-        //    get;
-        //    set;
-        //}
-
-        public bool HasPlayed
+        public WMPLib.WMPPlayState PlayerState
         {
-            get;
-            set;
+            get { return _player.playState; }
         }
 
         // ICommand implementations..
@@ -156,7 +142,6 @@ namespace MusicStreamer.ViewModels
 
             // plays content from 'Url'
             _controls.play();
-            IsPlaying = true;
             DebugText = "Playing..";
         }
         internal void PlayCurrentSong(String url)
@@ -175,7 +160,8 @@ namespace MusicStreamer.ViewModels
             DebugText = "Stopping";
 
             // stop and remove timer-updater-thread
-            TimeUpdaterThread.Abort();
+            if (TimeUpdaterThread != null)
+                TimeUpdaterThread.Abort();
             TimeUpdaterThread = null;
 
             // maybe also close the player to release resources ??
@@ -184,8 +170,6 @@ namespace MusicStreamer.ViewModels
         {
             _controls.pause();
             DebugText = "Player paused";
-            HasPlayed = true;
-            IsPlaying = false;
             // stop/pause timer-updater-thread
         }
 
@@ -221,6 +205,11 @@ namespace MusicStreamer.ViewModels
                 //DebugText = TimeSpan.FromSeconds(Math.Floor(CurrentTime)).ToString();
                     
             }
+        }
+
+        void _player_PlayStateChange(int NewState)
+        {
+            OnPropertyChanged("PlayerState");
         }
 
     }

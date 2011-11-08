@@ -38,6 +38,8 @@ namespace MusicStreamer
             textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
         }
 
+
+
         //private void buttonPlay_Click(object sender, RoutedEventArgs e)
         //{
         //    PlayerEngineModel.instance.loadFile("C:\\Users\\Morten Hulvej\\Desktop\\07 I Remember.mp3");
