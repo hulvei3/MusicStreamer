@@ -23,8 +23,8 @@
         <!-- Playlist Area-->
         
         <Grid Grid.Row="2" Name="gridPlaylist" HorizontalAlignment="Left" Width="457" Grid.ColumnSpan="2">
-            <TextBox Margin="6,36,1,6" Name="textBox1" Text="Playlist" TextAlignment="Center" FontSize="32" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False" Opacity="0.5" />
             <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
+<<<<<<< HEAD
             <TextBox Name="textBoxUser" Text="streamer" Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
             <TextBox Name="textBoxPassword" Text="streamerpassword" Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
             <Button Command="{Binding ConnectCommand}"  Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" >
@@ -36,6 +36,12 @@
                     </MultiBinding>
                 </Button.CommandParameter>
             </Button>
+=======
+            <TextBox Name="textBoxUser" Text="Username..." Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
+            <TextBox Name="textBoxPassword" Text="Password..." Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
+            <Button Command="{Binding ConnectCommand}" Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" />
+            <DataGrid ItemsSource="{Binding Path=Playlist.CurrentPlaylist}" AutoGenerateColumns="False" Height="236" HorizontalAlignment="Left" Margin="6,28,0,0" Name="dataGrid1" VerticalAlignment="Top" Width="445" />
+>>>>>>> 2c942b0a8a62852b2c22555fcfe47b2b78366d70
         </Grid>
         
         <!-- Player Area -->
@@ -55,17 +61,15 @@
             
             <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="12,0,351,0" Grid.Row="1" Height="45" />
             <Button Command="{Binding CurrentSong.StopCommand}" Content="Stop" Name="buttonStop" VerticalAlignment="Top" Margin="71,0,294,0" Height="45" Grid.Row="1" />
-            <Button Command="{Binding CurrentSong.PlayPauseCommand}"  Height="45" Margin="128,0,233,0" Name="buttonPlay" VerticalAlignment="Top" Grid.Row="1" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" />
-            <Button Command="{Binding CurrentSong.SkipCommand}" Content="Next" Height="45" Margin="189,0,172,0" Name="buttonNext" VerticalAlignment="Top" Grid.Row="1" />
+            <Button Command="{Binding CurrentSong.PlayPauseCommand}" Height="45" Margin="128,0,233,0" Name="buttonPlay" VerticalAlignment="Top" Grid.Row="1" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" />
+            <Button  Command="{Binding CurrentSong.SkipCommand}" Content="Next" Height="45" Margin="189,0,172,0" Name="buttonNext" VerticalAlignment="Top" Grid.Row="1" />
             <Button Content="Shuffle" Height="45" Margin="326,0,48,0" Name="buttonShuffle" VerticalAlignment="Top" Grid.Row="1" />
-            <Button Content="Repeat" Height="45" Margin="374,0,0,0" Name="buttonRepeat" VerticalAlignment="Top" Grid.Row="1" />
-
-
+            <Button Content="TEST" Height="45" Margin="374,0,0,0" Name="buttonRepeat" VerticalAlignment="Top" Grid.Row="1" Click="buttonRepeat_Click" />
             <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="248,5,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="78" Padding="0" />
 
         </Grid>
         <Slider Value="{Binding Path=CurrentSong.CurrentTime}" Maximum="{Binding Path=CurrentSong.SongLength}" Height="23" HorizontalAlignment="Left" Margin="12,99,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="402" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="12,15,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="408" Text="{Binding Path=CurrentSong.Url}" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="12,15,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="408" Text="C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3" />
         
         <!-- Server area -->
         
@@ -82,7 +86,7 @@
         
         <StatusBar Grid.Row="3" Margin="0,1,0,0" Name="statusBar" Grid.ColumnSpan="3" Height="23" VerticalAlignment="Top">
             <StatusBarItem Content="{Binding Path=CurrentSong.DebugText}" />
-            <StatusBarItem Content="" />
+            <StatusBarItem Content="{Binding Path=CurrentSong.PlayerState}" HorizontalContentAlignment="Right"/>
         </StatusBar>
     </Grid>
 </Window>

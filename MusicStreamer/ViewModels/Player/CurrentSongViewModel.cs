@@ -14,6 +14,9 @@ namespace MusicStreamer.ViewModels
     class CurrentSongViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler
     {
 
+
+
+
         // backing fields
 
         //private String _currentSongUrl;
@@ -25,15 +28,20 @@ namespace MusicStreamer.ViewModels
         public CurrentSongViewModel(PlayerEngineModel playerModel)
         {
             _player = playerModel.MediaPlayer;
-            _controls = _player.controls;
 
-            IsPlaying = false;
-            HasPlayed = false;
+            init();
+        }
+
+        private void init()
+        {
+            _controls = _player.controls;
+            //handle er nede i bunden
+            _player.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(_player_PlayStateChange);
 
             PlayPauseCommand = new PlayPauseCommand(this);
             StopCommand = new StopCommand(this);
-            
         }
+
 
         // properties (ICommands)
         public ICommand PlayPauseCommand
@@ -92,7 +100,7 @@ namespace MusicStreamer.ViewModels
                 _controls.currentPosition = newPosition <= CurrentMedia.duration ? newPosition : _controls.currentPosition;
                 
                 // maybe this if media is paused??
-                //OnPropertyChanged("CurrentTime");
+                OnPropertyChanged("CurrentTime");
             }
         }
 
@@ -116,16 +124,9 @@ namespace MusicStreamer.ViewModels
             set; 
         }
 
-        public bool IsPlaying
+        public WMPLib.WMPPlayState PlayerState
         {
-            get;
-            set;
-        }
-
-        public bool HasPlayed
-        {
-            get;
-            set;
+            get { return _player.playState; }
         }
 
         // ICommand implementations..
@@ -141,7 +142,6 @@ namespace MusicStreamer.ViewModels
 
             // plays content from 'Url'
             _controls.play();
-            IsPlaying = true;
             DebugText = "Playing..";
         }
         internal void PlayCurrentSong(String url)
@@ -160,7 +160,8 @@ namespace MusicStreamer.ViewModels
             DebugText = "Stopping";
 
             // stop and remove timer-updater-thread
-            TimeUpdaterThread.Abort();
+            if (TimeUpdaterThread != null)
+                TimeUpdaterThread.Abort();
             TimeUpdaterThread = null;
 
             // maybe also close the player to release resources ??
@@ -169,8 +170,6 @@ namespace MusicStreamer.ViewModels
         {
             _controls.pause();
             DebugText = "Player paused";
-            HasPlayed = true;
-            IsPlaying = false;
             // stop/pause timer-updater-thread
         }
 
@@ -206,6 +205,11 @@ namespace MusicStreamer.ViewModels
                 //DebugText = TimeSpan.FromSeconds(Math.Floor(CurrentTime)).ToString();
                     
             }
+        }
+
+        void _player_PlayStateChange(int NewState)
+        {
+            OnPropertyChanged("PlayerState");
         }
 
     }

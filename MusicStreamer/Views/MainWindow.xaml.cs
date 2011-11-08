@@ -33,6 +33,7 @@ namespace MusicStreamer
         }
 
         // this is only here for testing
+<<<<<<< HEAD
         //private void buttonConnect_Click(object sender, RoutedEventArgs e)
         //{
         //    // TEST
@@ -41,6 +42,14 @@ namespace MusicStreamer
 
 
         //}
+=======
+        private void buttonRepeat_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
+        }
+
+
+>>>>>>> 2c942b0a8a62852b2c22555fcfe47b2b78366d70
 
         //private void buttonPlay_Click(object sender, RoutedEventArgs e)
         //{
