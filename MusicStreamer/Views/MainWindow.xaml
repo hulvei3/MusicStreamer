@@ -24,7 +24,6 @@
         
         <Grid Grid.Row="2" Name="gridPlaylist" HorizontalAlignment="Left" Width="457" Grid.ColumnSpan="2">
             <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
-<<<<<<< HEAD
             <TextBox Name="textBoxUser" Text="streamer" Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
             <TextBox Name="textBoxPassword" Text="streamerpassword" Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
             <Button Command="{Binding ConnectCommand}"  Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" >
@@ -36,12 +35,6 @@
                     </MultiBinding>
                 </Button.CommandParameter>
             </Button>
-=======
-            <TextBox Name="textBoxUser" Text="Username..." Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
-            <TextBox Name="textBoxPassword" Text="Password..." Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
-            <Button Command="{Binding ConnectCommand}" Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" />
-            <DataGrid ItemsSource="{Binding Path=Playlist.CurrentPlaylist}" AutoGenerateColumns="False" Height="236" HorizontalAlignment="Left" Margin="6,28,0,0" Name="dataGrid1" VerticalAlignment="Top" Width="445" />
->>>>>>> 2c942b0a8a62852b2c22555fcfe47b2b78366d70
         </Grid>
         
         <!-- Player Area -->
