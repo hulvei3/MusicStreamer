@@ -84,7 +84,8 @@
     <Compile Include="CustomCommands\NavigateCommand.cs" />
     <Compile Include="CustomCommands\SkipCommand.cs" />
     <Compile Include="Exceptions\MusicStreamerException.cs" />
-    <Compile Include="Models\PlaylistModel.cs" />
+    <Compile Include="Models\Playlist\PlaylistItem.cs" />
+    <Compile Include="Models\Playlist\PlaylistModel.cs" />
     <Compile Include="Models\Server\ServerConnectionModel.cs" />
     <Compile Include="Models\Server\ServerList.cs" />
     <Compile Include="Models\Server\ServerNavigationModel.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Services\PlayerEngineService.cs" />
     <Compile Include="Exceptions\PropertyAndErrorHandler.cs" />
     <Compile Include="ViewModels\Player\PlayerEngineViewModel.cs" />
+    <Compile Include="ViewModels\Playlist\PlaylistItemViewModel.cs" />
     <Compile Include="ViewModels\Playlist\PlaylistViewModel.cs" />
     <Compile Include="CustomCommands\StopCommand.cs" />
     <Page Include="Views\MainWindow.xaml">
@@ -174,7 +176,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Res\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

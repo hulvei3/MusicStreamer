@@ -4,8 +4,16 @@
         xmlns:converter="clr-namespace:MusicStreamer.CustomCommands.Converters" xmlns:serverlist="clr-namespace:MusicStreamer.Models.Server"
         Title="MusicStreamer" Height="465" Width="745" Name="windowMain" ResizeMode="CanResizeWithGrip" Background="{StaticResource GradientHoriBackground}">
     <Window.Resources>
+        <!--<CollectionViewSource x:Key="PlayListView" Source="{Binding Path=Playlist.CurrentPlaylist}"></CollectionViewSource>-->
         <converter:ConnectConverter x:Key="ConnectConverterKey"></converter:ConnectConverter>
         <serverlist:ServerList x:Key="ServerContentList"></serverlist:ServerList>
+
+        <DataTemplate x:Key="playlistTemplate">
+            <Grid Height="40" Width="80" ClipToBounds="True" Margin="0 2 0 0">
+                <TextBox Text="{Binding Name}" />
+            </Grid>
+        </DataTemplate>
+
     </Window.Resources>
     <Grid Name="gridMain">
         <Grid.ColumnDefinitions>
@@ -35,6 +43,10 @@
                     </MultiBinding>
                 </Button.CommandParameter>
             </Button>
+            <!-- PLAYLIST -->
+            <ListBox Name="playlist" Margin="6,28,6,6" ItemsSource="{Binding Path=Playlist.CurrentPlaylist}"
+                                                       ItemTemplate="{StaticResource playlistTemplate}"
+                                                        Grid.Row="1"/>
         </Grid>
         
         <!-- Player Area -->
@@ -55,8 +67,8 @@
             <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="12,0,351,0" Grid.Row="1" Height="45" />
             <Button Command="{Binding CurrentSong.StopCommand}" Content="Stop" Name="buttonStop" VerticalAlignment="Top" Margin="71,0,294,0" Height="45" Grid.Row="1" />
             <Button Command="{Binding CurrentSong.PlayPauseCommand}" Height="45" Margin="128,0,233,0" Name="buttonPlay" VerticalAlignment="Top" Grid.Row="1" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" />
-            <Button  Command="{Binding CurrentSong.SkipCommand}" Content="Next" Height="45" Margin="189,0,172,0" Name="buttonNext" VerticalAlignment="Top" Grid.Row="1" />
-            <Button Content="Shuffle" Height="45" Margin="326,0,48,0" Name="buttonShuffle" VerticalAlignment="Top" Grid.Row="1" />
+            <Button Command="{Binding CurrentSong.SkipCommand}" Content="Next" Height="45" Margin="189,0,172,0" Name="buttonNext" VerticalAlignment="Top" Grid.Row="1" />
+            <Button Content="Shuffle" Height="45" Margin="326,0,48,0" Name="buttonShuffle" VerticalAlignment="Top" Grid.Row="1" Click="buttonShuffle_Click" />
             <Button Content="TEST" Height="45" Margin="374,0,0,0" Name="buttonRepeat" VerticalAlignment="Top" Grid.Row="1" Click="buttonRepeat_Click" />
             <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="248,5,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="78" Padding="0" />
 

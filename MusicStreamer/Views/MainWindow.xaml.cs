@@ -45,7 +45,15 @@ namespace MusicStreamer
 
         private void buttonRepeat_Click(object sender, RoutedEventArgs e)
         {
-            textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
+            //textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
+
+
+            _vm.Playlist.addNewMedia();
+        }
+
+        private void buttonShuffle_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.Playlist.CurrentPlaylist.Clear();
         }
 
 

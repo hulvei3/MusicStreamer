@@ -40,20 +40,14 @@ namespace MusicStreamer.ViewModels
 
             PlayPauseCommand = new PlayPauseCommand(this);
             StopCommand = new StopCommand(this);
+            SkipCommand = new SkipCommand(this);
         }
 
 
         // properties (ICommands)
-        public ICommand PlayPauseCommand
-        {
-            get;
-            set;
-        }
-        public ICommand StopCommand
-        {
-            get;
-            set;
-        }
+        public ICommand PlayPauseCommand { get; set; }
+        public ICommand StopCommand { get; set; }
+        public ICommand SkipCommand { get; set; }
 
         // PROPERTIES
 
@@ -173,6 +167,11 @@ namespace MusicStreamer.ViewModels
             // stop/pause timer-updater-thread
         }
 
+        internal void NextSongInPlaylist()
+        {
+            
+        }
+
 
         // seperate thread for updating time counter
         private void RunTimeService()
@@ -212,5 +211,7 @@ namespace MusicStreamer.ViewModels
             OnPropertyChanged("PlayerState");
         }
 
+
+        
     }
 }

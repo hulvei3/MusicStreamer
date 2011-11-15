@@ -23,6 +23,8 @@ namespace MusicStreamer.ViewModels
         {
             _settings = player.MediaPlayer.settings;
 
+            
+
             player.MediaPlayer.MediaError += new WMPLib._WMPOCXEvents_MediaErrorEventHandler(MediaPlayer_MediaError);
 
         }

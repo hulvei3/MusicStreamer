@@ -85,8 +85,6 @@ namespace MusicStreamer.ViewModels
             // FTPservice should startup here
             // other startups ?
 
-
-            Playlist = new PlaylistViewModel(playerEngine);
             
         }
 
