@@ -4,15 +4,11 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Windows.Input;
-
 using MusicStreamer.Models;
 using MusicStreamer.CustomCommands;
-<<<<<<< HEAD
 using MusicStreamer.ViewModels.Server;
 using MusicStreamer.Models.Server;
-=======
 using System.Windows;
->>>>>>> 2c942b0a8a62852b2c22555fcfe47b2b78366d70
 
 namespace MusicStreamer.ViewModels
 {
