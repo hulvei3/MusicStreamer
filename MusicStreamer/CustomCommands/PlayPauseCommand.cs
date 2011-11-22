@@ -18,6 +18,8 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
+            string url = (string)parameter;
+
             // parameter comes from the view (textBoxCurrentSong.Content)
             switch (_vm.PlayerState)
             {
@@ -44,11 +46,12 @@ namespace MusicStreamer.CustomCommands
                 case WMPLib.WMPPlayState.wmppsScanReverse:
                     break;
                 case WMPLib.WMPPlayState.wmppsStopped:
-                    _vm.PlayCurrentSong();
+                    _vm.PlayCurrentSong((string)parameter);
                     break;
                 case WMPLib.WMPPlayState.wmppsTransitioning:
                     break;
                 case WMPLib.WMPPlayState.wmppsUndefined:
+                    if (url == "") return;
                     _vm.PlayCurrentSong((string)parameter);
                     break;
                 case WMPLib.WMPPlayState.wmppsWaiting:
@@ -62,7 +65,8 @@ namespace MusicStreamer.CustomCommands
         {
             return true;
         }
-
         public event EventHandler CanExecuteChanged;
+
+
     }
 }

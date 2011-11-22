@@ -9,6 +9,7 @@ using System.Windows;
 
 using WMPLib;
 using System.Collections.ObjectModel;
+using MusicStreamer.ViewModels.Playlist;
 
 namespace MusicStreamer.ViewModels
 {
@@ -20,11 +21,31 @@ namespace MusicStreamer.ViewModels
         {
             _p = player;
 
-            //MessageBox.Show(player.MediaPlayer.currentPlaylist.count.ToString());
 
-            CurrentPlaylist = new ObservableCollection<Playlist.PlaylistItemViewModel>();
+            CurrentPlaylist = new ObservableCollection<PlaylistItemViewModel>();
 
-            PlayListLibrary = player.MediaPlayer.playlistCollection;
+            // hvis playlisten findes
+            if (player.MediaPlayer.playlistCollection.getByName("streamerPlaylist_test").count > 0)
+            {
+                IWMPPlaylist firstlist = player.MediaPlayer.playlistCollection.getByName("streamerPlaylist_test").Item(0);
+
+                for (int i = 0; i < firstlist.count; i++)
+                {
+                    var song = new PlaylistItemViewModel();
+                    song.Url = firstlist.get_Item(i).sourceURL;
+                    song.DurationAsString = firstlist.get_Item(i).durationString;
+                    
+                    CurrentPlaylist.Add(song);
+                }
+                
+            }
+            else // hvis ikke
+            {
+                
+            }
+
+
+            
 
 
            
@@ -32,43 +53,33 @@ namespace MusicStreamer.ViewModels
             // måske skal denne bruges senere??
             //player.MediaPlayer.NewStream += new WMPLib._WMPOCXEvents_NewStreamEventHandler(MediaPlayer_NewStream);
 
-
-            
-
             // SETTING UP HANDLERS
 
             player.MediaPlayer.CurrentPlaylistChange += new WMPLib._WMPOCXEvents_CurrentPlaylistChangeEventHandler(MediaPlayer_CurrentPlaylistChange);
 
             
         }
-
-        //void MediaPlayer_NewStream()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         
-
-
-        //public WMPLib.IWMPPlaylist CurrentPlaylist
-        //{
-        //    get { return (WMPLib.IWMPPlaylist)GetValue(CurrentPlaylistProperty); }
-        //    set { SetValue(CurrentPlaylistProperty, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for CurrentPlaylist.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty CurrentPlaylistProperty =
-        //    DependencyProperty.Register("CurrentPlaylist", typeof(WMPLib.IWMPPlaylist), typeof(PlaylistViewModel), new UIPropertyMetadata(
-        //        OnPlaylistChanged));
-
-
-        private ObservableCollection<Playlist.PlaylistItemViewModel> _currentPlaylist;
-
-        public ObservableCollection<Playlist.PlaylistItemViewModel> CurrentPlaylist
+        private ObservableCollection<PlaylistItemViewModel> _currentPlaylist;
+        public ObservableCollection<PlaylistItemViewModel> CurrentPlaylist
         {
             get { return _currentPlaylist; }
             set { _currentPlaylist = value; }
         }
+
+        private PlaylistItemViewModel _selectedPlaylistItem;
+        public PlaylistItemViewModel SelectedPlaylistItem
+        {
+            get { return _selectedPlaylistItem; }
+            set
+            {
+                _selectedPlaylistItem = value;
+                _p.MediaPlayer.URL = value.Url;
+                _p.MediaPlayer.controls.play();
+                OnPropertyChanged("SelectedPlaylistItem");
+            }
+        }
+
 
         public WMPLib.IWMPPlaylistCollection PlayListLibrary { get; set; }
 
@@ -82,15 +93,13 @@ namespace MusicStreamer.ViewModels
         void MediaPlayer_CurrentPlaylistChange(WMPLib.WMPPlaylistChangeEventType change)
         {
 
-            String e = "CurrentPlaylist Changed event: " + change;
+            //String e = "CurrentPlaylist Changed event: " + change;
 
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine(e);
-            sb.AppendLine("Items: "+CurrentPlaylist.Count);
-            sb.AppendLine();
-
-            MessageBox.Show(sb.ToString());
+            //StringBuilder sb = new StringBuilder();
+            //sb.AppendLine(e);
+            //sb.AppendLine("Items: "+CurrentPlaylist.Count);
+            //sb.AppendLine("Playlist changed outside MusicStreamer?");
+            //MessageBox.Show(sb.ToString());
 
             OnPropertyChanged("CurrentPlaylist");
         }
@@ -103,9 +112,9 @@ namespace MusicStreamer.ViewModels
         {
             //IWMPMedia song = _p.MediaPlayer.newMedia(@"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3");
 
-            Playlist.PlaylistItemViewModel song = new Playlist.PlaylistItemViewModel(@"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3");
+            //Playlist.PlaylistItemViewModel song = new Playlist.PlaylistItemViewModel(@"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3");
 
-            CurrentPlaylist.Add(song);
+            //CurrentPlaylist.Add(song);
             OnPropertyChanged("CurrentPlaylist");
         }
     }

@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace MusicStreamer.ViewModels.Playlist
 {
-    class PlaylistItemViewModel : DependencyObject, INotifyPropertyChanged
+    class PlaylistItemViewModel : INotifyPropertyChanged
     {
 
         void OnPropertyChanged(string name)
@@ -33,11 +33,16 @@ namespace MusicStreamer.ViewModels.Playlist
         public static readonly DependencyProperty NameProperty =
             DependencyProperty.Register("Name", typeof(string), typeof(PlaylistItemViewModel), new UIPropertyMetadata("N/A"));
         #endregion
-
         */
+
+        public PlaylistItemViewModel()
+        {
+        }
+
         public PlaylistItemViewModel(string url)
         {
             Url = url;
+            
         }
 
         private string _url = "";
@@ -48,11 +53,13 @@ namespace MusicStreamer.ViewModels.Playlist
         }
 
         private int _length;
-        public int Length 
+        private int Length 
         {
             get { return _length; }
             set { _length = value; OnPropertyChanged("Length"); }
         }
+
+        public string DurationAsString { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

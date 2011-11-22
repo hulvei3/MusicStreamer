@@ -14,9 +14,6 @@ namespace MusicStreamer.ViewModels
     class CurrentSongViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler
     {
 
-
-
-
         // backing fields
 
         //private String _currentSongUrl;
@@ -28,7 +25,6 @@ namespace MusicStreamer.ViewModels
         public CurrentSongViewModel(PlayerEngineModel playerModel)
         {
             _player = playerModel.MediaPlayer;
-
             init();
         }
 
@@ -127,12 +123,11 @@ namespace MusicStreamer.ViewModels
 
         internal void PlayCurrentSong()
         {
+            if (_player.URL == null) return;
 
             // starting time updater thread
             TimeUpdaterThread = new System.Threading.Thread(new System.Threading.ThreadStart(RunTimeService));
             TimeUpdaterThread.Start();
-
-            
 
             // plays content from 'Url'
             _controls.play();
