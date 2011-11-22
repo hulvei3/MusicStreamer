@@ -106,6 +106,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\Server\ServerConnectionViewModel.cs" />
+    <Compile Include="ViewModels\Server\ServerlistItemViewModel.cs" />
     <Compile Include="ViewModels\Server\ServerNavigationViewModel.cs" />
     <Compile Include="ViewModels\Server\ServerTest.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

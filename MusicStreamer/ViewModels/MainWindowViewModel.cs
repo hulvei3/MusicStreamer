@@ -76,7 +76,9 @@ namespace MusicStreamer.ViewModels
 
             //Smides i egen metode, som ConnectCommand bruger
             //Models.Server.ServerConnectionModel serverConnection = new Models.Server.ServerConnectionModel();
-            //Navigation = new Server.ServerNavigationViewModel();
+            
+            
+            Navigation = new Server.ServerNavigationViewModel();
 
             ConnectCommand = new ConnectCommand(this);
 

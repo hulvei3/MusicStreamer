@@ -19,6 +19,7 @@ namespace MusicStreamer.ViewModels.Playlist
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+        /*
 
         #region Name dependency property
 
@@ -33,6 +34,7 @@ namespace MusicStreamer.ViewModels.Playlist
             DependencyProperty.Register("Name", typeof(string), typeof(PlaylistItemViewModel), new UIPropertyMetadata("N/A"));
         #endregion
 
+        */
         public PlaylistItemViewModel(string url)
         {
             Url = url;

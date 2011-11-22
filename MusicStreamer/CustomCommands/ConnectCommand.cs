@@ -33,8 +33,10 @@ namespace MusicStreamer.CustomCommands
            
             String[] info = (String[])parameter;
             //MessageBox.Show(info[0] + info[1] + info[2]);
-            _mwvm.Navigation = new ServerNavigationViewModel(new ServerConnectionModel(info[0], info[1], info[2]));
+            _mwvm.Navigation.setConnectionModel(new ServerConnectionModel(info[0], info[1], info[2]));
             _mwvm.Navigation.Navigate();
+
+
 
             //StringBuilder sList = new StringBuilder();
             //foreach (var item in _mwvm.Navigation.Navigate())

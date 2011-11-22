@@ -13,6 +13,9 @@
                 <TextBox Text="{Binding Name}" />
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="serverListTemplate">
+                <TextBox Text="{Binding Url}" />
+        </DataTemplate>
 
     </Window.Resources>
     <Grid Name="gridMain">
@@ -34,7 +37,7 @@
             <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
             <TextBox Name="textBoxUser" Text="streamer" Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
             <TextBox Name="textBoxPassword" Text="streamerpassword" Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
-            <Button Command="{Binding ConnectCommand}"  Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server" >
+            <Button Command="{Binding ConnectCommand}"  Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource ConnectConverterKey}">
                         <Binding ElementName="textBoxIP" Path="Text"/>
@@ -64,7 +67,7 @@
             
             <Slider Value="{Binding Path=Player.Volume}" Grid.RowSpan="3" Height="103" HorizontalAlignment="Left" Margin="8,15,0,0" Name="sliderVolume" VerticalAlignment="Top" Width="23" Orientation="Vertical" Maximum="100" Grid.Column="1" SmallChange="1" LargeChange="10" />
             
-            <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="12,0,351,0" Grid.Row="1" Height="45" />
+            <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="12,0,351,0" Grid.Row="1" Height="45" Click="buttonPrev_Click" />
             <Button Command="{Binding CurrentSong.StopCommand}" Content="Stop" Name="buttonStop" VerticalAlignment="Top" Margin="71,0,294,0" Height="45" Grid.Row="1" />
             <Button Command="{Binding CurrentSong.PlayPauseCommand}" Height="45" Margin="128,0,233,0" Name="buttonPlay" VerticalAlignment="Top" Grid.Row="1" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" />
             <Button Command="{Binding CurrentSong.SkipCommand}" Content="Next" Height="45" Margin="189,0,172,0" Name="buttonNext" VerticalAlignment="Top" Grid.Row="1" />
@@ -79,13 +82,16 @@
         <!-- Server area -->
         
         <Grid Grid.Column="2" Name="gridServer" Grid.RowSpan="3">
-            <DataGrid ItemsSource="{Binding Navigation.CurrentList}" AutoGenerateColumns="false" Height="390" HorizontalAlignment="Left" Margin="6,6,0,0" Name="dataGridServer" VerticalAlignment="Top" Width="248" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" >
+            <!--<DataGrid ItemsSource="{Binding Navigation.CurrentList}" AutoGenerateColumns="false" Height="390" HorizontalAlignment="Left" Margin="6,6,0,0" Name="dataGridServer" VerticalAlignment="Top" Width="248" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=Url}" Header="Url" />
                     <DataGridTextColumn Binding="{Binding Path=Size}" Header="Size" />
                 </DataGrid.Columns>
-            </DataGrid>
-            <!--<ListBox ItemsSource="{Binding Path=Navigation.CurrentList}" Height="344" HorizontalAlignment="Left" Margin="24,27,0,0" Name="listBox1" VerticalAlignment="Top" Width="212" />-->
+            </DataGrid>-->
+            <ListBox ItemsSource="{Binding Path=Navigation.CurrentList}" 
+                     ItemTemplate="{StaticResource serverListTemplate}" 
+                     Height="344" HorizontalAlignment="Left" Margin="24,27,0,0" Name="serverlistBox" VerticalAlignment="Top" Width="212" 
+            />
         </Grid>
         
         

@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 
 using MusicStreamer.Exceptions;
 using MusicStreamer.ViewModels;
+using System.Collections.ObjectModel;
+using MusicStreamer.ViewModels.Server;
 
 namespace MusicStreamer
 {
@@ -22,6 +24,7 @@ namespace MusicStreamer
     /// </summary>
     public partial class MainWindow : Window
     {
+        ObservableCollection<ServerlistItemViewModel> list;
 
         private readonly MainWindowViewModel _vm;
 
@@ -49,12 +52,26 @@ namespace MusicStreamer
 
 
             _vm.Playlist.addNewMedia();
+
+
+            _vm.Navigation.add_to_list_test();
+
+            //list = new ObservableCollection<ServerlistItemViewModel>();
+
+            //serverlistBox.ItemsSource = list;
         }
 
         private void buttonShuffle_Click(object sender, RoutedEventArgs e)
         {
             _vm.Playlist.CurrentPlaylist.Clear();
         }
+
+        private void buttonPrev_Click(object sender, RoutedEventArgs e)
+        {
+            //list.Add(new ServerlistItemViewModel("din mor",2.0));
+        }
+
+
 
 
 
