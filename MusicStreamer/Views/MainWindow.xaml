@@ -12,10 +12,20 @@
             <Grid Height="40" Width="80" ClipToBounds="True" Margin="0 2 0 0">
                 <TextBox Text="{Binding Name}" />
             </Grid>
-        </DataTemplate>
-        <DataTemplate x:Key="serverListTemplate">
-                <TextBox Text="{Binding Url}" />
-        </DataTemplate>
+        </DataTemplate>       
+        <!--<DataTemplate x:Key="serverListTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <TextBox Text="{Binding Path=Url}" />
+                <TextBox Text="{Binding Path=Size}" />
+            </Grid>
+        </DataTemplate>-->
+       
+       
+                
 
     </Window.Resources>
     <Grid Name="gridMain">
@@ -83,20 +93,20 @@
         </Grid>
         <Slider Value="{Binding Path=CurrentSong.CurrentTime}" Maximum="{Binding Path=CurrentSong.SongLength}" Height="23" HorizontalAlignment="Left" Margin="12,99,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="402" />
         <TextBox Text="{Binding Path=Playlist.SelectedPlaylistItem.Url}" Height="23" HorizontalAlignment="Left" Margin="12,15,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="408" />
+
         
         <!-- Server area -->
         
         <Grid Grid.Column="2" Name="gridServer" Grid.RowSpan="3">
-            <!--<DataGrid ItemsSource="{Binding Navigation.CurrentList}" AutoGenerateColumns="false" Height="390" HorizontalAlignment="Left" Margin="6,6,0,0" Name="dataGridServer" VerticalAlignment="Top" Width="248" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" >
+            <DataGrid ItemsSource="{Binding Path=Navigation.CurrentList}" GridLinesVisibility="None" 
+                      Height="390" HorizontalAlignment="Left" Margin="6,6,0,0" Name="serverlistBox" VerticalAlignment="Top" Width="248" 
+                      AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" 
+                      HeadersVisibility="Column" RowHeight="20" SelectedValue="{Binding Path=Navigation.SelectedServerListItem}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=Url}" Header="Url" />
-                    <DataGridTextColumn Binding="{Binding Path=Size}" Header="Size" />
-                </DataGrid.Columns>
-            </DataGrid>-->
-            <ListBox ItemsSource="{Binding Path=Navigation.CurrentList}" 
-                     ItemTemplate="{StaticResource serverListTemplate}" 
-                     Height="344" HorizontalAlignment="Left" Margin="24,27,0,0" Name="serverlistBox" VerticalAlignment="Top" Width="212" 
-            />
+                    <DataGridTextColumn Binding="{Binding Path=Url}" Header="Name" CanUserResize="False" Width="200" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=Size}" Header="Size" CanUserResize="False" Width="45" IsReadOnly="True"/>
+                </DataGrid.Columns> 
+            </DataGrid>
         </Grid>
         
         
@@ -106,4 +116,3 @@
         </StatusBar>
     </Grid>
 </Window>
-

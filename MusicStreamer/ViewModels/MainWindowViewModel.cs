@@ -55,7 +55,7 @@ namespace MusicStreamer.ViewModels
         { 
             get; 
             set; 
-        } 
+        }
         
         public ICommand ConnectCommand
         {
