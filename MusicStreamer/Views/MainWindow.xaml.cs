@@ -54,7 +54,7 @@ namespace MusicStreamer
             _vm.Playlist.addNewMedia();
 
 
-            _vm.Navigation.add_to_list_test();
+            //_vm.Navigation.add_to_list_test();
 
             //list = new ObservableCollection<ServerlistItemViewModel>();
 
@@ -70,6 +70,12 @@ namespace MusicStreamer
         {
             //list.Add(new ServerlistItemViewModel("din mor",2.0));
         }
+
+        //private void serverlistBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        //{
+        //    _vm.Navigation.Navigate("OpenShare");
+        //}
+
 
 
 

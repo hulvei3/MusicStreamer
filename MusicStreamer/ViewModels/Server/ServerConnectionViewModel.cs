@@ -48,7 +48,7 @@ namespace MusicStreamer.ViewModels.Server
             }
             catch (WebException e)
             {
-                //Console.WriteLine(e.GetBaseException());
+                //MessageBox.Show(e.Message);
                 result = null;
             }
 

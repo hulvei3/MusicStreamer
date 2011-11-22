@@ -15,9 +15,11 @@ namespace MusicStreamer.ViewModels.Server
 {
     class ServerNavigationViewModel : PropertyAndErrorHandler
     {
+        public int selectItemCount = 0;
         private String _currentLocation;
         private ServerConnectionViewModel _scvm;
         private ObservableCollection<ServerlistItemViewModel> _currentList;
+        private ServerlistItemViewModel _selectedItem;
 
         public ServerNavigationViewModel()
         {
@@ -44,6 +46,7 @@ namespace MusicStreamer.ViewModels.Server
             set
             {
                 _currentList = value;
+                _currentList.Insert(0,new ServerlistItemViewModel("Parent Directory..."));
                 OnPropertyChanged("CurrentList");
                 //StringBuilder list = new StringBuilder();
                 //foreach (ServerlistItemViewModel s in _currentList)
@@ -54,12 +57,52 @@ namespace MusicStreamer.ViewModels.Server
             }
         }
 
+        public ServerlistItemViewModel SelectedServerListItem
+        {
+            get{return _selectedItem;}
+            set
+            {
+                _selectedItem = value;
+                 
+                if (value.Url.Equals("Parent Directory..."))
+                {
+                    LevelUp();
+                }
+                else if (value.Url.EndsWith(".mp3"))
+                {
+                    AddToPlayList(value.Url);
+                }
+                else
+                    Navigate(value.Url);
+            }
+            
+        }
 
         //URL
         public String CurrentLocation
         {
             get { return _currentLocation; }
-            set{_currentLocation = value + "/";}
+            set
+            {
+                _currentLocation = value + "/";
+            }
+        }
+
+        public void AddToPlayList(String file)
+        {
+            MessageBox.Show("File added: "+CurrentLocation+file);
+        }
+
+        public void LevelUp()
+        {
+            //MessageBox.Show(CurrentLocation);
+            int index = CurrentLocation.LastIndexOf('/');
+            String parentDirectory = CurrentLocation.Remove(index);
+            int index2 = parentDirectory.LastIndexOf('/');
+            parentDirectory = CurrentLocation.Remove(index2);
+            CurrentLocation = parentDirectory;
+            Navigate();
+            //MessageBox.Show(parentDirectory); 
         }
 
         public ObservableCollection<ServerlistItemViewModel> Navigate(string url)
@@ -85,7 +128,7 @@ namespace MusicStreamer.ViewModels.Server
             Stream responseStream = files.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
             String filesFolders = reader.ReadToEnd();
-
+            Double size;
             
 
             IList<String> fileArray = filesFolders.Split('\n').ToList<String>();
@@ -104,7 +147,9 @@ namespace MusicStreamer.ViewModels.Server
                             {
                                 if (c[i] == ':')
                                 {
-                                    serverList.Add(new ServerlistItemViewModel(s.Substring(i + 4), 0.0));
+                                    string st = s.Substring(i + 4);
+                                    serverList.Add(new ServerlistItemViewModel( st.Substring(0,st.Length-1), 0.0));
+                                    //serverList.Add(new ServerlistItemViewModel(st, 0.0));
                                 }
                             }
                         }
@@ -122,15 +167,12 @@ namespace MusicStreamer.ViewModels.Server
             return serverList;
         }
 
-        public void levelUp(String url)
-        {
-            
-        }
 
-        public void add_to_list_test()
-        {
-            CurrentList.Add(new ViewModels.Server.ServerlistItemViewModel("test_url", 3));
-            OnPropertyChanged("CurrentList");
-        }
+
+        //public void add_to_list_test()
+        //{
+        //    CurrentList.Add(new ViewModels.Server.ServerlistItemViewModel("test_url", 3));
+        //    OnPropertyChanged("CurrentList");
+        //}
     }
 }

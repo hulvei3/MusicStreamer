@@ -7,15 +7,21 @@ using System.Windows;
 
 namespace MusicStreamer.ViewModels.Server
 {
-    class ServerlistItemViewModel : DependencyObject, INotifyPropertyChanged
+    class ServerlistItemViewModel : INotifyPropertyChanged
     {
         private string _url;
         private double _size;
 
+        public ServerlistItemViewModel(string url)
+        {
+            Url = url;
+        }
+
         public ServerlistItemViewModel(string url, double size)
         {
-            this._url = url;
-            this._size = size;
+            
+            Url = url;
+            Size = size;
         }
 
         public string Url
