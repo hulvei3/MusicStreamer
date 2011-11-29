@@ -51,7 +51,6 @@ namespace MusicStreamer.ViewModels.Server
                 //MessageBox.Show(e.Message);
                 result = null;
             }
-
             return result;
         }
 
