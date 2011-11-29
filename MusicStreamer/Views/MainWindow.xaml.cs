@@ -52,16 +52,6 @@ namespace MusicStreamer
 
 
             _vm.Playlist.addNewMedia();
-<<<<<<< HEAD
-=======
-
-
-            //_vm.Navigation.add_to_list_test();
-
-            //list = new ObservableCollection<ServerlistItemViewModel>();
-
-            //serverlistBox.ItemsSource = list;
->>>>>>> 9b41333e2ca93835ea5cbabf3415a562f75201fa
         }
 
         private void buttonShuffle_Click(object sender, RoutedEventArgs e)
@@ -71,47 +61,6 @@ namespace MusicStreamer
 
         private void buttonPlay_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
-=======
-            //list.Add(new ServerlistItemViewModel("din mor",2.0));
-        }
-
-        //private void serverlistBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        //{
-        //    _vm.Navigation.Navigate("OpenShare");
-        //}
-
-
-
-
-
-
-        //private void buttonPlay_Click(object sender, RoutedEventArgs e)
-        //{
-        //    PlayerEngineModel.instance.loadFile("C:\\Users\\Morten Hulvej\\Desktop\\07 I Remember.mp3");
-
-        //    PlayerEngineModel.instance.playFile();
-
-
-        //}
-
-        //private void buttonStop_Click(object sender, RoutedEventArgs e)
-        //{
-        //    PlayerEngineModel.instance.stopFile();
-
-        //}
-
-        //private void buttonConnect_Click(object sender, RoutedEventArgs e)
-        //{
-        //    int time = (int)PlayerEngineModel.instance.CurrentTime;
-
-
-        //    int hours = time / 3600;
-        //    int minutes = time / 60;
-        //    int seconds = time % 60;
-
-        //    StringBuilder sb = new StringBuilder();
->>>>>>> 9b41333e2ca93835ea5cbabf3415a562f75201fa
 
         }
     }

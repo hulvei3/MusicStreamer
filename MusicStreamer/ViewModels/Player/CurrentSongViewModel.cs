@@ -36,6 +36,7 @@ namespace MusicStreamer.ViewModels
 
             PlayPauseCommand = new PlayPauseCommand(this);
             StopCommand = new StopCommand(this);
+            PrevCommand = new PrevCommand(this);
             SkipCommand = new SkipCommand(this);
         }
 
@@ -43,6 +44,7 @@ namespace MusicStreamer.ViewModels
         // properties (ICommands)
         public ICommand PlayPauseCommand { get; set; }
         public ICommand StopCommand { get; set; }
+        public ICommand PrevCommand { get; set; }
         public ICommand SkipCommand { get; set; }
 
         // PROPERTIES
@@ -164,9 +166,13 @@ namespace MusicStreamer.ViewModels
 
         internal void NextSongInPlaylist()
         {
-            
+            _controls.next();
         }
 
+        internal void PreviousSongInPlaylist()
+        {
+            _controls.previous();
+        }
 
         // seperate thread for updating time counter
         private void RunTimeService()

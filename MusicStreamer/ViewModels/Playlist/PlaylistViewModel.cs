@@ -15,6 +15,8 @@ namespace MusicStreamer.ViewModels
 {
     class PlaylistViewModel : PropertyAndErrorHandler
     {
+
+        string default_playlist = "streamerPlaylist_test";
         PlayerEngineModel _p;
 
         public PlaylistViewModel(PlayerEngineModel player)
@@ -25,9 +27,12 @@ namespace MusicStreamer.ViewModels
             CurrentPlaylist = new ObservableCollection<PlaylistItemViewModel>();
 
             // hvis playlisten findes
-            if (player.MediaPlayer.playlistCollection.getByName("streamerPlaylist_test").count > 0)
+            if (player.MediaPlayer.playlistCollection.getByName(default_playlist).count > 0)
             {
-                IWMPPlaylist firstlist = player.MediaPlayer.playlistCollection.getByName("streamerPlaylist_test").Item(0);
+                IWMPPlaylist firstlist = player.MediaPlayer.playlistCollection.getByName(default_playlist).Item(0);
+                
+                // wmp.dll <-- current playlist
+                player.MediaPlayer.currentPlaylist = firstlist;
 
                 for (int i = 0; i < firstlist.count; i++)
                 {
@@ -41,12 +46,11 @@ namespace MusicStreamer.ViewModels
             }
             else // hvis ikke
             {
-                
+                MessageBox.Show(string.Format("WMP indeholder ikke playlisten: {0}",default_playlist));
             }
 
 
             
-
 
            
 
@@ -74,8 +78,11 @@ namespace MusicStreamer.ViewModels
             set
             {
                 _selectedPlaylistItem = value;
+
+                // plays selected song immediately  !SHOULD NOT BE PLACED IN HERE!
                 _p.MediaPlayer.URL = value.Url;
                 _p.MediaPlayer.controls.play();
+
                 OnPropertyChanged("SelectedPlaylistItem");
             }
         }

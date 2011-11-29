@@ -15,16 +15,14 @@ namespace MusicStreamer.ViewModels
     class MainWindowViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler
     {
 
-        //MusicStreamer.Exceptions.PropertyAndErrorHandler
-
         //backing fields
         private PlaylistViewModel _playlist;
         private CurrentSongViewModel _currentSong;
         private PlayerEngineViewModel _player;
 
-
-
         // properties
+        private static CommandLibrary CommandLib { get; set; }
+
         public CurrentSongViewModel CurrentSong
         {
             get { return _currentSong; }
@@ -43,7 +41,6 @@ namespace MusicStreamer.ViewModels
                 OnPropertyChanged("Playlist");
             }
         }
-
         // not sure we need this
         public PlayerEngineViewModel Player 
         {
@@ -67,26 +64,22 @@ namespace MusicStreamer.ViewModels
             
         public MainWindowViewModel()
         {
-
+            // init instance of wmp-player from wmp.dll
             PlayerEngineModel playerEngine = new PlayerEngineModel(false,false);
 
+            // init view-models taking wmp-player as argument
             Player = new PlayerEngineViewModel(playerEngine);
             CurrentSong = new CurrentSongViewModel(playerEngine);
             Playlist = new PlaylistViewModel(playerEngine);
-
-            //Smides i egen metode, som ConnectCommand bruger
-            //Models.Server.ServerConnectionModel serverConnection = new Models.Server.ServerConnectionModel();
-            
-            
             Navigation = new Server.ServerNavigationViewModel();
+
+
+            CommandLib = new CommandLibrary(this);
+
 
             ConnectCommand = new ConnectCommand(this);
 
             Player.Volume = 50;            
-
-            // FTPservice should startup here
-            // other startups ?
-
             
         }
 
