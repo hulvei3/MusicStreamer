@@ -46,7 +46,7 @@ namespace MusicStreamer.ViewModels.Server
             set
             {
                 _currentList = value;
-                _currentList.Insert(0,new ServerlistItemViewModel("Parent Directory..."));
+                _currentList.Insert(0,new ServerlistItemViewModel(".."));
                 OnPropertyChanged("CurrentList");
                 //StringBuilder list = new StringBuilder();
                 //foreach (ServerlistItemViewModel s in _currentList)
@@ -64,13 +64,15 @@ namespace MusicStreamer.ViewModels.Server
             {
                 _selectedItem = value;
                  
-                if (value.Url.Equals("Parent Directory..."))
+                if (value.Url.Equals(".."))
                 {
                     LevelUp();
+                    Navigate();
                 }
                 else if (value.Url.EndsWith(".mp3"))
                 {
                     AddToPlayList(value.Url);
+                    Navigate();
                 }
                 else
                     Navigate(value.Url);
@@ -91,6 +93,7 @@ namespace MusicStreamer.ViewModels.Server
         public void AddToPlayList(String file)
         {
             MessageBox.Show("File added: "+CurrentLocation+file);
+            
         }
 
         public void LevelUp()
@@ -101,7 +104,6 @@ namespace MusicStreamer.ViewModels.Server
             int index2 = parentDirectory.LastIndexOf('/');
             parentDirectory = CurrentLocation.Remove(index2);
             CurrentLocation = parentDirectory;
-            Navigate();
             //MessageBox.Show(parentDirectory); 
         }
 
@@ -125,13 +127,14 @@ namespace MusicStreamer.ViewModels.Server
         //Sorts the files and only shows the files you want.
         private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files, Boolean showAllFiles)
         {
+            
             Stream responseStream = files.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
             String filesFolders = reader.ReadToEnd();
-            Double size;
-            
-
+            //MessageBox.Show(filesFolders);
+                    
             IList<String> fileArray = filesFolders.Split('\n').ToList<String>();
+            
             ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
 
             if (!showAllFiles)
@@ -147,9 +150,16 @@ namespace MusicStreamer.ViewModels.Server
                             {
                                 if (c[i] == ':')
                                 {
+                                    
                                     string st = s.Substring(i + 4);
-                                    serverList.Add(new ServerlistItemViewModel( st.Substring(0,st.Length-1), 0.0));
-                                    //serverList.Add(new ServerlistItemViewModel(st, 0.0));
+                                    string size = "";
+                           
+                                    if (s.StartsWith("d")) { size = ""; }
+                                    else
+                                    {
+                                        size = "To Be Updated";
+                                    }
+                                    serverList.Add(new ServerlistItemViewModel( st.Substring(0,st.Length-1), size));
                                 }
                             }
                         }
@@ -160,11 +170,17 @@ namespace MusicStreamer.ViewModels.Server
             {
                 foreach (String s in fileArray)
                 {
-                    serverList.Add(new ServerlistItemViewModel(s,0.0)); //Adds all directorydetails
+                    serverList.Add(new ServerlistItemViewModel(s,"0")); //Adds all directorydetails
                 }
             }
             //newList.Sort();
             return serverList;
+        }
+
+        private string SizeConverter()
+        {
+            
+            return "mb";
         }
 
 

@@ -99,14 +99,12 @@
         
         <!-- Server area -->
         
-        <Grid Grid.Column="2" Name="gridServer" Grid.RowSpan="3">
-            <DataGrid ItemsSource="{Binding Path=Navigation.CurrentList}" GridLinesVisibility="None" 
-                      Height="390" HorizontalAlignment="Left" Margin="6,6,0,0" Name="serverlistBox" VerticalAlignment="Top" Width="248" 
-                      AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" 
-                      HeadersVisibility="Column" RowHeight="20" SelectedValue="{Binding Path=Navigation.SelectedServerListItem}">
+        <Grid Grid.Column="2" Name="gridServer" Grid.RowSpan="3" Grid.ColumnSpan="2">
+            <DataGrid ItemsSource="{Binding Path=Navigation.CurrentList}" GridLinesVisibility="None" Margin="6,6,6,38" Name="serverlistBox" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserResizeColumns="True" CanUserReorderColumns="False" 
+                      HeadersVisibility="Column" RowHeight="20" SelectedValue="{Binding Path=Navigation.SelectedServerListItem}" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=Url}" Header="Name" CanUserResize="False" Width="200" IsReadOnly="True"/>
-                    <DataGridTextColumn Binding="{Binding Path=Size}" Header="Size" CanUserResize="False" Width="45" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=Url}" Header="Name" CanUserResize="True" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=Size}" Header="Size" CanUserResize="False" IsReadOnly="True"/>
                 </DataGrid.Columns> 
             </DataGrid>
         </Grid>

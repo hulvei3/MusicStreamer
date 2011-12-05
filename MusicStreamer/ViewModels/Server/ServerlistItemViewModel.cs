@@ -10,14 +10,14 @@ namespace MusicStreamer.ViewModels.Server
     class ServerlistItemViewModel : INotifyPropertyChanged
     {
         private string _url;
-        private double _size;
+        private string _size;
 
         public ServerlistItemViewModel(string url)
         {
             Url = url;
         }
 
-        public ServerlistItemViewModel(string url, double size)
+        public ServerlistItemViewModel(string url, string size)
         {
             
             Url = url;
@@ -30,7 +30,7 @@ namespace MusicStreamer.ViewModels.Server
             set { _url = value; }
         }
 
-        public double Size
+        public string Size
         {
             get { return _size; }
             set { _size = value; }
