@@ -182,7 +182,7 @@ namespace MusicStreamer.ViewModels
         public void LoadPlaylist()
         {
             XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemViewModel>));
-            FileStream fs = new FileStream("myFirstLoad.xml",FileMode.Open);
+            FileStream fs = new FileStream("myFirstPlaylist.xml",FileMode.Open);
 
             CurrentUIPlaylist = (ObservableCollection<PlaylistItemViewModel>) mySerializer.Deserialize(fs);
         }

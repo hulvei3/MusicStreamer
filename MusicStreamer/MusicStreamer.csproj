@@ -90,6 +90,7 @@
     <Compile Include="CustomCommands\SkipCommand.cs" />
     <Compile Include="CustomCommands\UndoRedoController.cs" />
     <Compile Include="Exceptions\MusicStreamerException.cs" />
+    <Compile Include="Interfaces\IStreamerCommand.cs" />
     <Compile Include="Models\Playlist\PlaylistItem.cs" />
     <Compile Include="Models\Playlist\PlaylistModel.cs" />
     <Compile Include="Models\Server\ServerConnectionModel.cs" />
