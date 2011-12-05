@@ -4,28 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
+using System.Windows;
 
 namespace MusicStreamer.CustomCommands
 {
     class SavePlaylistCommand : ICommand
     {
-        private MainWindowViewModel _mwvm;
+        private PlaylistViewModel _plvm;
 
-        public SavePlaylistCommand(MainWindowViewModel mwvm)
+        public SavePlaylistCommand(PlaylistViewModel plvm)
         {
-            this._mwvm = mwvm;
+            this._plvm = plvm;
         }
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {
-
-            throw new NotImplementedException();
+            _plvm.SavePlaylist();
+            MessageBox.Show("Playlist saved!");
         }
     }
 }

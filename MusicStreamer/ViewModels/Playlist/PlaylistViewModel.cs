@@ -12,9 +12,12 @@ using System.IO;
 using WMPLib;
 using System.Collections.ObjectModel;
 using MusicStreamer.ViewModels.Playlist;
+using System.Windows.Input;
+using MusicStreamer.CustomCommands;
 
 namespace MusicStreamer.ViewModels
 {
+    
     class PlaylistViewModel : PropertyAndErrorHandler
     {
 
@@ -27,8 +30,8 @@ namespace MusicStreamer.ViewModels
 
             CurrentUIPlaylist = new ObservableCollection<PlaylistItemViewModel>();
 
-
-            
+            SavePlaylistCommand = new SavePlaylistCommand(this);
+            LoadPlaylistCommand = new LoadPlaylistCommand(this);
 
            
 
@@ -154,6 +157,18 @@ namespace MusicStreamer.ViewModels
             sb.AppendFormat("Marker-count: {0}",media.markerCount);
             
             MessageBox.Show(sb.ToString());
+        }
+
+        public ICommand SavePlaylistCommand
+        {
+            get;
+            set;
+        }
+
+        public ICommand LoadPlaylistCommand
+        {
+            get;
+            set;
         }
 
         public void SavePlaylist()
