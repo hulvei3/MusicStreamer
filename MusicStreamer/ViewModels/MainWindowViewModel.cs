@@ -60,8 +60,7 @@ namespace MusicStreamer.ViewModels
             set;
         }
 
-        
-            
+
         public MainWindowViewModel()
         {
             // init instance of wmp-player from wmp.dll

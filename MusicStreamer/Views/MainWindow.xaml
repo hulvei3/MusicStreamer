@@ -9,8 +9,8 @@
         <serverlist:ServerList x:Key="ServerContentList"></serverlist:ServerList>
 
         <DataTemplate x:Key="playlistTemplate">
-            <Grid Height="40" Width="80" ClipToBounds="True" Margin="0 2 0 0">
-                <TextBox Text="{Binding Name}" />
+            <Grid Height="40" Width="80" ClipToBounds="true" Margin="0 0 0 2">
+                <TextBox Text="{Binding Url}" />
             </Grid>
         </DataTemplate>       
         <!--<DataTemplate x:Key="serverListTemplate">
@@ -59,7 +59,9 @@
             
             
             <!-- PLAYLIST -->
-            <DataGrid Name="playlist" Margin="6,28,6,38" ItemsSource="{Binding Path=Playlist.CurrentPlaylist}" HeadersVisibility="Column"
+            <DataGrid Name="playlist" Margin="6,28,6,38" HeadersVisibility="Column"
+                      ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}"
+                      ItemTemplate="{StaticResource playlistTemplate}"
                       SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}"
                       
                       />
