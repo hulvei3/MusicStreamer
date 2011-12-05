@@ -19,9 +19,19 @@ namespace MusicStreamer.ViewModels
         private PlaylistViewModel _playlist;
         private CurrentSongViewModel _currentSong;
         private PlayerEngineViewModel _player;
+        private Window _mainUI;
 
         // properties
-        private static CommandLibrary CommandLib { get; set; }
+        public CommandLibrary CommandLib { get; set; }
+        public Window WindowUI
+        {
+            get { return _mainUI; }
+            set
+            {
+                _mainUI = value;
+                CommandLib = new CommandLibrary(_mainUI);
+            }
+        }
 
         public CurrentSongViewModel CurrentSong
         {
@@ -49,14 +59,8 @@ namespace MusicStreamer.ViewModels
         }
 
         public Server.ServerNavigationViewModel Navigation { get; set; }
-        
         public ICommand ConnectCommand { get; set; }
-
-        public ICommand AddToPlaylistCommand
-        {
-            get;
-            set;
-        }
+        public ICommand AddToPlaylistCommand { get; set; }
 
 
         public MainWindowViewModel()
@@ -71,8 +75,8 @@ namespace MusicStreamer.ViewModels
             Navigation = new Server.ServerNavigationViewModel();
 
             // undo/redo
-            CommandLib = new CommandLibrary(this);
-
+            //CommandLib = new CommandLibrary(WindowUI);
+            //   EDIT: bliver istedet sat når WindowUI bliver sat (MainWindow.windowMain_Loaded() )
 
             ConnectCommand = new ConnectCommand(this);
 
@@ -82,7 +86,9 @@ namespace MusicStreamer.ViewModels
             
         }
 
-        
+
+
+
 
 
 
