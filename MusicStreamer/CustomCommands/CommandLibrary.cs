@@ -27,13 +27,22 @@ namespace MusicStreamer.CustomCommands
         {
              //Her initialiseres alle vores egne Commands..
 
+
+
+            // connect
             var cmd = new ConnectCommand(_parent);
-
-            
-
             var cbinding = new CommandBinding( cmd, cmd.Execute, cmd.CanExecute);
-                _parent.CommandBindings.Add(cbinding);
+            _parent.CommandBindings.Add(cbinding);
+            
+            // navigate
+            var cmd = new NavigateCommand(_parent);
+            var cbinding = new CommandBinding( cmd, cmd.Execute, cmd.CanExecute);
+            _parent.CommandBindings.Add(cbinding);
 
+            // playPause
+            var cmd = new PlayPauseCommand(_parent);
+            var cbinding = new CommandBinding( cmd, cmd.Execute, cmd.CanExecute);
+            _parent.CommandBindings.Add(cbinding);
             
         }
 

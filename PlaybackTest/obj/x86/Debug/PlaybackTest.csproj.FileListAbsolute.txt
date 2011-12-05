@@ -12,13 +12,6 @@ Z:\Documents\dev\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\Interop.WMPLib.dll
 Z:\Documents\dev\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.csproj.ResolveComReference.cache
 Z:\Documents\dev\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.exe
 Z:\Documents\dev\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.pdb
-C:\Users\Morten Hulvej\Desktop\dev\MusicStreamer\PlaybackTest\bin\Debug\PlaybackTest.exe
-C:\Users\Morten Hulvej\Desktop\dev\MusicStreamer\PlaybackTest\bin\Debug\PlaybackTest.pdb
-C:\Users\Morten Hulvej\Desktop\dev\MusicStreamer\PlaybackTest\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Morten Hulvej\Desktop\dev\MusicStreamer\PlaybackTest\obj\x86\Debug\Interop.WMPLib.dll
-C:\Users\Morten Hulvej\Desktop\dev\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.csproj.ResolveComReference.cache
-C:\Users\Morten Hulvej\Desktop\dev\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.exe
-C:\Users\Morten Hulvej\Desktop\dev\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.pdb
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\bin\Debug\PlaybackTest.exe
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\bin\Debug\PlaybackTest.pdb
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\ResolveAssemblyReference.cache
@@ -26,3 +19,10 @@ C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTes
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.csproj.ResolveComReference.cache
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.exe
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.pdb
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\PlaybackTest\bin\Debug\PlaybackTest.exe
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\PlaybackTest\bin\Debug\PlaybackTest.pdb
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\PlaybackTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\PlaybackTest\obj\x86\Debug\Interop.WMPLib.dll
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.csproj.ResolveComReference.cache
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.exe
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.pdb

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using WMPLib;
 
-namespace MusicStreamer.Models
+namespace MusicStreamer.Models.Playlist
 {
     class PlaylistModel : IWMPPlaylist
     {
