@@ -6,6 +6,8 @@ using System.Text;
 using MusicStreamer.Models;
 using MusicStreamer.Exceptions;
 using System.Windows;
+using System.Xml.Serialization;
+using System.IO;
 
 using WMPLib;
 using System.Collections.ObjectModel;
@@ -152,6 +154,22 @@ namespace MusicStreamer.ViewModels
             sb.AppendFormat("Marker-count: {0}",media.markerCount);
             
             MessageBox.Show(sb.ToString());
+        }
+
+        public void SavePlaylist()
+        {
+            XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemViewModel>));
+            TextWriter textStream = new StreamWriter("myFirstPlaylist.xml");
+            mySerializer.Serialize(textStream,CurrentUIPlaylist);
+            textStream.Close();
+        }
+
+        public void LoadPlaylist()
+        {
+            XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemViewModel>));
+            FileStream fs = new FileStream("myFirstLoad.xml",FileMode.Open);
+
+            CurrentUIPlaylist = (ObservableCollection<PlaylistItemViewModel>) mySerializer.Deserialize(fs);
         }
     }
 }

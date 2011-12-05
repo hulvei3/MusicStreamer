@@ -92,7 +92,7 @@ namespace MusicStreamer.ViewModels.Server
 
         public void AddToPlayList(String file)
         {
-            MessageBox.Show("File added: "+CurrentLocation+file);
+            MessageBox.Show("Press \"+\" to add song to playlist");
             
         }
 
