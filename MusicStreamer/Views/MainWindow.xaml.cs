@@ -1,22 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
-using MusicStreamer.Exceptions;
 using MusicStreamer.ViewModels;
-using System.Collections.ObjectModel;
-using MusicStreamer.ViewModels.Server;
-using MusicStreamer.ViewModels.Playlist;
 
 namespace MusicStreamer
 {
@@ -57,15 +41,16 @@ namespace MusicStreamer
         private void buttonShuffle_Click(object sender, RoutedEventArgs e)
         {
 
-            //_vm.Playlist.CurrentUIPlaylist.Clear();
-            _vm.Playlist.AddToPlaylist(new PlaylistItemViewModel("ftp://90.184.75.15/OpenShare/Music/Morten/Deadmau5/Random Album Title/07 I Remember.mp3"));
-            _vm.Playlist.AddToPlaylist(new PlaylistItemViewModel("ftp://90.184.75.15/OpenShare/Music/Morten/Air/Pocket Symphony/05 Mayfair Song.mp3"));
-            _vm.Playlist.AddToPlaylist(new PlaylistItemViewModel("ftp://90.184.75.15/OpenShare/Music/Morten/Air/Pocket Symphony/04 Napalm Love.mp3"));
         }
 
         private void buttonPlay_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void windowMain_Loaded(object sender, RoutedEventArgs e)
+        {
+            _vm.WindowUI = this;
         }
     }
 }
