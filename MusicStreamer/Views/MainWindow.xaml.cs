@@ -57,10 +57,6 @@ namespace MusicStreamer
         private void buttonShuffle_Click(object sender, RoutedEventArgs e)
         {
 
-            //_vm.Playlist.CurrentUIPlaylist.Clear();
-            _vm.Playlist.AddToPlaylist(new PlaylistItemViewModel("ftp://90.184.75.15/OpenShare/Music/Morten/Deadmau5/Random Album Title/07 I Remember.mp3"));
-            _vm.Playlist.AddToPlaylist(new PlaylistItemViewModel("ftp://90.184.75.15/OpenShare/Music/Morten/Air/Pocket Symphony/05 Mayfair Song.mp3"));
-            _vm.Playlist.AddToPlaylist(new PlaylistItemViewModel("ftp://90.184.75.15/OpenShare/Music/Morten/Air/Pocket Symphony/04 Napalm Love.mp3"));
         }
 
         private void buttonPlay_Click(object sender, RoutedEventArgs e)

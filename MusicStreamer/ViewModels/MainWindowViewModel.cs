@@ -48,17 +48,9 @@ namespace MusicStreamer.ViewModels
             set { _player = value; } 
         }
 
-        public Server.ServerNavigationViewModel Navigation 
-        { 
-            get; 
-            set; 
-        }
+        public Server.ServerNavigationViewModel Navigation { get; set; }
         
-        public ICommand ConnectCommand
-        {
-            get;
-            set;
-        }
+        public ICommand ConnectCommand { get; set; }
 
 
         public MainWindowViewModel()
@@ -72,7 +64,7 @@ namespace MusicStreamer.ViewModels
             Playlist = new PlaylistViewModel(playerEngine);
             Navigation = new Server.ServerNavigationViewModel();
 
-
+            // undo/redo
             CommandLib = new CommandLibrary(this);
 
 

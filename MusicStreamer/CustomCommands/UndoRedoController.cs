@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -18,8 +19,8 @@ namespace MusicStreamer.CustomCommands
 
             #endregion
 
-            private readonly Stack<IAmazingCommand> _redoStack = new Stack<IAmazingCommand>();
-            private readonly Stack<IAmazingCommand> _undoStack = new Stack<IAmazingCommand>();
+            private readonly Stack<IStreamerCommand> _redoStack = new Stack<IStreamerCommand>();
+            private readonly Stack<IStreamerCommand> _undoStack = new Stack<IStreamerCommand>();
 
             /// <summary>
             /// Metode der håndterer Redo
@@ -72,7 +73,7 @@ namespace MusicStreamer.CustomCommands
             /// Metode der bruges til at pushe en IAmazingCommand på stakken udefra. Den benyttes når en kommando udføres for første gang.
             /// </summary>
             /// <param name="cmd"></param>
-            public void PushUndoStack(IAmazingCommand cmd)
+            public void PushUndoStack(IStreamerCommand cmd)
             {
                 _undoStack.Push(cmd);
                 _redoStack.Clear();
