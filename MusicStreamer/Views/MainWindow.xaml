@@ -6,6 +6,7 @@
     <Window.Resources>
         <!--<CollectionViewSource x:Key="PlayListView" Source="{Binding Path=Playlist.CurrentPlaylist}"></CollectionViewSource>-->
         <converter:ConnectConverter x:Key="ConnectConverterKey"></converter:ConnectConverter>
+        
         <serverlist:ServerList x:Key="ServerContentList"></serverlist:ServerList>
 
         <DataTemplate x:Key="playlistTemplate">
@@ -13,16 +14,22 @@
                 <TextBox Text="{Binding Url}" />
             </Grid>
         </DataTemplate>       
-        <!--<DataTemplate x:Key="serverListTemplate">
+        <DataTemplate x:Key="serverListTemplate">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBox Text="{Binding Path=Url}" />
-                <TextBox Text="{Binding Path=Size}" />
+                <Button Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" CommandParameter="{Binding Url}" Grid.Column="0" Content="+">
+                </Button>
+                <TextBox Name="url" Text="{Binding Url}" Grid.Column="1"/>
+                <TextBox Name="size" Text="{Binding Size}" Grid.Column="2" />
             </Grid>
-        </DataTemplate>-->
+        </DataTemplate>
        
        
                 
@@ -65,8 +72,8 @@
                       SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}"
                       
                       />
-            <Button Content="S" HorizontalAlignment="Left" Margin="6,0,0,6" Name="button1" Width="23" Height="23" VerticalAlignment="Bottom" />
-            <Button Content="L" HorizontalAlignment="Left" Margin="35,0,0,6" Name="button2" Width="22" Height="23" VerticalAlignment="Bottom" />
+            <Button Content="Save playlist" HorizontalAlignment="Left" Margin="6,0,0,6" Name="button1" Width="80" Height="23" VerticalAlignment="Bottom" />
+            <Button Content="Load playlist" HorizontalAlignment="Right" Margin="0,0,270,6" Name="button2" Width="80" Height="23" VerticalAlignment="Bottom" />
         </Grid>
         
         <!-- Player Area -->
@@ -100,13 +107,13 @@
         <!-- Server area -->
         
         <Grid Grid.Column="2" Name="gridServer" Grid.RowSpan="3" Grid.ColumnSpan="2">
-            <DataGrid ItemsSource="{Binding Path=Navigation.CurrentList}" GridLinesVisibility="None" Margin="6,6,6,38" Name="serverlistBox" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserResizeColumns="True" CanUserReorderColumns="False" 
-                      HeadersVisibility="Column" RowHeight="20" SelectedValue="{Binding Path=Navigation.SelectedServerListItem}" >
-                <DataGrid.Columns>
+            <ListBox ItemsSource="{Binding Path=Navigation.CurrentList}" ItemTemplate="{StaticResource serverListTemplate}" Margin="6,6,6,38" Name="serverlistBox" 
+                      SelectedValue="{Binding Path=Navigation.SelectedServerListItem}" >
+                <!--<DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=Url}" Header="Name" CanUserResize="True" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Path=Size}" Header="Size" CanUserResize="False" IsReadOnly="True"/>
-                </DataGrid.Columns> 
-            </DataGrid>
+                </DataGrid.Columns>--> 
+            </ListBox>
         </Grid>
         
         

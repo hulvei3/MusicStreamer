@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MusicStreamer.ViewModels.Server
 {
@@ -19,7 +20,7 @@ namespace MusicStreamer.ViewModels.Server
 
         public ServerlistItemViewModel(string url, string size)
         {
-            
+
             Url = url;
             Size = size;
         }
