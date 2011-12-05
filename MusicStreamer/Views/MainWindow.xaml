@@ -17,17 +17,17 @@
         <DataTemplate x:Key="serverListTemplate">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+                    <!--<ColumnDefinition Width="Auto" />-->
                 </Grid.ColumnDefinitions>
                 <Button Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" CommandParameter="{Binding Url}" Grid.Column="0" Content="+">
                 </Button>
-                <TextBox Name="url" Text="{Binding Url}" Grid.Column="1"/>
-                <TextBox Name="size" Text="{Binding Size}" Grid.Column="2" />
+                <TextBlock Text="{Binding Url}" Grid.Column="1" Cursor="Hand"/>
+                <!--<TextBox Name="size" Text="{Binding Size}" Grid.Column="2" />-->
             </Grid>
         </DataTemplate>
        
@@ -72,8 +72,8 @@
                       SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}"
                       
                       />
-            <Button Content="Save playlist" HorizontalAlignment="Left" Margin="6,0,0,6" Name="button1" Width="80" Height="23" VerticalAlignment="Bottom" />
-            <Button Content="Load playlist" HorizontalAlignment="Right" Margin="0,0,270,6" Name="button2" Width="80" Height="23" VerticalAlignment="Bottom" />
+            <Button Content="Save playlist" Command="{Binding SavePlaylistCommand}"  HorizontalAlignment="Left" Margin="6,0,0,6" Name="button1" Width="80" Height="23" VerticalAlignment="Bottom" />
+            <Button Content="Load playlist" Command="{Binding LoadPlaylistCommand}" HorizontalAlignment="Right" Margin="0,0,270,6" Name="button2" Width="80" Height="23" VerticalAlignment="Bottom" />
         </Grid>
         
         <!-- Player Area -->
