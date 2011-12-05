@@ -52,6 +52,12 @@ namespace MusicStreamer.ViewModels
         
         public ICommand ConnectCommand { get; set; }
 
+        public ICommand AddToPlaylistCommand
+        {
+            get;
+            set;
+        }
+
 
         public MainWindowViewModel()
         {
@@ -69,6 +75,8 @@ namespace MusicStreamer.ViewModels
 
 
             ConnectCommand = new ConnectCommand(this);
+
+            AddToPlaylistCommand = new AddToPlaylistCommand(this);
 
             Player.Volume = 50;            
             
