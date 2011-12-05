@@ -19,31 +19,31 @@ namespace MusicStreamer.CustomCommands
 
             CustomCommands = new List<ICommand>();
 
-            InitCustomCommands();
-            InitAppCommands();
+            //InitCustomCommands();
+            //InitAppCommands();
         }
 
         private void InitCustomCommands()
         {
-             //Her initialiseres alle vores egne Commands..
+            //Her initialiseres alle vores egne Commands..
 
 
 
             // connect
             var cmd = new ConnectCommand(_parent);
-            var cbinding = new CommandBinding( cmd, cmd.Execute, cmd.CanExecute);
+            var cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
             _parent.CommandBindings.Add(cbinding);
-            
+
             // navigate
             var cmd = new NavigateCommand(_parent);
-            var cbinding = new CommandBinding( cmd, cmd.Execute, cmd.CanExecute);
+            var cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
             _parent.CommandBindings.Add(cbinding);
 
             // playPause
             var cmd = new PlayPauseCommand(_parent);
-            var cbinding = new CommandBinding( cmd, cmd.Execute, cmd.CanExecute);
+            var cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
             _parent.CommandBindings.Add(cbinding);
-            
+
         }
 
         // ApplicationCommands (indbygget i en WPF-applikation)

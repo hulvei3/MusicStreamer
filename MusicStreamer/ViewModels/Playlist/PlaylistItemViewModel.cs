@@ -46,15 +46,15 @@ namespace MusicStreamer.ViewModels.Playlist
             
         }
 
-        private string _url = "";
+        public string _url = "";
         public string Url
         {
             get { return _url; }
             set { _url = value; OnPropertyChanged("Url"); }
         }
 
-        private int _length;
-        private int Length 
+        public int _length;
+        public int Length 
         {
             get { return _length; }
             set { _length = value; OnPropertyChanged("Length"); }
