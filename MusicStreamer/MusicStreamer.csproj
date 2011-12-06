@@ -119,6 +119,7 @@
     <Compile Include="ViewModels\Server\ServerlistItemViewModel.cs" />
     <Compile Include="ViewModels\Server\ServerNavigationViewModel.cs" />
     <Compile Include="ViewModels\Server\ServerTest.cs" />
+    <Compile Include="ViewModels\Streamer\StreamerViewModel.cs" />
     <Compile Include="Views\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>

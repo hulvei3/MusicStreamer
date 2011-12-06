@@ -9,6 +9,8 @@ using MusicStreamer.CustomCommands;
 using MusicStreamer.ViewModels.Server;
 using MusicStreamer.Models.Server;
 using System.Windows;
+using MusicStreamer.ViewModels.Player;
+using MusicStreamer.ViewModels.Playlist;
 
 namespace MusicStreamer.ViewModels
 {

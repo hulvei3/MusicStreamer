@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using System.Windows.Forms;
+using MusicStreamer.ViewModels.Playlist;
 
 namespace MusicStreamer.CustomCommands
 {
