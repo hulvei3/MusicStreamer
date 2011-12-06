@@ -5,10 +5,11 @@ using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using System.Windows;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class SavePlaylistCommand : ICommand
+    class SavePlaylistCommand : IStreamerCommand
     {
         private PlaylistViewModel _plvm;
 
@@ -27,6 +28,16 @@ namespace MusicStreamer.CustomCommands
         {
             _plvm.SavePlaylist();
             MessageBox.Show("Playlist saved!");
+        }
+
+        public void Execute()
+        {
+            Execute(null);
+        }
+
+        public void UnExecute()
+        {
+            throw new NotImplementedException();
         }
     }
 }

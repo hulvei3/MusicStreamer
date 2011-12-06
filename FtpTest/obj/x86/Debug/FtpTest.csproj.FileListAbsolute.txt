@@ -6,3 +6,9 @@ C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\FtpTest\bin
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\FtpTest\bin\Debug\MusicStreamer.pdb
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\FtpTest\obj\x86\Debug\FtpTest.exe
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\FtpTest\obj\x86\Debug\FtpTest.pdb
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\FtpTest\bin\Debug\FtpTest.exe
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\FtpTest\bin\Debug\FtpTest.pdb
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\FtpTest\bin\Debug\MusicStreamer.exe
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\FtpTest\bin\Debug\MusicStreamer.pdb
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\FtpTest\obj\x86\Debug\FtpTest.exe
+C:\Users\Morten Hulvej\Desktop\dev\musicstreamer\FtpTest\obj\x86\Debug\FtpTest.pdb

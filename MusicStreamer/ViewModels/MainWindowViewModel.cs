@@ -14,6 +14,7 @@ namespace MusicStreamer.ViewModels
 {
     class MainWindowViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler
     {
+        private static MainWindowViewModel _this;
 
         //backing fields
         private PlaylistViewModel _playlist;
@@ -32,6 +33,8 @@ namespace MusicStreamer.ViewModels
                 CommandLib = new CommandLibrary(_mainUI);
             }
         }
+
+        public static MainWindowViewModel Instance { get { return _this; } }
 
         public CurrentSongViewModel CurrentSong
         {
@@ -78,12 +81,11 @@ namespace MusicStreamer.ViewModels
             //CommandLib = new CommandLibrary(WindowUI);
             //   EDIT: bliver istedet sat når WindowUI bliver sat (MainWindow.windowMain_Loaded() )
 
-            ConnectCommand = new ConnectCommand(this);
-
             AddToPlaylistCommand = new AddToPlaylistCommand(this);
 
-            Player.Volume = 50;            
-            
+            Player.Volume = 50;
+
+            _this = this;
         }
 
 

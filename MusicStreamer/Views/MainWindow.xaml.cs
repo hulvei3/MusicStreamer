@@ -21,15 +21,6 @@ namespace MusicStreamer
 
         // this is only here for testing
 
-        //private void buttonConnect_Click(object sender, RoutedEventArgs e)
-        //{
-        //    // TEST
-
-        //    textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
-
-
-        //}
-
         private void buttonRepeat_Click(object sender, RoutedEventArgs e)
         {
             //textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
@@ -51,6 +42,10 @@ namespace MusicStreamer
         private void windowMain_Loaded(object sender, RoutedEventArgs e)
         {
             _vm.WindowUI = this;
+
+            // setting commands to buttons
+            buttonConnect.Command = _vm.CommandLib.ConnectCommand;
+            
         }
     }
 }

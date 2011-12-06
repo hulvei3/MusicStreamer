@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class PlayPauseCommand : ICommand
+    class PlayPauseCommand : IStreamerCommand
     {
         private readonly CurrentSongViewModel _vm;
 
@@ -68,5 +69,15 @@ namespace MusicStreamer.CustomCommands
         public event EventHandler CanExecuteChanged;
 
 
+
+        public void Execute()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnExecute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

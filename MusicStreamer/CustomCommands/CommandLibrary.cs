@@ -8,19 +8,35 @@ using System.Windows;
 
 namespace MusicStreamer.CustomCommands
 {
-    class CommandLibrary
+    public class CommandLibrary
     {
-        private readonly Window _parent;
+        private readonly Window _UIParent;
         private readonly UndoRedoController _undoRedoController = UndoRedoController.Instance;
+
+        // bliver ikke brugt endnu..
+        public IList<ICommand> CustomCommands { get; set; }
+
+
+        public RoutedCommand ConnectCommand = new RoutedCommand();
+        public RoutedCommand AddToPlaylistCommand = new RoutedCommand();
+        //public RoutedCommand SavePlaylistCommand = new RoutedCommand();
+        public RoutedCommand LoadPlaylistCommand = new RoutedCommand();
+
+        public RoutedCommand NavigateCommand = new RoutedCommand();
+
+        public RoutedCommand PlayPauseCommand = new RoutedCommand();
+        public RoutedCommand PrevCommand = new RoutedCommand();
+        public RoutedCommand SkipCommand = new RoutedCommand();
+        public RoutedCommand StopCommand = new RoutedCommand();
 
         public CommandLibrary(Window ui)
         {
-            _parent = ui;
+            _UIParent = ui;
 
-            CustomCommands = new List<ICommand>();
+            //CustomCommands = new List<ICommand>();
 
-            //InitCustomCommands();
-            //InitAppCommands();
+            InitCustomCommands();
+            InitAppCommands();
         }
 
         private void InitCustomCommands()
@@ -28,36 +44,58 @@ namespace MusicStreamer.CustomCommands
             //Her initialiseres alle vores egne Commands..
 
 
-
             // connect
-            var cmd = new ConnectCommand(_parent);
-            var cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
-            _parent.CommandBindings.Add(cbinding);
+            var cbinding = new CommandBinding(ConnectCommand, ConnectExecute, ConnectCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
 
             // navigate
-            var cmd = new NavigateCommand(_parent);
-            var cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
-            _parent.CommandBindings.Add(cbinding);
+            //cmd = new NavigateCommand(MainWindowViewModel.Instance);
+            //cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
+            //_UIParent.CommandBindings.Add(cbinding);
 
-            // playPause
-            var cmd = new PlayPauseCommand(_parent);
-            var cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
-            _parent.CommandBindings.Add(cbinding);
+            //// playPause
+            //cmd = new PlayPauseCommand(MainWindowViewModel.Instance.CurrentSong);
+            //cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
+            //_UIParent.CommandBindings.Add(cbinding);
 
         }
 
         // ApplicationCommands (indbygget i en WPF-applikation)
         private void InitAppCommands()
         {
-            cbinding = new CommandBinding(ApplicationCommands.Undo, _undoRedoController.Undo,
+            var cbinding = new CommandBinding(ApplicationCommands.Undo, _undoRedoController.Undo,
                                           _undoRedoController.CanExecuteUndo);
-            _parent.CommandBindings.Add(cbinding);
+            _UIParent.CommandBindings.Add(cbinding);
 
             cbinding = new CommandBinding(ApplicationCommands.Redo, _undoRedoController.Redo,
                                           _undoRedoController.CanExecuteRedo);
-            _parent.CommandBindings.Add(cbinding);
+            _UIParent.CommandBindings.Add(cbinding);
+
+            cbinding = new CommandBinding(ApplicationCommands.SaveAs, SavePlaylistExecute, SavePlaylistCanExecute);
+
+            _UIParent.CommandBindings.Add(cbinding);
         }
 
-        public IList<ICommand> CustomCommands { get; set; }
+
+        private void ConnectExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new ConnectCommand(MainWindowViewModel.Instance);
+            cmd.Execute(e.Parameter);
+            _undoRedoController.PushUndoStack(cmd);
+        }
+        private void ConnectCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void SavePlaylistExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new SavePlaylistCommand(MainWindowViewModel.Instance.Playlist);
+            cmd.Execute();
+        }
+        private void SavePlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
 }

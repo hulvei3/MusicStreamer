@@ -7,10 +7,11 @@ using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Server;
 using MusicStreamer.Models.Server;
 using System.Windows;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class ConnectCommand : ICommand
+    class ConnectCommand : IStreamerCommand
     {
         MainWindowViewModel _mwvm;
       
@@ -47,6 +48,16 @@ namespace MusicStreamer.CustomCommands
             //MessageBox.Show(sList.ToString());
             
             //Skal vise roden af ftp serveren her
+        }
+
+        public void UnExecute()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Execute()
+        {
+            //bruger overload, pga parametrene
         }
     }
 }
