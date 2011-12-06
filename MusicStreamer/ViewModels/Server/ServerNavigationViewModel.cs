@@ -120,7 +120,17 @@ namespace MusicStreamer.ViewModels.Server
         {
             // set new cuurent dir to new url
             _scvm.NewURL(CurrentLocation);
-            FtpWebResponse resp = _scvm.ListCurrentDir();
+            FtpWebResponse resp = null;
+            //try
+            //{
+                resp = _scvm.ListCurrentDir();
+            //}
+            //catch (MusicStreamerException e)
+            //{
+                
+            //    //Handle exception here
+            //}
+          
             CurrentList = listFiles(resp, false);
             //CurrentList = new ServerList();
             return CurrentList;
