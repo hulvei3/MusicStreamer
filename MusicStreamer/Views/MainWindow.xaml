@@ -73,7 +73,7 @@
                       
                       />
             <Button Content="Save playlist" HorizontalAlignment="Left" Margin="6,0,0,6" Name="SavePlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" Command="ApplicationCommands.SaveAs" />
-            <Button Content="Load playlist" Command="{Binding Path=Playlist.LoadPlaylistCommand}" HorizontalAlignment="Right" Margin="0,0,270,6" Name="LoadPlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" />
+            <Button Content="Load playlist" Command="{Binding Path=Playlist.LoadPlaylistCommand}" HorizontalAlignment="Left" Margin="92,0,0,6" Name="LoadPlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" />
             <Button Content="Redo" Height="23" HorizontalAlignment="Left" Margin="376,307,0,0" Name="button1" VerticalAlignment="Top" Width="75" Command="ApplicationCommands.Redo" />
             <Button Content="Undo" Height="23" HorizontalAlignment="Left" Margin="295,307,0,0" Name="button2" VerticalAlignment="Top" Width="75" Command="ApplicationCommands.Undo" />
         </Grid>

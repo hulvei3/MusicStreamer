@@ -39,8 +39,8 @@ namespace MusicStreamer.CustomCommands
             InitAppCommands();
         }
 
-        private void InitCustomCommands()
-        {
+        //private void InitCustomCommands()
+        //{
             //Her initialiseres alle vores egne Commands..
 
 
@@ -58,7 +58,7 @@ namespace MusicStreamer.CustomCommands
             //cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
             //_UIParent.CommandBindings.Add(cbinding);
 
-        }
+        //}
 
         // ApplicationCommands (indbygget i en WPF-applikation)
         private void InitAppCommands()

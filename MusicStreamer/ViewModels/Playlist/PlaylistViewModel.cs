@@ -17,7 +17,7 @@ using MusicStreamer.CustomCommands;
 
 namespace MusicStreamer.ViewModels
 {
-    
+    [Serializable]
     class PlaylistViewModel : PropertyAndErrorHandler
     {
 
@@ -49,7 +49,12 @@ namespace MusicStreamer.ViewModels
         public ObservableCollection<PlaylistItemViewModel> CurrentUIPlaylist
         {
             get { return _currentPlaylist; }
-            set { _currentPlaylist = value; }
+            set 
+            { 
+                _currentPlaylist = value;
+                OnPropertyChanged("CurrentUIPlaylist");
+            }
+            
         }
 
         private PlaylistItemViewModel _selectedPlaylistItem;
@@ -121,18 +126,21 @@ namespace MusicStreamer.ViewModels
         // adds song to playlist (not loaded yet)
         internal void AddToPlaylist(PlaylistItemViewModel song)
         {
-            IWMPMedia media = _player.MediaPlayer.newMedia(song.Url);
+                IWMPMedia media = _player.MediaPlayer.newMedia(song.Url);
 
-            if (media.durationString != null)
-                song.DurationAsString = media.durationString;
-            else
-                song.DurationAsString = "--";
+                if (media.durationString != null)
+                    song.DurationAsString = media.durationString;
+                else
+                    song.DurationAsString = "--";
 
-            // TEST
-            ShowFileInfo(media);
+                // TEST
+                ShowFileInfo(media);
 
-            CurrentUIPlaylist.Add(song);
-            OnPropertyChanged("CurrentUIPlaylist");
+                CurrentUIPlaylist.Add(song);
+                OnPropertyChanged("CurrentUIPlaylist");
+                
+            
+
         }
 
         public void ShowFileInfo(IWMPMedia media)
@@ -171,18 +179,21 @@ namespace MusicStreamer.ViewModels
             set;
         }
 
-        public void SavePlaylist()
+        public void SavePlaylist(String destination)
         {
             XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemViewModel>));
-            TextWriter textStream = new StreamWriter("myFirstPlaylist.xml");
+            
+            TextWriter textStream = new StreamWriter(destination);
+            
             mySerializer.Serialize(textStream,CurrentUIPlaylist);
+            textStream.Flush();
             textStream.Close();
         }
 
-        public void LoadPlaylist()
+        public void LoadPlaylist(String selectedFile)
         {
             XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemViewModel>));
-            FileStream fs = new FileStream("myFirstPlaylist.xml",FileMode.Open);
+            FileStream fs = new FileStream(selectedFile, FileMode.Open);
 
             CurrentUIPlaylist = (ObservableCollection<PlaylistItemViewModel>) mySerializer.Deserialize(fs);
         }
