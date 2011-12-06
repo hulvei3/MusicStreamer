@@ -7,7 +7,7 @@ using System.ComponentModel;
 using MusicStreamer.Models;
 using MusicStreamer.Exceptions;
 
-namespace MusicStreamer.ViewModels
+namespace MusicStreamer.ViewModels.Player
 {
     // service class for volume and balance settings. Also provides an media-error handler
     class PlayerEngineViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler

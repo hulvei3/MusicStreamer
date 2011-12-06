@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 
 using MusicStreamer.ViewModels;
+using MusicStreamer.Views;
 
 namespace MusicStreamer
 {
@@ -46,6 +47,13 @@ namespace MusicStreamer
             // setting commands to buttons
             buttonConnect.Command = _vm.CommandLib.ConnectCommand;
             
+        }
+
+        private void buttonDebug_Click(object sender, RoutedEventArgs e)
+        {
+            
+            new DebugWindow(this).Show();
+            buttonDebug.IsEnabled = false;
         }
     }
 }

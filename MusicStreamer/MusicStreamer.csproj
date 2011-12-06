@@ -81,7 +81,6 @@
     <Compile Include="CustomCommands\Converters\ConnectConverter.cs" />
     <Compile Include="CustomCommands\LoadPlaylistCommand.cs" />
     <Compile Include="CustomCommands\SavePlaylistCommand.cs" />
-    <Compile Include="Interfaces\IAmazingCommand.cs" />
     <Compile Include="CustomCommands\PauseCommand.cs" />
     <Compile Include="CustomCommands\PlayPauseCommand.cs" />
     <Compile Include="CustomCommands\PlaylistCommands.cs" />
@@ -104,6 +103,10 @@
     <Compile Include="ViewModels\Playlist\PlaylistItemViewModel.cs" />
     <Compile Include="ViewModels\Playlist\PlaylistViewModel.cs" />
     <Compile Include="CustomCommands\StopCommand.cs" />
+    <Page Include="Views\DebugWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -116,6 +119,9 @@
     <Compile Include="ViewModels\Server\ServerlistItemViewModel.cs" />
     <Compile Include="ViewModels\Server\ServerNavigationViewModel.cs" />
     <Compile Include="ViewModels\Server\ServerTest.cs" />
+    <Compile Include="Views\DebugWindow.xaml.cs">
+      <DependentUpon>DebugWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

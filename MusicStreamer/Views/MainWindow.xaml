@@ -76,6 +76,7 @@
             <Button Content="Load playlist" Command="{Binding Path=Playlist.LoadPlaylistCommand}" HorizontalAlignment="Left" Margin="92,0,0,6" Name="LoadPlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" />
             <Button Content="Redo" Height="23" HorizontalAlignment="Left" Margin="376,307,0,0" Name="button1" VerticalAlignment="Top" Width="75" Command="ApplicationCommands.Redo" />
             <Button Content="Undo" Height="23" HorizontalAlignment="Left" Margin="295,307,0,0" Name="button2" VerticalAlignment="Top" Width="75" Command="ApplicationCommands.Undo" />
+            <Button Content="Debug window" Height="23" HorizontalAlignment="Left" Margin="189,307,0,0" Name="buttonDebug" VerticalAlignment="Top" Width="90" Click="buttonDebug_Click" />
         </Grid>
         
         <!-- Player Area -->

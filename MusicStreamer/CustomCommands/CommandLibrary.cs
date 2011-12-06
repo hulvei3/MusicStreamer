@@ -16,6 +16,7 @@ namespace MusicStreamer.CustomCommands
         // bliver ikke brugt endnu..
         public IList<ICommand> CustomCommands { get; set; }
 
+        public UndoRedoController UndoRedoController { get; private set; }
 
         public RoutedCommand ConnectCommand = new RoutedCommand();
         public RoutedCommand AddToPlaylistCommand = new RoutedCommand();
@@ -32,6 +33,7 @@ namespace MusicStreamer.CustomCommands
         public CommandLibrary(Window ui)
         {
             _UIParent = ui;
+            UndoRedoController = _undoRedoController;
 
             //CustomCommands = new List<ICommand>();
 
@@ -39,8 +41,8 @@ namespace MusicStreamer.CustomCommands
             InitAppCommands();
         }
 
-        //private void InitCustomCommands()
-        //{
+        private void InitCustomCommands()
+        {
             //Her initialiseres alle vores egne Commands..
 
 
@@ -53,12 +55,12 @@ namespace MusicStreamer.CustomCommands
             //cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
             //_UIParent.CommandBindings.Add(cbinding);
 
-            //// playPause
+            ////// playPause
             //cmd = new PlayPauseCommand(MainWindowViewModel.Instance.CurrentSong);
             //cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
             //_UIParent.CommandBindings.Add(cbinding);
 
-        //}
+        }
 
         // ApplicationCommands (indbygget i en WPF-applikation)
         private void InitAppCommands()

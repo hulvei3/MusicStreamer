@@ -9,7 +9,7 @@ using MusicStreamer.Models;
 using MusicStreamer.CustomCommands;
 using System.Windows;
 
-namespace MusicStreamer.ViewModels
+namespace MusicStreamer.ViewModels.Player
 {
     class CurrentSongViewModel : MusicStreamer.Exceptions.PropertyAndErrorHandler
     {

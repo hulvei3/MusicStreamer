@@ -15,7 +15,7 @@ using MusicStreamer.ViewModels.Playlist;
 using System.Windows.Input;
 using MusicStreamer.CustomCommands;
 
-namespace MusicStreamer.ViewModels
+namespace MusicStreamer.ViewModels.Playlist
 {
     [Serializable]
     class PlaylistViewModel : PropertyAndErrorHandler

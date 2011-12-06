@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using MusicStreamer.Interfaces;
+using System.Windows;
+using MusicStreamer.Exceptions;
+using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace MusicStreamer.CustomCommands
 {
-        class UndoRedoController
+        public class UndoRedoController : PropertyAndErrorHandler
         {
             #region Singleton
 
@@ -19,8 +23,9 @@ namespace MusicStreamer.CustomCommands
 
             #endregion
 
-            private readonly Stack<IStreamerCommand> _redoStack = new Stack<IStreamerCommand>();
-            private readonly Stack<IStreamerCommand> _undoStack = new Stack<IStreamerCommand>();
+
+            public readonly Stack<IStreamerCommand> _redoStack = new Stack<IStreamerCommand>();
+            public readonly Stack<IStreamerCommand> _undoStack = new Stack<IStreamerCommand>();
 
             /// <summary>
             /// Metode der håndterer Redo
@@ -31,9 +36,12 @@ namespace MusicStreamer.CustomCommands
             /// <param name="e">Argumenter</param>
             public void Redo(object sender, ExecutedRoutedEventArgs e)
             {
+                DebugText = string.Format("Redo: {0}",e.ToString());
                 var cmd = _redoStack.Pop();
                 _undoStack.Push(cmd);
                 cmd.Execute();
+                OnPropertyChanged("RedoStack");
+                OnPropertyChanged("UndoStack");
             }
 
             /// <summary>
@@ -54,9 +62,12 @@ namespace MusicStreamer.CustomCommands
             /// <param name="e"></param>
             public void Undo(object sender, ExecutedRoutedEventArgs e)
             {
+                DebugText = string.Format("Undo: {0}", e.ToString());
                 var cmd = _undoStack.Pop();
                 _redoStack.Push(cmd);
                 cmd.UnExecute();
+                OnPropertyChanged("RedoStack");
+                OnPropertyChanged("UndoStack");
             }
 
             /// <summary>
@@ -75,8 +86,12 @@ namespace MusicStreamer.CustomCommands
             /// <param name="cmd"></param>
             public void PushUndoStack(IStreamerCommand cmd)
             {
+                DebugText = string.Format("Undo: *push* {0}", cmd.ToString());
                 _undoStack.Push(cmd);
                 _redoStack.Clear();
+
+                OnPropertyChanged("RedoStack");
+                OnPropertyChanged("UndoStack");
             }
         }
 }

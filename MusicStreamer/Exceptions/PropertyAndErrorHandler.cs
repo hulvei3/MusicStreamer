@@ -19,7 +19,7 @@ namespace MusicStreamer.Exceptions
             get { return _debugText; }
             set
             {
-                _debugText = value.Length == 0 ? _STD_DEBUG_TEXT : value;
+                _debugText += value.Length == 0 ? _STD_DEBUG_TEXT + "\n" : value + "\n";
                 OnPropertyChanged("DebugText");
             }
         }
