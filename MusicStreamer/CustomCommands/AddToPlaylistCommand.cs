@@ -34,7 +34,7 @@ namespace MusicStreamer.CustomCommands
             {
                 _mwvm.Playlist.AddToPlaylist(playlistItem);
             }
-            else MessageBox.Show("Not able to add this file/folder!", "Critical Warning", 
+            else MessageBox.Show("Not able to add this file/folder!", "Warning", 
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);   
  
         }
