@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -25,7 +25,12 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            MessageBox.Show("Playlist loaded");
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "NAS Streamer Playlist (*.nsp)|*.nsp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                _plvm.LoadPlaylist(open.FileName.ToString());
+            }
         }
     }
 }

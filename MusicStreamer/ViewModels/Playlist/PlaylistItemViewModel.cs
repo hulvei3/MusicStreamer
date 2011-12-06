@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace MusicStreamer.ViewModels.Playlist
 {
     [Serializable]
-    class PlaylistItemViewModel : INotifyPropertyChanged
+    public class PlaylistItemViewModel : INotifyPropertyChanged
     {
 
         void OnPropertyChanged(string name)

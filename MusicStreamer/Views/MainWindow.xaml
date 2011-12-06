@@ -72,8 +72,8 @@
                       SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}"
                       
                       />
-            <Button Content="Save playlist" Command="{Binding Path=Playlist.SavePlaylistCommand}"  HorizontalAlignment="Left" Margin="6,0,0,6" Name="SavePlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" />
-            <Button Content="Load playlist" Command="{Binding Path=Playlist.LoadPlaylistCommand}" HorizontalAlignment="Right" Margin="0,0,270,6" Name="LoadPlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" />
+            <Button Content="Save playlist" HorizontalAlignment="Left" Margin="6,0,0,6" Name="SavePlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" Command="ApplicationCommands.SaveAs" />
+            <Button Content="Load playlist" Command="{Binding Path=Playlist.LoadPlaylistCommand}" HorizontalAlignment="Left" Margin="92,0,0,6" Name="LoadPlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" />
         </Grid>
         
         <!-- Player Area -->

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -25,8 +25,15 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            _plvm.SavePlaylist();
-            MessageBox.Show("Playlist saved!");
+            SaveFileDialog saveAs = new SaveFileDialog();
+            saveAs.AddExtension = true;
+            saveAs.DefaultExt = "nsp";
+            saveAs.SupportMultiDottedExtensions = false;
+            saveAs.Filter = "NAS Streamer Playlist (*.nsp)|*.nsp";
+            if (saveAs.ShowDialog() == DialogResult.OK)
+            {               
+                _plvm.SavePlaylist(saveAs.FileName.ToString());
+            }
         }
     }
 }

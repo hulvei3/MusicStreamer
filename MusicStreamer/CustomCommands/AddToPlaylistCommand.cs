@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
-using System.Windows;
 using MusicStreamer.ViewModels.Playlist;
+using System.Windows.Forms;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -28,10 +28,15 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            
-            String url = _mwvm.Navigation.CurrentLocation + (String) parameter;
-            PlaylistItemViewModel playlistItem = new PlaylistItemViewModel(url);
-            _mwvm.Playlist.AddToPlaylist(playlistItem);
+             String url = _mwvm.Navigation.CurrentLocation + (String)parameter;
+             PlaylistItemViewModel playlistItem = new PlaylistItemViewModel(url);
+            if(parameter.ToString().EndsWith(".mp3"))
+            {
+                _mwvm.Playlist.AddToPlaylist(playlistItem);
+            }
+            else MessageBox.Show("Not able to add this file/folder!", "Critical Warning", 
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);   
+ 
         }
     }
 }
