@@ -87,7 +87,9 @@ namespace MusicStreamer.ViewModels.Server
             set
             {
                 _currentLocation = value + "/";
+                OnPropertyChanged("CurrentLocation");
             }
+            
         }
 
         public void AddToPlayList(String file)

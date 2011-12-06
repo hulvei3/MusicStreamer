@@ -43,6 +43,7 @@ namespace MusicStreamer.ViewModels.Playlist
         public PlaylistItemViewModel(string url)
         {
             Url = url;
+            Name = _name;
             
         }
 
@@ -58,6 +59,19 @@ namespace MusicStreamer.ViewModels.Playlist
         {
             get { return _length; }
             set { _length = value; OnPropertyChanged("Length"); }
+        }
+
+        public string _name = "";
+        public string Name
+        {
+            get { return _name; }
+            set 
+            {          
+                int temp = Url.LastIndexOf("/");
+                _name = Url.Substring(temp);
+                
+                OnPropertyChanged("Name"); 
+            }
         }
 
         public string DurationAsString { get; set; }

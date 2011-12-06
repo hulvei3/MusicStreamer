@@ -128,13 +128,13 @@ namespace MusicStreamer.ViewModels.Playlist
         {
                 IWMPMedia media = _player.MediaPlayer.newMedia(song.Url);
 
-                if (media.durationString != null)
+                if (media.durationString != null || media.durationString!= "0")
                     song.DurationAsString = media.durationString;
                 else
                     song.DurationAsString = "--";
 
                 // TEST
-                ShowFileInfo(media);
+                //ShowFileInfo(media);
 
                 CurrentUIPlaylist.Add(song);
                 OnPropertyChanged("CurrentUIPlaylist");
