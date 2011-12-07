@@ -15,11 +15,13 @@
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="400" />
+                    <ColumnDefinition Width="380" />
                     <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Name}" Grid.Column="0" ToolTip="{Binding Url}" HorizontalAlignment="Left"/>
-                <TextBlock Text="{Binding Length}" Grid.Column="1" HorizontalAlignment="Right"/>
+                <TextBlock Text="{Binding Length}" Grid.Column="1" HorizontalAlignment="Center"/>
+                <Button Content="-" Grid.Column="2" HorizontalAlignment="Right" Width="20"/>
             </Grid>
         </DataTemplate>       
         <DataTemplate x:Key="serverListTemplate">
