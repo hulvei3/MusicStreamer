@@ -62,7 +62,7 @@
             <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
             <TextBox Name="textBoxUser" Text="streamer" Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
             <TextBox Name="textBoxPassword" Text="streamerpassword" Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
-            <Button Command="{Binding ConnectCommand}"  Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server">
+            <Button Command="{Binding CommandLib.ConnectCommand}" Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource ConnectConverterKey}">
                         <Binding ElementName="textBoxIP" Path="Text"/>
@@ -106,9 +106,9 @@
             <Button Content="Shuffle" Height="45" Margin="326,0,48,0" Name="buttonShuffle" VerticalAlignment="Top" Grid.Row="1" Click="buttonShuffle_Click" />
             <Button Content="TEST" Height="45" Margin="374,0,0,0" Name="buttonRepeat" VerticalAlignment="Top" Grid.Row="1" Click="buttonRepeat_Click" />
             <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="248,5,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left" Width="78" Padding="0" />
-
+            <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress, Mode=OneWay}" Height="10" HorizontalAlignment="Left" Margin="12,2,0,0" Name="progressBar1" VerticalAlignment="Top" Width="408" Grid.Row="2" Opacity="0.5" Maximum="4000" BorderBrush="{x:Null}" Background="{x:Null}" />
         </Grid>
-        <Slider Value="{Binding Path=CurrentSong.CurrentTime}" Maximum="{Binding Path=CurrentSong.SongLength}" Height="23" HorizontalAlignment="Left" Margin="12,99,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="402" />
+        <Slider Value="{Binding Path=CurrentSong.CurrentTime}" Maximum="{Binding Path=CurrentSong.SongLength}" Height="23" HorizontalAlignment="Left" Margin="12,102,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="402" Grid.RowSpan="2" />
         <TextBox Text="{Binding Path=Playlist.SelectedPlaylistItem.Url}" Height="23" HorizontalAlignment="Left" Margin="12,15,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="408" />
 
         
@@ -131,8 +131,5 @@
             <StatusBarItem Content="{Binding Path=CurrentSong.DebugText}" />
             <StatusBarItem Content="{Binding Path=CurrentSong.PlayerState}" HorizontalContentAlignment="Right"/>
         </StatusBar>
-        
-
-        
     </Grid>
 </Window>

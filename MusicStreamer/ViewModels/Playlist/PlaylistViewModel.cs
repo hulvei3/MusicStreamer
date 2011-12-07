@@ -143,6 +143,11 @@ namespace MusicStreamer.ViewModels.Playlist
 
         }
 
+        internal void RemoveFromPLaylist(PlaylistItemViewModel song)
+        {
+
+        }
+
         public void ShowFileInfo(IWMPMedia media)
         {
             StringBuilder sb = new StringBuilder();

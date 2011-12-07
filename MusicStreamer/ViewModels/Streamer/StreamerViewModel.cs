@@ -6,6 +6,7 @@ using MusicStreamer.Exceptions;
 using MusicStreamer.Models.Server;
 using WMPLib;
 using System.Net;
+using MusicStreamer.Util;
 
 namespace MusicStreamer.ViewModels.Streamer
 {
@@ -15,28 +16,37 @@ namespace MusicStreamer.ViewModels.Streamer
 
         private WebClient _streamClient;
 
-        public StreamerViewModel(ServerConnectionModel scm)
+        public StreamerViewModel()
         {
-            _scm = scm;
+            //_scm = scm;
 
             _streamClient = new WebClient();
+            // TODO
+            var model = new ConnectionLibrary().Connections.First();
 
+            _streamClient.Credentials = new NetworkCredential(model.User, model.Password);
             _streamClient.DownloadProgressChanged += DownloadProgressChanged;
 
-            
         }
         // returns true if streaming was started
-        public bool StreamMedia(string url)
+        public string StreamMedia(string url)
         {
+            
+
+            var localfile = string.Format("{0}.mp3",Guid.NewGuid().ToString());
 
             if (_streamClient.IsBusy)
-                return false;
-
-            _streamClient.DownloadFileAsync(new Uri(url),"temp_music");
-
-
+                throw new StreamingInProgressException("Streaming already in progress\nMusic Streamer doesn't support multistreamning.");
+            try
+            {
+                _streamClient.DownloadFileAsync(new Uri(url), localfile);
+            }
+            catch (WebException)
+            {
+                throw new MusicStreamerException("Download error");
+            }
             
-            return true;
+            return localfile;
         }
 
         public event DownloadProgressChangedEventHandler DownloadProgressChanged;

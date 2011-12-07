@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MusicStreamer.Exceptions
 {
-    class MusicStreamerException : PropertyAndErrorHandler
+    class MusicStreamerException : System.Exception
     {
 
         public MusicStreamerException()

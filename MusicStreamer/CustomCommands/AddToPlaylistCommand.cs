@@ -6,10 +6,11 @@ using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Playlist;
 using System.Windows.Forms;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class AddToPlaylistCommand : ICommand
+    class AddToPlaylistCommand : IStreamerCommand
     {
         //private PlaylistViewModel _plwm;
         private MainWindowViewModel _mwvm;
@@ -37,6 +38,16 @@ namespace MusicStreamer.CustomCommands
             else MessageBox.Show("Not able to add this file/folder!", "Warning", 
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);   
  
+        }
+
+        public void Execute()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnExecute()
+        {
+           
         }
     }
 }

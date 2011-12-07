@@ -5,13 +5,14 @@ using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using System.Windows;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
     
 
     // maybe this class should be spiltted into serveral "server-commands"
-    class NavigateCommand : ICommand
+    class NavigateCommand : IStreamerCommand
     {
         MainWindowViewModel _mwvm;
 
@@ -27,6 +28,16 @@ namespace MusicStreamer.CustomCommands
         public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Execute()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnExecute()
         {
             throw new NotImplementedException();
         }

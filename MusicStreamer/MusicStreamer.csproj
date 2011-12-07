@@ -89,12 +89,19 @@
     <Compile Include="CustomCommands\SkipCommand.cs" />
     <Compile Include="CustomCommands\UndoRedoController.cs" />
     <Compile Include="Exceptions\MusicStreamerException.cs" />
+    <Compile Include="Exceptions\StreamingInProgressException.cs" />
     <Compile Include="Interfaces\IStreamerCommand.cs" />
     <Compile Include="Models\Playlist\PlaylistItem.cs" />
     <Compile Include="Models\Playlist\PlaylistModel.cs" />
     <Compile Include="Models\Server\ServerConnectionModel.cs" />
     <Compile Include="Models\Server\ServerList.cs" />
     <Compile Include="Models\Server\ServerNavigationModel.cs" />
+    <Compile Include="Res\Filetypes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Filetypes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ConnectionLibrary.cs" />
     <Compile Include="ViewModels\Player\CurrentSongViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Services\PlayerEngineService.cs" />
@@ -147,6 +154,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Res\Filetypes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Filetypes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="ClassDiagramMVVM.cd" />
     <None Include="Properties\Settings.settings">
@@ -191,10 +202,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Res\" />
-    <Folder Include="Util\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="TODO.txt" />
   </ItemGroup>
