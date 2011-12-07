@@ -197,6 +197,22 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="TODO.txt" />
+    <Resource Include="Resources\knap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddToPlaylistIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddToPlaylistNotPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddToPlaylistPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RemoveFromPlaylistNotPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RemoveFromPlaylistPressed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

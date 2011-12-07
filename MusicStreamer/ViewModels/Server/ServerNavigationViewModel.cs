@@ -46,7 +46,7 @@ namespace MusicStreamer.ViewModels.Server
             set
             {
                 _currentList = value;
-                _currentList.Insert(0,new ServerlistItemViewModel(".."));
+                _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]"));
                 OnPropertyChanged("CurrentList");
                 //StringBuilder list = new StringBuilder();
                 //foreach (ServerlistItemViewModel s in _currentList)
@@ -64,7 +64,7 @@ namespace MusicStreamer.ViewModels.Server
             {
                 _selectedItem = value;
                  
-                if (value.Url.Equals(".."))
+                if (value.Url.Equals("[Parent directory..]"))
                 {
                     LevelUp();
                     Navigate();
