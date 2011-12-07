@@ -197,10 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="TODO.txt" />
-    <Resource Include="Resources\knap.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\AddToPlaylistIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\AddToPlaylistNotPressed.png" />

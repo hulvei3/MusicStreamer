@@ -86,7 +86,9 @@ namespace MusicStreamer.ViewModels.Server
             get { return _currentLocation; }
             set
             {
+               
                 _currentLocation = value + "/";
+
                 OnPropertyChanged("CurrentLocation");
             }
             

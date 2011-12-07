@@ -160,7 +160,7 @@
                     <DataGridTextColumn Binding="{Binding Path=Size}" Header="Size" CanUserResize="False" IsReadOnly="True"/>
                 </DataGrid.Columns>--> 
             </ListBox>
-            <TextBox Text="{Binding Path=Navigation.CurrentLocation}" Height="23" Margin="6,6,6,0" 
+            <TextBox Text="{Binding Path=Navigation.CurrentLocation}" Height="23" Margin="6,6,6,0" PreviewKeyUp="currentLocationTextBox_PreviewKeyUp"
                      IsReadOnly="False" Name="currentLocationTextBox" VerticalAlignment="Top" />
             <TextBlock Foreground="Black" Margin="7,30,267,0" Text=" Add" VerticalAlignment="Top" />
         </Grid>
