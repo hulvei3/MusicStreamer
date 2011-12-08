@@ -164,7 +164,7 @@ namespace MusicStreamer.CustomCommands
         {
             e.CanExecute = true;
         }
-        private void CloselistExecute(object sender, ExecutedRoutedEventArgs e)
+        private void CloseExecute(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("Bye");
             Application.Current.Shutdown();
