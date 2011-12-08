@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPlaylistItemViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PlaylistItemViewModel>
+    <_url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/06 Thunderstruck.mp3</_url>
+    <_length>0</_length>
+    <_name>06 Thunderstruck.mp3</_name>
+    <Url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/06 Thunderstruck.mp3</Url>
+    <Length>0</Length>
+    <Name>06 Thunderstruck.mp3</Name>
+    <DurationAsString>00:00</DurationAsString>
+  </PlaylistItemViewModel>
+  <PlaylistItemViewModel>
+    <_url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/05 Back In Black.mp3</_url>
+    <_length>0</_length>
+    <_name>05 Back In Black.mp3</_name>
+    <Url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/05 Back In Black.mp3</Url>
+    <Length>0</Length>
+    <Name>05 Back In Black.mp3</Name>
+    <DurationAsString>00:00</DurationAsString>
+  </PlaylistItemViewModel>
+  <PlaylistItemViewModel>
+    <_url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/04 Cold Hearted Man.mp3</_url>
+    <_length>0</_length>
+    <_name>04 Cold Hearted Man.mp3</_name>
+    <Url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/04 Cold Hearted Man.mp3</Url>
+    <Length>0</Length>
+    <Name>04 Cold Hearted Man.mp3</Name>
+    <DurationAsString>00:00</DurationAsString>
+  </PlaylistItemViewModel>
+  <PlaylistItemViewModel>
+    <_url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/03 Guns For Hire.mp3</_url>
+    <_length>0</_length>
+    <_name>03 Guns For Hire.mp3</_name>
+    <Url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/03 Guns For Hire.mp3</Url>
+    <Length>0</Length>
+    <Name>03 Guns For Hire.mp3</Name>
+    <DurationAsString>00:00</DurationAsString>
+  </PlaylistItemViewModel>
+  <PlaylistItemViewModel>
+    <_url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/02 Rock `N` Roll Damnation.mp3</_url>
+    <_length>0</_length>
+    <_name>02 Rock `N` Roll Damnation.mp3</_name>
+    <Url>ftp://90.184.75.15/OpenShare/Music/Morten/AC_DC/Iron Man 2 - Soundtrack/02 Rock `N` Roll Damnation.mp3</Url>
+    <Length>0</Length>
+    <Name>02 Rock `N` Roll Damnation.mp3</Name>
+    <DurationAsString>00:00</DurationAsString>
+  </PlaylistItemViewModel>
+</ArrayOfPlaylistItemViewModel>

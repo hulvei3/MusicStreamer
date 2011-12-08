@@ -67,7 +67,7 @@ namespace MusicStreamer.ViewModels.Playlist
             get { return _name; }
             set 
             {          
-                int temp = Url.LastIndexOf("/");
+                int temp = Url.LastIndexOf("/")+1;
                 _name = Url.Substring(temp);
                 
                 OnPropertyChanged("Name"); 

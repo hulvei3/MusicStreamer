@@ -7,10 +7,11 @@ using System.IO;
 using MusicStreamer.Models.Server;
 using System.Windows.Input;
 using System.Windows;
+using MusicStreamer.Exceptions;
 
 namespace MusicStreamer.ViewModels.Server
 {
-    class ServerConnectionViewModel : Exceptions.PropertyAndErrorHandler
+    class ServerConnectionViewModel : Exceptions.MusicStreamerException
     {
         private ServerConnectionModel _model;
   
@@ -44,12 +45,12 @@ namespace MusicStreamer.ViewModels.Server
             {
                 FtpWebResponse response = (FtpWebResponse)Request.GetResponse();
                 result = response;
-
             }
             catch (WebException e)
             {
-                //MessageBox.Show(e.Message);
-                result = null;
+                
+                throw new MusicStreamerException("Tried to connect to unreachable host.");
+                
             }
             return result;
         }

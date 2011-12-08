@@ -46,7 +46,7 @@ namespace MusicStreamer.ViewModels.Server
             set
             {
                 _currentList = value;
-                _currentList.Insert(0,new ServerlistItemViewModel(".."));
+                _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]"));
                 OnPropertyChanged("CurrentList");
                 //StringBuilder list = new StringBuilder();
                 //foreach (ServerlistItemViewModel s in _currentList)
@@ -64,7 +64,7 @@ namespace MusicStreamer.ViewModels.Server
             {
                 _selectedItem = value;
                  
-                if (value.Url.Equals(".."))
+                if (value.Url.Equals("[Parent directory..]"))
                 {
                     LevelUp();
                     Navigate();
@@ -86,7 +86,9 @@ namespace MusicStreamer.ViewModels.Server
             get { return _currentLocation; }
             set
             {
+               
                 _currentLocation = value + "/";
+
                 OnPropertyChanged("CurrentLocation");
             }
             
@@ -120,7 +122,17 @@ namespace MusicStreamer.ViewModels.Server
         {
             // set new cuurent dir to new url
             _scvm.NewURL(CurrentLocation);
-            FtpWebResponse resp = _scvm.ListCurrentDir();
+            FtpWebResponse resp = null;
+            //try
+            //{
+                resp = _scvm.ListCurrentDir();
+            //}
+            //catch (MusicStreamerException e)
+            //{
+                
+            //    //Handle exception here
+            //}
+          
             CurrentList = listFiles(resp, false);
             //CurrentList = new ServerList();
             return CurrentList;

@@ -3,6 +3,7 @@
 using MusicStreamer.ViewModels;
 using MusicStreamer.Views;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MusicStreamer
 {
@@ -56,6 +57,18 @@ namespace MusicStreamer
             
             new DebugWindow(this).Show();
             buttonDebug.IsEnabled = false;
+        }
+
+        //test
+        private void currentLocationTextBox_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string newUrl = currentLocationTextBox.Text.ToString();
+                _vm.Navigation.CurrentLocation = newUrl;
+                currentLocationTextBox.CaretIndex = newUrl.Length+1;
+                _vm.Navigation.Navigate();
+            }
         }
     }
 }

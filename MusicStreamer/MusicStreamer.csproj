@@ -206,6 +206,18 @@
   <ItemGroup>
     <Resource Include="TODO.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddToPlaylistNotPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddToPlaylistPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RemoveFromPlaylistNotPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RemoveFromPlaylistPressed.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
