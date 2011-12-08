@@ -53,7 +53,7 @@
                     <!--<ColumnDefinition Width="Auto" />-->
                 </Grid.ColumnDefinitions>
                 <!-- Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" -->
-                <Button Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" Name="buttonAddToPlaylist" CommandParameter="{Binding Url}" 
+                <Button Command="{Binding AddCommand}" Name="buttonAddToPlaylist" CommandParameter="{Binding Url}" 
                         Grid.Column="0">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -115,8 +115,8 @@
             <TextBlock Text="Time" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,28,57,0" />
 
             <!-- PLAYLIST -->
-            <Button Content="Save playlist" HorizontalAlignment="Left" Margin="6,0,0,6" Name="SavePlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" Command="ApplicationCommands.SaveAs" />
-            <Button Content="Load playlist" Command="{Binding Path=Playlist.LoadPlaylistCommand}" HorizontalAlignment="Left" Margin="92,0,0,6" Name="LoadPlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" />
+            <Button Content="Save playlist" HorizontalAlignment="Left" Margin="6,0,0,6" Name="SavePlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" Command="ApplicationCommands.Save" />
+            <Button Content="Load playlist" HorizontalAlignment="Left" Margin="92,0,0,6" Name="LoadPlaylistButton" Width="80" Height="23" VerticalAlignment="Bottom" Command="ApplicationCommands.Open" />
             <Button Content="Redo" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="button1" VerticalAlignment="Bottom" Width="75" Command="ApplicationCommands.Redo" />
             <Button Content="Undo" HorizontalAlignment="Left" Margin="295,0,0,6" Name="button2" Width="75" Command="ApplicationCommands.Undo" Height="23" VerticalAlignment="Bottom" />
             <Button Content="Debug window" Height="23" Margin="189,0,178,6" Name="buttonDebug" VerticalAlignment="Bottom" Click="buttonDebug_Click" />

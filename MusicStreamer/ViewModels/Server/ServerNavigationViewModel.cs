@@ -205,7 +205,9 @@ namespace MusicStreamer.ViewModels.Server
                                     {
                                         size = "To Be Updated";
                                     }
-                                    serverList.Add(new ServerlistItemViewModel( st.Substring(0,st.Length-1), size));
+                                    var listItem = new ServerlistItemViewModel(st.Substring(0, st.Length - 1), size);
+                                    listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
+                                    serverList.Add(listItem);
                                 }
                             }
                         }

@@ -10,7 +10,7 @@ using MusicStreamer.ViewModels.Playlist;
 
 namespace MusicStreamer.CustomCommands
 {
-    class SavePlaylistCommand : IStreamerCommand
+    class SavePlaylistCommand : ICommand
     {
         private PlaylistViewModel _plvm;
 
@@ -36,16 +36,6 @@ namespace MusicStreamer.CustomCommands
             {               
                 _plvm.SavePlaylist(saveAs.FileName.ToString());
             }
-        }
-
-        public void Execute()
-        {
-            Execute(null);
-        }
-
-        public void UnExecute()
-        {
-            throw new NotImplementedException();
         }
     }
 }

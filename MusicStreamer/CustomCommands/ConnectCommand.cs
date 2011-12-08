@@ -11,7 +11,7 @@ using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class ConnectCommand : IStreamerCommand
+    class ConnectCommand : IBaseCommand
     {
         MainWindowViewModel _mwvm;
       

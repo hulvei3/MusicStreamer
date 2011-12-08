@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Playlist;
-using System.Windows.Forms;
 using MusicStreamer.Interfaces;
+using MusicStreamer.Exceptions;
+using MusicStreamer.Resources;
 
 namespace MusicStreamer.CustomCommands
 {
-    class AddToPlaylistCommand : IStreamerCommand
+    class AddToPlaylistCommand : BaseCommand, IBaseCommand
     {
         //private PlaylistViewModel _plwm;
         private MainWindowViewModel _mwvm;
@@ -29,20 +26,35 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-             String url = _mwvm.Navigation.CurrentLocation + (String)parameter;
-             PlaylistItemViewModel playlistItem = new PlaylistItemViewModel(url);
-            if(parameter.ToString().EndsWith(".mp3"))
+            //// saves parameter to be used, if redo is invoked
+            //RedoContext = parameter;
+
+            String url = _mwvm.Navigation.CurrentLocation + (String)parameter;
+            PlaylistItemViewModel playlistItem = new PlaylistItemViewModel(url);
+
+            bool isNotSupported = false;
+            foreach (var type in SupportedFileTypes.ToStringArray())
             {
-                _mwvm.Playlist.AddToPlaylist(playlistItem);
+                if (!parameter.ToString().EndsWith(type))
+                {
+                    isNotSupported = true;
+                }
+                else
+                {
+                    _mwvm.Playlist.AddToPlaylist(playlistItem);
+                    isNotSupported = false;
+                    break;
+                }
             }
-            else MessageBox.Show("Not able to add this file/folder!", "Warning", 
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (isNotSupported)
+                throw new PlaylistException("Not able to add this file!\nFileformat not supported.");
+
             _playlistItem = playlistItem;
         }
 
         public void Execute()
         {
-            throw new NotImplementedException();
+            Execute(_playlistItem._url);
         }
 
         private PlaylistItemViewModel _playlistItem;

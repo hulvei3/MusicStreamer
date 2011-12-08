@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MusicStreamer.ViewModels.Server
 {
@@ -20,7 +21,6 @@ namespace MusicStreamer.ViewModels.Server
 
         public ServerlistItemViewModel(string url, string size)
         {
-
             Url = url;
             Size = size;
         }
@@ -36,7 +36,7 @@ namespace MusicStreamer.ViewModels.Server
             get { return _size; }
             set { _size = value; }
         }
-
+        public RoutedCommand AddCommand{ get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

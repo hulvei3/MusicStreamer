@@ -5,6 +5,7 @@ using System.Text;
 using MusicStreamer.ViewModels;
 using System.Windows.Input;
 using System.Windows;
+using MusicStreamer.Exceptions;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -89,8 +90,16 @@ namespace MusicStreamer.CustomCommands
                                           _undoRedoController.CanExecuteRedo);
             _UIParent.CommandBindings.Add(cbinding);
 
-            cbinding = new CommandBinding(ApplicationCommands.SaveAs, SavePlaylistExecute, SavePlaylistCanExecute);
+            cbinding = new CommandBinding(ApplicationCommands.Save, SavePlaylistExecute, SavePlaylistCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
 
+            cbinding = new CommandBinding(ApplicationCommands.Open, LoadPlaylistExecute, LoadPlaylistCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
+
+            cbinding = new CommandBinding(ApplicationCommands.Close, CloseExecute, CloseCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
+
+            cbinding = new CommandBinding(ApplicationCommands.Help, HelpExecute, HelpCanExecute);
             _UIParent.CommandBindings.Add(cbinding);
         }
 
@@ -110,7 +119,7 @@ namespace MusicStreamer.CustomCommands
         private void SavePlaylistExecute(object sender, ExecutedRoutedEventArgs e)
         {
             var cmd = new SavePlaylistCommand(MainWindowViewModel.Instance.Playlist);
-            cmd.Execute();
+            cmd.Execute(null);
         }
         private void SavePlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -120,7 +129,14 @@ namespace MusicStreamer.CustomCommands
         private void AddToPlaylistExecute(object sender, ExecutedRoutedEventArgs e)
         {
             var cmd = new AddToPlaylistCommand(MainWindowViewModel.Instance);
-            cmd.Execute(e.Parameter);
+            try
+            {
+                cmd.Execute(e.Parameter);
+            }
+            catch (PlaylistException ex)
+            {
+                return;
+            }
             _undoRedoController.PushUndoStack(cmd);
         }
         private void AddToPlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -135,6 +151,33 @@ namespace MusicStreamer.CustomCommands
             _undoRedoController.PushUndoStack(cmd);
         }
         private void NavigateCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void LoadPlaylistExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new LoadPlaylistCommand(MainWindowViewModel.Instance.Playlist);
+            cmd.Execute(null);
+        }
+
+        private void LoadPlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void CloselistExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Bye");
+            Application.Current.Shutdown();
+        }
+        private void CloseCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void HelpExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Help");
+        }
+        private void HelpCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }

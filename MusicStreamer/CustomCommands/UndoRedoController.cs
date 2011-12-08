@@ -24,8 +24,8 @@ namespace MusicStreamer.CustomCommands
             #endregion
 
 
-            public readonly Stack<IStreamerCommand> _redoStack = new Stack<IStreamerCommand>();
-            public readonly Stack<IStreamerCommand> _undoStack = new Stack<IStreamerCommand>();
+            public readonly Stack<IBaseCommand> _redoStack = new Stack<IBaseCommand>();
+            public readonly Stack<IBaseCommand> _undoStack = new Stack<IBaseCommand>();
 
             /// <summary>
             /// Metode der håndterer Redo
@@ -84,7 +84,7 @@ namespace MusicStreamer.CustomCommands
             /// Metode der bruges til at pushe en IAmazingCommand på stakken udefra. Den benyttes når en kommando udføres for første gang.
             /// </summary>
             /// <param name="cmd"></param>
-            public void PushUndoStack(IStreamerCommand cmd)
+            public void PushUndoStack(IBaseCommand cmd)
             {
                 DebugText = string.Format("Undo: *push* {0}", cmd.ToString());
                 _undoStack.Push(cmd);
