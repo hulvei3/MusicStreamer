@@ -34,6 +34,9 @@ namespace MusicStreamer.CustomCommands
            
             String[] info = (String[])parameter;
             //MessageBox.Show(info[0] + info[1] + info[2]);
+
+            // TODO: var model = new ConnectionLibrary().Connections.First();
+
             _mwvm.Navigation.setConnectionModel(new ServerConnectionModel(info[0], info[1], info[2]));
             _mwvm.Navigation.Navigate();
 

@@ -10,17 +10,28 @@ namespace MusicStreamer.CustomCommands
 {
     public class CommandLibrary
     {
-        private readonly Window _UIParent;
         private readonly UndoRedoController _undoRedoController = UndoRedoController.Instance;
+        private Window _UIParent;
+
+        public Window UIParent
+        {
+            get { return _UIParent; }
+            set { _UIParent = _UIParent ?? value;
+            InitCustomCommands();
+            InitAppCommands();
+            }
+        }
+
 
         // bliver ikke brugt endnu..
-        public IList<ICommand> CustomCommands { get; set; }
+        //public IList<ICommand> CustomCommands { get; set; }
 
         public UndoRedoController UndoRedoController { get; private set; }
 
         public RoutedCommand ConnectCommand = new RoutedCommand();
+
         public RoutedCommand AddToPlaylistCommand = new RoutedCommand();
-        //public RoutedCommand SavePlaylistCommand = new RoutedCommand();
+
         public RoutedCommand LoadPlaylistCommand = new RoutedCommand();
 
         public RoutedCommand NavigateCommand = new RoutedCommand();
@@ -30,13 +41,15 @@ namespace MusicStreamer.CustomCommands
         public RoutedCommand SkipCommand = new RoutedCommand();
         public RoutedCommand StopCommand = new RoutedCommand();
 
+        public CommandLibrary()
+        {
+            UndoRedoController = _undoRedoController;
+        }
+
         public CommandLibrary(Window ui)
         {
             _UIParent = ui;
             UndoRedoController = _undoRedoController;
-
-            //CustomCommands = new List<ICommand>();
-
             InitCustomCommands();
             InitAppCommands();
         }
@@ -51,9 +64,12 @@ namespace MusicStreamer.CustomCommands
             _UIParent.CommandBindings.Add(cbinding);
 
             // navigate
-            //cmd = new NavigateCommand(MainWindowViewModel.Instance);
-            //cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
-            //_UIParent.CommandBindings.Add(cbinding);
+            cbinding = new CommandBinding(NavigateCommand, NavigateExecute, NavigateCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
+
+            // addToPlaylist
+            cbinding = new CommandBinding(AddToPlaylistCommand, AddToPlaylistExecute, AddToPlaylistCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
 
             ////// playPause
             //cmd = new PlayPauseCommand(MainWindowViewModel.Instance.CurrentSong);
@@ -83,8 +99,9 @@ namespace MusicStreamer.CustomCommands
         {
             var cmd = new ConnectCommand(MainWindowViewModel.Instance);
             cmd.Execute(e.Parameter);
-            _undoRedoController.PushUndoStack(cmd);
+            //_undoRedoController.PushUndoStack(cmd);   //Connect should not be undo-able
         }
+
         private void ConnectCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -96,6 +113,28 @@ namespace MusicStreamer.CustomCommands
             cmd.Execute();
         }
         private void SavePlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void AddToPlaylistExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new AddToPlaylistCommand(MainWindowViewModel.Instance);
+            cmd.Execute(e.Parameter);
+            _undoRedoController.PushUndoStack(cmd);
+        }
+        private void AddToPlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void NavigateExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new NavigateCommand(MainWindowViewModel.Instance);
+            cmd.Execute(e.Parameter);
+            _undoRedoController.PushUndoStack(cmd);
+        }
+        private void NavigateCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }

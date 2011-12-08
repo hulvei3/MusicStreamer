@@ -78,7 +78,7 @@ namespace MusicStreamer.ViewModels.Server
                     LevelUp();
                     Navigate();
                 }
-                else if (value.Url.EndsWith(".mp3"))
+                else if (value.Url.EndsWith(Res.Filetypes.MP3) || value.Url.EndsWith(Res.Filetypes.WAV) || value.Url.EndsWith(Res.Filetypes.WMA))
                 {
                     AddToPlayList(value.Url);
                     Navigate();
@@ -187,7 +187,7 @@ namespace MusicStreamer.ViewModels.Server
             {
                 foreach (String s in fileArray)
                 {
-                    if (s.Contains(".mp3") || s.StartsWith("d")) //Feel free to add the filetypes you like.
+                    if (s.Contains(Res.Filetypes.MP3) || s.Contains(Res.Filetypes.WMA) || s.Contains(Res.Filetypes.WAV) || s.StartsWith("d")) //Feel free to add the filetypes you like.
                     {
                         if (s.Length > 0)
                         {

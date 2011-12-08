@@ -64,7 +64,7 @@ namespace MusicStreamer.ViewModels
         }
 
         public Server.ServerNavigationViewModel Navigation { get; set; }
-        public ICommand ConnectCommand { get; set; }
+        //public ICommand ConnectCommand { get; set; }
         public ICommand AddToPlaylistCommand { get; set; }
 
 
@@ -80,8 +80,7 @@ namespace MusicStreamer.ViewModels
             Navigation = new Server.ServerNavigationViewModel();
 
             // undo/redo
-            //CommandLib = new CommandLibrary(WindowUI);
-            //   EDIT: bliver istedet sat når WindowUI bliver sat (MainWindow.windowMain_Loaded() )
+            CommandLib = new CommandLibrary();
 
             AddToPlaylistCommand = new AddToPlaylistCommand(this);
 

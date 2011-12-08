@@ -2,3 +2,5 @@
 /MusicStreamer/bin
 /MusicStreamer/obj
 /FtpTest/obj
+*.suo
+*.suo

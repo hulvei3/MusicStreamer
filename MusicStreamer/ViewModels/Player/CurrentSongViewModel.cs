@@ -8,6 +8,8 @@ using System.ComponentModel;
 using MusicStreamer.Models;
 using MusicStreamer.CustomCommands;
 using System.Windows;
+using System.IO;
+using MusicStreamer.ViewModels.Streamer;
 
 namespace MusicStreamer.ViewModels.Player
 {
@@ -38,6 +40,9 @@ namespace MusicStreamer.ViewModels.Player
             StopCommand = new StopCommand(this);
             PrevCommand = new PrevCommand(this);
             SkipCommand = new SkipCommand(this);
+
+            Streamer = new StreamerViewModel();
+            StreamerDownloadProgress = -1;
         }
 
 
@@ -102,6 +107,10 @@ namespace MusicStreamer.ViewModels.Player
             get { return CurrentMedia == null ? 0 : CurrentMedia.duration; }
         }
 
+        public StreamerViewModel Streamer { get; set; }
+
+        public int StreamerDownloadProgress { get; set; }
+
         // private/internal Properties
 
         private WMPLib.IWMPMedia CurrentMedia
@@ -137,8 +146,11 @@ namespace MusicStreamer.ViewModels.Player
         }
         internal void PlayCurrentSong(String url)
         {
+            // start prepare service
+            // parse remote-url to local-url (temp)
+            string localurl = PrepareSongService(url);
 
-            Url = url;
+            Url = localurl;
             // TODO make method prepareSong(string url) that load url (and thereby CurrentMedia) into the player before playing
             // updating CurrentMedia reference, (for updating songlength etc.)
             CurrentMedia = _player.currentMedia;
@@ -174,6 +186,30 @@ namespace MusicStreamer.ViewModels.Player
             _controls.previous();
         }
 
+        // seperate thread for preparing downloaded track (not downloading itself)
+        private string PrepareSongService(string remoteUrl)
+        {
+            //remote-to-local url parsing
+            // TODO exceptions
+
+            var streamer = new StreamerViewModel();
+            streamer.DownloadProgressChanged += new System.Net.DownloadProgressChangedEventHandler(streamer_DownloadProgressChanged);
+
+            var filename = streamer.StreamMedia(remoteUrl);
+
+            FileInfo file = new FileInfo(filename);
+            //TODO loading indicator here..
+            while (File.Exists(filename) && filename != null)
+            {
+                if (file.Length > 300000)
+                    break;
+                file.Refresh();
+            }
+            //TODO loading indicator remove here..
+
+            return filename;
+        }
+
         // seperate thread for updating time counter
         private void RunTimeService()
         {
@@ -205,6 +241,15 @@ namespace MusicStreamer.ViewModels.Player
                 //DebugText = TimeSpan.FromSeconds(Math.Floor(CurrentTime)).ToString();
                     
             }
+        }
+
+        void streamer_DownloadProgressChanged(object sender, System.Net.DownloadProgressChangedEventArgs e)
+        {
+            int kbytes = (int)(e.BytesReceived / 1024);
+
+            StreamerDownloadProgress = kbytes;
+
+            OnPropertyChanged("StreamerDownloadProgress");
         }
 
         void _player_PlayStateChange(int NewState)
