@@ -26,15 +26,6 @@ namespace MusicStreamer.ViewModels
 
         // properties
         public CommandLibrary CommandLib { get; set; }
-        public Window WindowUI
-        {
-            get { return _mainUI; }
-            set
-            {
-                _mainUI = value;
-                CommandLib = new CommandLibrary(_mainUI);
-            }
-        }
 
         public static MainWindowViewModel Instance { get { return _this; } }
 
