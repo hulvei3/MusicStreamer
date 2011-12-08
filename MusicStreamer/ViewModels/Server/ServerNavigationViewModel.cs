@@ -15,8 +15,8 @@ namespace MusicStreamer.ViewModels.Server
 {
     class ServerNavigationViewModel : PropertyAndErrorHandler
     {
-        public int selectItemCount = 0;
         private String _currentLocation;
+        private String _oldCurrentLocation;
         private ServerConnectionViewModel _scvm;
         private ObservableCollection<ServerlistItemViewModel> _currentList;
         private ServerlistItemViewModel _selectedItem;
@@ -45,15 +45,24 @@ namespace MusicStreamer.ViewModels.Server
             get { return _currentList; }
             set
             {
+                int slashCount = 0;
                 _currentList = value;
-                _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]"));
+                if (CurrentLocation != null)
+                {
+                    char[] charArray = CurrentLocation.ToCharArray();
+                    for (int i = 0; i < charArray.Length;i++ )
+                    {
+                        if (charArray[i].Equals('/'))
+                        {
+                            slashCount++;
+                        }
+                    }
+                    if (slashCount > 3)
+                    {
+                        _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]"));
+                    }
+                }
                 OnPropertyChanged("CurrentList");
-                //StringBuilder list = new StringBuilder();
-                //foreach (ServerlistItemViewModel s in _currentList)
-                //{
-                //    list.AppendLine(s.Url);
-                //}
-                //MessageBox.Show(list.ToString());
             }
         }
 
@@ -86,12 +95,21 @@ namespace MusicStreamer.ViewModels.Server
             get { return _currentLocation; }
             set
             {
-               
+                OldCurrentLocation = _currentLocation;
                 _currentLocation = value + "/";
-
+                
                 OnPropertyChanged("CurrentLocation");
             }
             
+        }
+
+        public String OldCurrentLocation
+        {
+            get { return _oldCurrentLocation; }
+            set
+            {
+                _oldCurrentLocation = value + "/";
+            }
         }
 
         public void AddToPlayList(String file)
@@ -114,26 +132,40 @@ namespace MusicStreamer.ViewModels.Server
         public ObservableCollection<ServerlistItemViewModel> Navigate(string url)
         {
             // set new cuurent dir to new url
-            _scvm.NewURL(CurrentLocation + url);
-            CurrentLocation = CurrentLocation + url;
+            try
+            {
+                _scvm.NewURL(CurrentLocation + url);
+                CurrentLocation = CurrentLocation + url;
+                OldCurrentLocation = CurrentLocation;
+            }
+            catch (UriFormatException e)
+            {
+                _scvm.NewURL(OldCurrentLocation);
+                CurrentLocation = OldCurrentLocation;
+            }
+
             return Navigate();
         }
         public ObservableCollection<ServerlistItemViewModel> Navigate()
         {
             // set new cuurent dir to new url
-            _scvm.NewURL(CurrentLocation);
-            FtpWebResponse resp = null;
-            //try
-            //{
+            
+            try
+            {
+                _scvm.NewURL(CurrentLocation);
+                FtpWebResponse resp = null;
                 resp = _scvm.ListCurrentDir();
-            //}
-            //catch (MusicStreamerException e)
-            //{
-                
-            //    //Handle exception here
-            //}
+                CurrentList = listFiles(resp, false);
+
+            }
+            catch (MusicStreamerException e)
+            {
+                _scvm.NewURL(OldCurrentLocation);
+                CurrentLocation = OldCurrentLocation;
+
+            }
           
-            CurrentList = listFiles(resp, false);
+            
             //CurrentList = new ServerList();
             return CurrentList;
         }
@@ -190,19 +222,5 @@ namespace MusicStreamer.ViewModels.Server
             //newList.Sort();
             return serverList;
         }
-
-        private string SizeConverter()
-        {
-            
-            return "mb";
-        }
-
-
-
-        //public void add_to_list_test()
-        //{
-        //    CurrentList.Add(new ViewModels.Server.ServerlistItemViewModel("test_url", 3));
-        //    OnPropertyChanged("CurrentList");
-        //}
     }
 }

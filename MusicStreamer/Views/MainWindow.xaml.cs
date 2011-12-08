@@ -64,7 +64,7 @@ namespace MusicStreamer
             {
                 string newUrl = currentLocationTextBox.Text.ToString();
                 _vm.Navigation.CurrentLocation = newUrl;
-                currentLocationTextBox.CaretIndex = newUrl.Length+1;
+                currentLocationTextBox.CaretIndex = currentLocationTextBox.Text.Length;
                 _vm.Navigation.Navigate();
             }
         }

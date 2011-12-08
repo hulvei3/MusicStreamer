@@ -30,16 +30,30 @@ namespace MusicStreamer.ViewModels.Server
 
         public void NewURL(String url)
         {
-            Request = (FtpWebRequest)WebRequest.Create(url);
-            Request.Credentials = new NetworkCredential(_model.User, _model.Password);
-            Request.Proxy = null;
+            try
+            {
+                Request = (FtpWebRequest)WebRequest.Create(url);
+                Request.Credentials = new NetworkCredential(_model.User, _model.Password);
+                Request.Proxy = null;
+            }
+            catch (UriFormatException e)
+            {
+                return;
+            }
 
         }
 
         public FtpWebResponse ListCurrentDir()
         {
             FtpWebResponse result = null;
-            Request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+            try
+            {
+                Request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new MusicStreamerException("URL not valid.");
+            }
             
             try
             {
