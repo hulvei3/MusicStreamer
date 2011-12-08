@@ -1,5 +1,6 @@
-﻿Streaming af sang
-Save og load playlist
+﻿Streaming af sang - DONE
+Save og load playlist -  DONE
 Lav DLL
 Undo/Redo
 Exception handling
+Smid connection i en tråd
