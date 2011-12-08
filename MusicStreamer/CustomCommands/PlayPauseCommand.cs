@@ -9,7 +9,7 @@ using MusicStreamer.ViewModels.Player;
 
 namespace MusicStreamer.CustomCommands
 {
-    class PlayPauseCommand : IStreamerCommand
+    class PlayPauseCommand : IBaseCommand
     {
         private readonly CurrentSongViewModel _vm;
 

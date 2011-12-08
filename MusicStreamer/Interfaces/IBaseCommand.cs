@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace MusicStreamer.Interfaces
 {
-    public interface IStreamerCommand : ICommand
+    public interface IBaseCommand : ICommand
     {
         void Execute();
         void UnExecute();

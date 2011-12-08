@@ -12,7 +12,7 @@ namespace MusicStreamer.CustomCommands
     
 
     // maybe this class should be spiltted into serveral "server-commands"
-    class NavigateCommand : IStreamerCommand
+    class NavigateCommand : IBaseCommand
     {
         MainWindowViewModel _mwvm;
 
