@@ -36,6 +36,10 @@ namespace MusicStreamer.CustomCommands
             //MessageBox.Show(info[0] + info[1] + info[2]);
 
             // TODO: var model = new ConnectionLibrary().Connections.First();
+            if (info[0].EndsWith("/"))
+            {
+                info[0] = info[0].Remove(info[0].Length - 1);
+            }
 
             _mwvm.Navigation.setConnectionModel(new ServerConnectionModel(info[0], info[1], info[2]));
             _mwvm.Navigation.Navigate();

@@ -202,7 +202,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\LoadPlaylist.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="TODO.txt" />
   </ItemGroup>
@@ -217,6 +219,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\RemoveFromPlaylistPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SavePlaylist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ApplicationIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddToPlaylistNotPressed2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AddToPlaylistPressed2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RemoveFromPlaylistNotPressed2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RemoveFromPlaylistPressed2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
