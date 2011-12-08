@@ -10,11 +10,21 @@ namespace MusicStreamer.CustomCommands
 {
     public class CommandLibrary
     {
-        private readonly Window _UIParent;
         private readonly UndoRedoController _undoRedoController = UndoRedoController.Instance;
+        private Window _UIParent;
+
+        public Window UIParent
+        {
+            get { return _UIParent; }
+            set { _UIParent = _UIParent ?? value;
+            InitCustomCommands();
+            InitAppCommands();
+            }
+        }
+
 
         // bliver ikke brugt endnu..
-        public IList<ICommand> CustomCommands { get; set; }
+        //public IList<ICommand> CustomCommands { get; set; }
 
         public UndoRedoController UndoRedoController { get; private set; }
 
@@ -31,13 +41,15 @@ namespace MusicStreamer.CustomCommands
         public RoutedCommand SkipCommand = new RoutedCommand();
         public RoutedCommand StopCommand = new RoutedCommand();
 
+        public CommandLibrary()
+        {
+            UndoRedoController = _undoRedoController;
+        }
+
         public CommandLibrary(Window ui)
         {
             _UIParent = ui;
             UndoRedoController = _undoRedoController;
-
-            //CustomCommands = new List<ICommand>();
-
             InitCustomCommands();
             InitAppCommands();
         }

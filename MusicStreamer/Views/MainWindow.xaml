@@ -52,7 +52,8 @@
                     <ColumnDefinition Width="Auto" />
                     <!--<ColumnDefinition Width="Auto" />-->
                 </Grid.ColumnDefinitions>
-                <Button Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" CommandParameter="{Binding Url}" 
+                <!-- Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" -->
+                <Button Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" Name="buttonAddToPlaylist" CommandParameter="{Binding Url}" 
                         Grid.Column="0">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
