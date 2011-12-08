@@ -2,6 +2,7 @@
 
 using MusicStreamer.ViewModels;
 using MusicStreamer.Views;
+using System.Windows.Controls;
 
 namespace MusicStreamer
 {
@@ -46,6 +47,7 @@ namespace MusicStreamer
 
             // setting commands to buttons
             buttonConnect.Command = _vm.CommandLib.ConnectCommand;
+            //((Button)(serverlistBox.ItemTemplate.VisualTree.FirstChild.NextSibling.NextSibling.GetType())).Command = _vm.CommandLib.AddToPlaylistCommand;
             
         }
 

@@ -201,7 +201,7 @@ namespace MusicStreamer.ViewModels.Player
             //TODO loading indicator here..
             while (File.Exists(filename) && filename != null)
             {
-                if (file.Length > 100000)
+                if (file.Length > 300000)
                     break;
                 file.Refresh();
             }

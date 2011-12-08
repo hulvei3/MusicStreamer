@@ -145,7 +145,8 @@ namespace MusicStreamer.ViewModels.Playlist
 
         internal void RemoveFromPLaylist(PlaylistItemViewModel song)
         {
-
+            CurrentUIPlaylist.Remove(song);
+            OnPropertyChanged("CurrentUIPlaylist");
         }
 
         public void ShowFileInfo(IWMPMedia media)

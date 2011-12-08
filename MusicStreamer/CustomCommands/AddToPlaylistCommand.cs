@@ -36,8 +36,8 @@ namespace MusicStreamer.CustomCommands
                 _mwvm.Playlist.AddToPlaylist(playlistItem);
             }
             else MessageBox.Show("Not able to add this file/folder!", "Warning", 
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);   
- 
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            _playlistItem = playlistItem;
         }
 
         public void Execute()
@@ -45,9 +45,11 @@ namespace MusicStreamer.CustomCommands
             throw new NotImplementedException();
         }
 
+        private PlaylistItemViewModel _playlistItem;
+
         public void UnExecute()
         {
-           
+            _mwvm.Playlist.RemoveFromPLaylist(_playlistItem);
         }
     }
 }

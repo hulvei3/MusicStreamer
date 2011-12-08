@@ -19,7 +19,9 @@ namespace MusicStreamer.CustomCommands
         public UndoRedoController UndoRedoController { get; private set; }
 
         public RoutedCommand ConnectCommand = new RoutedCommand();
+
         public RoutedCommand AddToPlaylistCommand = new RoutedCommand();
+
         public RoutedCommand LoadPlaylistCommand = new RoutedCommand();
 
         public RoutedCommand NavigateCommand = new RoutedCommand();

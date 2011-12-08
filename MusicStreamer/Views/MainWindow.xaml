@@ -32,7 +32,7 @@
                     <ColumnDefinition Width="Auto" />
                     <!--<ColumnDefinition Width="Auto" />-->
                 </Grid.ColumnDefinitions>
-                <Button Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" CommandParameter="{Binding Url}" Grid.Column="0" Content="+">
+                <Button Name="buttonAddSongToPlaylist" Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" CommandParameter="{Binding Url}" Grid.Column="0" Content="+">
                 </Button>
                 <TextBlock Text="{Binding Url}" Grid.Column="1" Cursor="Hand"/>
                 <!--<TextBox Name="size" Text="{Binding Size}" Grid.Column="2" />-->
@@ -62,7 +62,7 @@
             <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
             <TextBox Name="textBoxUser" Text="streamer" Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
             <TextBox Name="textBoxPassword" Text="streamerpassword" Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
-            <Button Command="{Binding CommandLib.ConnectCommand}" Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server">
+            <Button Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource ConnectConverterKey}">
                         <Binding ElementName="textBoxIP" Path="Text"/>

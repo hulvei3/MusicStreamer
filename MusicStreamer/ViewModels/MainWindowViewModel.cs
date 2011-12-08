@@ -64,7 +64,7 @@ namespace MusicStreamer.ViewModels
         }
 
         public Server.ServerNavigationViewModel Navigation { get; set; }
-        public ICommand ConnectCommand { get; set; }
+        //public ICommand ConnectCommand { get; set; }
         public ICommand AddToPlaylistCommand { get; set; }
 
 
