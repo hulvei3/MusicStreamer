@@ -141,7 +141,23 @@
 
                 <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
                 <!-- PLAYLIST -->
-                <Button Content="Save playlist" HorizontalAlignment="Left" Margin="-11,0,0,0" Name="SavePlaylistButton" Width="80" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.Save" Cursor="Hand">
+                <Button Content="Save playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="NewPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Image Name="Normal" Source="pack://application:,,,/Resources/NewPlaylist.png" VerticalAlignment="Top"/>
+                                <Image Name="Pressed"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Save playlist" HorizontalAlignment="Left" Margin="41,0,0,0" Name="SavePlaylistButton" Width="46" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.Save" Cursor="Hand">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -157,7 +173,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Load playlist" Command="ApplicationCommands.Open" HorizontalAlignment="Left" Margin="46,0,0,0" Name="LoadPlaylistButton" Width="80" Height="35" VerticalAlignment="Bottom" Cursor="Hand">
+                <Button Content="Load playlist" Command="ApplicationCommands.Open" HorizontalAlignment="Left" Margin="88,0,0,0" Name="LoadPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Cursor="Hand">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -199,6 +215,11 @@
 
         <Menu Name="HelpMenu" Height="21" VerticalAlignment="Top">
             <MenuItem Name="File" Header="File" Width="Auto" Height="Auto">
+                <MenuItem Header="New Playlist" Command="ApplicationCommands.New">
+                    <MenuItem.Icon>
+                        <Image Source="pack://application:,,,/Resources/NewPlaylist.png" Width="20" Height="20"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem Header="Open Playlist" Command="ApplicationCommands.Open">
                     <MenuItem.Icon>
                         <Image Source="pack://application:,,,/Resources/LoadPlaylist.png" Width="20" Height="20"></Image>
