@@ -101,6 +101,9 @@ namespace MusicStreamer.CustomCommands
 
             cbinding = new CommandBinding(ApplicationCommands.Help, HelpExecute, HelpCanExecute);
             _UIParent.CommandBindings.Add(cbinding);
+
+            cbinding = new CommandBinding(ApplicationCommands.New, NewExecute, NewCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
         }
 
 
@@ -178,6 +181,15 @@ namespace MusicStreamer.CustomCommands
             MessageBox.Show("Help");
         }
         private void HelpCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void NewExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new ClearPlaylistCommand(MainWindowViewModel.Instance);
+            cmd.Execute(e.Parameter);
+        }
+        private void NewCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }

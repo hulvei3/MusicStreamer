@@ -21,11 +21,11 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Name}" Grid.Column="0" ToolTip="{Binding Url}" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand"/>
                 <TextBlock Text="{Binding Length}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand">
+                <Button Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand" >
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/RemoveFromPlaylistNotPressed2.png" VerticalAlignment="Center"/>
+                                <Image Name="Normal" Source="pack://application:,,,/Resources/RemoveFromPlaylistNotPressed2.png" VerticalAlignment="Center" ToolTip="Remve song from playlist."/>
                                 <Image Name="Pressed" Source="pack://application:,,,/Resources/RemoveFromPlaylistPressed2.png" Visibility="Hidden" VerticalAlignment="Center"/>
                                 <Image Name="Disabled" Source="" Visibility="Hidden"/>
                             </Grid>
@@ -58,7 +58,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/AddToPlaylistNotPressed2.png" VerticalAlignment="Top"/>
+                                <Image Name="Normal" Source="pack://application:,,,/Resources/AddToPlaylistNotPressed2.png" VerticalAlignment="Top" ToolTip="Add song to playlist."/>
                                 <Image Name="Pressed" Source="pack://application:,,,/Resources/AddToPlaylistPressed2.png" Visibility="Hidden" VerticalAlignment="Top"/>
                                 <Image Name="Disabled" Source="" Visibility="Hidden"/>
                             </Grid>
@@ -129,7 +129,7 @@
                 <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
                 <TextBox Name="textBoxUser" Text="streamer" Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
                 <TextBox Name="textBoxPassword" Text="streamerpassword" Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
-                <Button Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connects to the server">
+                <Button Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connect to the server">
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource ConnectConverterKey}">
                             <Binding ElementName="textBoxIP" Path="Text"/>
@@ -141,11 +141,11 @@
 
                 <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
                 <!-- PLAYLIST -->
-                <Button Content="Save playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="NewPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand">
+                <Button Content="New playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand" ToolTip="Clear Playlist">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/NewPlaylist.png" VerticalAlignment="Top"/>
+                                <Image Name="Normal" Source="pack://application:,,,/Resources/ClearPlaylist.png" VerticalAlignment="Top"/>
                                 <Image Name="Pressed"/>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -157,7 +157,8 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Save playlist" HorizontalAlignment="Left" Margin="41,0,0,0" Name="SavePlaylistButton" Width="46" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.Save" Cursor="Hand">
+                
+                <Button Content="Save playlist" HorizontalAlignment="Left" Margin="41,0,0,0" Name="SavePlaylistButton" Width="46" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.Save" Cursor="Hand" ToolTip="Save Playlist">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -173,7 +174,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Load playlist" Command="ApplicationCommands.Open" HorizontalAlignment="Left" Margin="88,0,0,0" Name="LoadPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Cursor="Hand">
+                <Button Content="Load playlist" Command="ApplicationCommands.Open" HorizontalAlignment="Left" Margin="88,0,0,0" Name="LoadPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Cursor="Hand" ToolTip="Open Playlist">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -189,8 +190,8 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Redo" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="button1" VerticalAlignment="Bottom" Width="75" Command="ApplicationCommands.Redo" />
-                <Button Content="Undo" HorizontalAlignment="Left" Margin="295,0,0,6" Name="button2" Width="75" Command="ApplicationCommands.Undo" Height="23" VerticalAlignment="Bottom" />
+                <Button Content="Redo" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="button1" VerticalAlignment="Bottom" Width="75" Command="ApplicationCommands.Redo" ToolTip="Redo"  />
+                <Button Content="Undo" HorizontalAlignment="Left" Margin="295,0,0,6" Name="button2" Width="75" Command="ApplicationCommands.Undo" Height="23" VerticalAlignment="Bottom" ToolTip="Undo"/>
                 <Button Content="Debug window" Height="23" Margin="189,0,178,6" Name="buttonDebug" VerticalAlignment="Bottom" Click="buttonDebug_Click" />
             </Grid>
 
@@ -215,9 +216,9 @@
 
         <Menu Name="HelpMenu" Height="21" VerticalAlignment="Top">
             <MenuItem Name="File" Header="File" Width="Auto" Height="Auto">
-                <MenuItem Header="New Playlist" Command="ApplicationCommands.New">
+                <MenuItem Header="Clear Playlist" Command="ApplicationCommands.New">
                     <MenuItem.Icon>
-                        <Image Source="pack://application:,,,/Resources/NewPlaylist.png" Width="20" Height="20"></Image>
+                        <Image Source="pack://application:,,,/Resources/ClearPlaylist.png" Width="20" Height="20"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Open Playlist" Command="ApplicationCommands.Open">

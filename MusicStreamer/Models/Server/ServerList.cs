@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MusicStreamer.Models.Server
 {
@@ -22,6 +23,7 @@ namespace MusicStreamer.Models.Server
     {
         private string _url;
         private double _size;
+        
 
         public Song(string url, double size)
         {

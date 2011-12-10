@@ -81,6 +81,7 @@
     <Compile Include="CustomCommands\ConnectCommand.cs" />
     <Compile Include="CustomCommands\Converters\ConnectConverter.cs" />
     <Compile Include="CustomCommands\LoadPlaylistCommand.cs" />
+    <Compile Include="CustomCommands\ClearPlaylistCommand.cs" />
     <Compile Include="CustomCommands\SavePlaylistCommand.cs" />
     <Compile Include="CustomCommands\PauseCommand.cs" />
     <Compile Include="CustomCommands\PlayPauseCommand.cs" />
@@ -242,7 +243,7 @@
     <Resource Include="Resources\RemoveFromPlaylistPressed2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\NewPlaylist.png" />
+    <Resource Include="Resources\ClearPlaylist.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
