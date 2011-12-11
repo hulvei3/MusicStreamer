@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-using MusicStreamer.Models;
+//using MusicStreamer.Models;
 using MusicStreamer.Exceptions;
 using System.Windows;
 using System.Xml.Serialization;
@@ -11,6 +11,7 @@ using WMPLib;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using MusicStreamer.CustomCommands;
+using DLLs;
 
 namespace MusicStreamer.ViewModels.Playlist
 {

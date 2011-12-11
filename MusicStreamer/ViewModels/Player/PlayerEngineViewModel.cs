@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-using MusicStreamer.Models;
 using MusicStreamer.Exceptions;
+//using MusicStreamer.Models;
+using DLLs;
 
 namespace MusicStreamer.ViewModels.Player
 {

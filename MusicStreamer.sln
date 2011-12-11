@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpTest", "FtpTest\FtpTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileTypeTest", "FileTypeTest\FileTypeTest.csproj", "{47D482E9-6CEE-4432-B758-6EAF0BF7C7B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLs", "DLLs\DLLs.csproj", "{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,16 @@ Global
 		{47D482E9-6CEE-4432-B758-6EAF0BF7C7B1}.Release|Mixed Platforms.Build.0 = Release|x86
 		{47D482E9-6CEE-4432-B758-6EAF0BF7C7B1}.Release|x86.ActiveCfg = Release|x86
 		{47D482E9-6CEE-4432-B758-6EAF0BF7C7B1}.Release|x86.Build.0 = Release|x86
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{04A8ACD6-2C5C-4A5C-89AC-10E678CBB69E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

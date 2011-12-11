@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System.ComponentModel;
-
-using MusicStreamer.Models;
+using DLLs;
+//using MusicStreamer.Models;
 using MusicStreamer.CustomCommands;
 using System.Windows;
 using System.IO;
 using MusicStreamer.ViewModels.Streamer;
+
 
 namespace MusicStreamer.ViewModels.Player
 {

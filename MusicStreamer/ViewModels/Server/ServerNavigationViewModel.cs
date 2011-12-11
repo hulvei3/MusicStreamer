@@ -6,10 +6,11 @@ using System.Net;
 using System.IO;
 
 using MusicStreamer.Exceptions;
-using MusicStreamer.Models.Server;
+//using MusicStreamer.Models.Server;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.Windows;
+using DLLs;
 
 namespace MusicStreamer.ViewModels.Server
 {

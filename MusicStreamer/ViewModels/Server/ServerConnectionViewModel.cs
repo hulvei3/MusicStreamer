@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
-using MusicStreamer.Models.Server;
+//using MusicStreamer.Models.Server;
 using System.Windows.Input;
 using System.Windows;
 using MusicStreamer.Exceptions;
+using DLLs;
 
 namespace MusicStreamer.ViewModels.Server
 {

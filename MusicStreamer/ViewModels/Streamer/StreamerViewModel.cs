@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MusicStreamer.Exceptions;
-using MusicStreamer.Models.Server;
+//using MusicStreamer.Models.Server;
 using WMPLib;
 using System.Net;
 using MusicStreamer.Util;
+using DLLs;
 
 namespace MusicStreamer.ViewModels.Streamer
 {
