@@ -185,7 +185,7 @@ namespace MusicStreamer.ViewModels.Server
         private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files)
         {
             IList<String> fileArray = readFolderToString(files);
-
+            
             ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
 
             foreach (String s in fileArray)
@@ -206,7 +206,8 @@ namespace MusicStreamer.ViewModels.Server
                         serverList.Add(listItem);
                     }
                 }
-            }    
+            }
+            
             return serverList;
         }
 
