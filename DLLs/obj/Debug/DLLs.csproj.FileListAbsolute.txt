@@ -1,5 +1,0 @@
-C:\Harving\Git\MusicStreamer\DLLs\bin\Debug\DLLs.dll
-C:\Harving\Git\MusicStreamer\DLLs\bin\Debug\DLLs.pdb
-C:\Harving\Git\MusicStreamer\DLLs\obj\Debug\ResolveAssemblyReference.cache
-C:\Harving\Git\MusicStreamer\DLLs\obj\Debug\DLLs.dll
-C:\Harving\Git\MusicStreamer\DLLs\obj\Debug\DLLs.pdb

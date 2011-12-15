@@ -5,9 +5,6 @@ using System.Text;
 using System.Windows.Input;
 using System.ComponentModel;
 using StreamerLib;
-//using MusicStreamer.Models;
-using MusicStreamer.CustomCommands;
-
 using System.Windows;
 using System.IO;
 using MusicStreamer.ViewModels.Streamer;

@@ -6,7 +6,6 @@ using System.Net;
 using System.IO;
 
 using MusicStreamer.Exceptions;
-//using MusicStreamer.Models.Server;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -60,8 +59,7 @@ namespace MusicStreamer.ViewModels.Server
                     }
                     if (slashCount > 3)
                     {
-                        _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]", ""));
-
+                        _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]",""));
                     }
                 }
                 OnPropertyChanged("CurrentList");

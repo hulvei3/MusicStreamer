@@ -5,3 +5,7 @@
 *.suo
 *.suo
 /FtpTest/obj
+/FtpTest/obj
+/FtpTest/bin
+/FtpTest/obj
+/DLLs/obj
