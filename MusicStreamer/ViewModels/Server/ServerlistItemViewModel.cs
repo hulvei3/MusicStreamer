@@ -14,16 +14,13 @@ namespace MusicStreamer.ViewModels.Server
         private string _url;
         private string _size;
 
-        public ServerlistItemViewModel(string url)
+        public ServerlistItemViewModel(string name, string size)
         {
-            Url = url;
-        }
-
-        public ServerlistItemViewModel(string url, string size)
-        {
-            Url = url;
+            Url = name;
             Size = size;
+            Name = name;
         }
+        public string Name { get; set; }
 
         public string Url
         {

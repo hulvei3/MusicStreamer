@@ -8,7 +8,7 @@ using System.IO;
 using System.Windows.Input;
 using System.Windows;
 using MusicStreamer.Exceptions;
-using DLLs;
+using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Server
 {

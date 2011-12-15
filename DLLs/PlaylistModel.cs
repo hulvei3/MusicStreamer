@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using WMPLib;
 
-namespace DLLs
+namespace StreamerLib
 {
     public class PlaylistModel : IWMPPlaylist
     {

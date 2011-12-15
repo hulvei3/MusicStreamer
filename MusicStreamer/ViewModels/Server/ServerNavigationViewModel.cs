@@ -10,7 +10,7 @@ using MusicStreamer.Exceptions;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.Windows;
-using DLLs;
+using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Server
 {
@@ -60,7 +60,7 @@ namespace MusicStreamer.ViewModels.Server
                     }
                     if (slashCount > 3)
                     {
-                        _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]"));
+                        _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]", ""));
                     }
                 }
                 OnPropertyChanged("CurrentList");
@@ -97,7 +97,7 @@ namespace MusicStreamer.ViewModels.Server
             set
             {
                 OldCurrentLocation = _currentLocation;
-                _currentLocation = value + "/";
+                _currentLocation = value.TrimEnd('/')+"/";
                 
                 OnPropertyChanged("CurrentLocation");
             }
@@ -109,7 +109,7 @@ namespace MusicStreamer.ViewModels.Server
             get { return _oldCurrentLocation; }
             set
             {
-                _oldCurrentLocation = value + "/";
+                _oldCurrentLocation = value;
             }
         }
 
@@ -198,7 +198,7 @@ namespace MusicStreamer.ViewModels.Server
                                 if (c[i] == ':')
                                 {
                                     
-                                    string st = s.Substring(i + 4);
+                                    string name = s.Substring(i + 4);
                                     string size = "";
                            
                                     if (s.StartsWith("d")) { size = ""; }
@@ -206,7 +206,7 @@ namespace MusicStreamer.ViewModels.Server
                                     {
                                         size = "To Be Updated";
                                     }
-                                    var listItem = new ServerlistItemViewModel(st.Substring(0, st.Length - 1), size);
+                                    var listItem = new ServerlistItemViewModel(name = name.Substring(0, name.Length-1), size);
                                     listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
                                     serverList.Add(listItem);
                                 }

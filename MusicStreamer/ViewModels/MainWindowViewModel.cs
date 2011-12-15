@@ -11,7 +11,7 @@ using MusicStreamer.ViewModels.Server;
 using System.Windows;
 using MusicStreamer.ViewModels.Player;
 using MusicStreamer.ViewModels.Playlist;
-using DLLs;
+using StreamerLib;
 
 namespace MusicStreamer.ViewModels
 {

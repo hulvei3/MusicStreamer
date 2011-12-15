@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 using MusicStreamer.Exceptions;
 //using MusicStreamer.Models;
-using DLLs;
+using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Player
 {

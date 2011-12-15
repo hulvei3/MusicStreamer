@@ -8,7 +8,7 @@ using MusicStreamer.ViewModels.Server;
 //using MusicStreamer.Models.Server;
 using System.Windows;
 using MusicStreamer.Interfaces;
-using DLLs;
+using StreamerLib;
 
 namespace MusicStreamer.CustomCommands
 {

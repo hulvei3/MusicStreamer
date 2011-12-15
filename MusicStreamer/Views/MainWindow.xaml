@@ -25,7 +25,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/RemoveFromPlaylistNotPressed2.png" VerticalAlignment="Center" ToolTip="Remve song from playlist"/>
+                                <Image Name="Normal" Source="pack://application:,,,/Resources/RemoveFromPlaylistNotPressed2.png" VerticalAlignment="Center" ToolTip="Remove song from playlist"/>
                                 <Image Name="Pressed" Source="pack://application:,,,/Resources/RemoveFromPlaylistPressed2.png" Visibility="Hidden" VerticalAlignment="Center"/>
                                 <Image Name="Disabled" Source="" Visibility="Hidden"/>
                             </Grid>
@@ -72,7 +72,7 @@
                     </Button.Template>
                 </Button>
                 <TextBlock Grid.Column="1"/>
-                <TextBlock Text="{Binding Url}" Grid.Column="2" Cursor="Hand" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Name}" Grid.Column="2" Cursor="Hand" VerticalAlignment="Center"/>
                 <!--<TextBox Name="size" Text="{Binding Size}" Grid.Column="2" />-->
             </Grid>
         </DataTemplate>
@@ -286,7 +286,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/Redo.png" VerticalAlignment="Center" ToolTip="Remve song from playlist."/>
+                                <Image Name="Normal" Source="pack://application:,,,/Resources/Redo.png" VerticalAlignment="Center"/>
                                 <Image Name="Pressed" Source="" Visibility="Hidden" VerticalAlignment="Center"/>
                                 <Image Name="Disabled" Source="" Visibility="Hidden"/>
                             </Grid>
@@ -303,7 +303,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/Undo.png" VerticalAlignment="Center" ToolTip="Remve song from playlist."/>
+                                <Image Name="Normal" Source="pack://application:,,,/Resources/Undo.png" VerticalAlignment="Center" />
                                 <Image Name="Pressed" Source="" Visibility="Hidden" VerticalAlignment="Center"/>
                                 <Image Name="Disabled" Source="" Visibility="Hidden"/>
                             </Grid>

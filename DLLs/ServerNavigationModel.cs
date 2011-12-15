@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DLLs
+namespace StreamerLib
 {
     // klasse der indeholder oplysninger om nuværende lokation 
     public class ServerNavigationModel

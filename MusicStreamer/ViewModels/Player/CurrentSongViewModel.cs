@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System.ComponentModel;
-using DLLs;
+using StreamerLib;
 //using MusicStreamer.Models;
 using MusicStreamer.CustomCommands;
 using System.Windows;

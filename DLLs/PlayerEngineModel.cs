@@ -5,7 +5,7 @@ using System.Text;
 using WMPLib;
 using System.ComponentModel;
 
-namespace DLLs
+namespace StreamerLib
 {
     public class PlayerEngineModel
     {

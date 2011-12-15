@@ -7,7 +7,7 @@ using MusicStreamer.Exceptions;
 using WMPLib;
 using System.Net;
 using MusicStreamer.Util;
-using DLLs;
+using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Streamer
 {
@@ -40,6 +40,7 @@ namespace MusicStreamer.ViewModels.Streamer
                 throw new StreamingInProgressException("Streaming already in progress\nMusic Streamer doesn't support multistreamning.");
             try
             {
+                //_streamClient.Proxy = null;
                 _streamClient.DownloadFileAsync(new Uri(url), localfile);
             }
             catch (WebException)
