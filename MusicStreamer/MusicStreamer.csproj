@@ -177,7 +177,6 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="ClassDiagramMVVM.cd" />
-    <None Include="MusicStreamer_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
