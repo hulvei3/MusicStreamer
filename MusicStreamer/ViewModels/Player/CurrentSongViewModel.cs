@@ -6,7 +6,6 @@ using System.Windows.Input;
 using System.ComponentModel;
 
 using MusicStreamer.Models;
-using MusicStreamer.CustomCommands;
 using System.Windows;
 using System.IO;
 using MusicStreamer.ViewModels.Streamer;
@@ -36,21 +35,9 @@ namespace MusicStreamer.ViewModels.Player
             //handle er nede i bunden
             _player.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(_player_PlayStateChange);
 
-            PlayPauseCommand = new PlayPauseCommand(this);
-            StopCommand = new StopCommand(this);
-            PrevCommand = new PrevCommand(this);
-            SkipCommand = new SkipCommand(this);
-
             Streamer = new StreamerViewModel();
             StreamerDownloadProgress = -1;
         }
-
-
-        // properties (ICommands)
-        public ICommand PlayPauseCommand { get; set; }
-        public ICommand StopCommand { get; set; }
-        public ICommand PrevCommand { get; set; }
-        public ICommand SkipCommand { get; set; }
 
         // PROPERTIES
 
@@ -129,8 +116,6 @@ namespace MusicStreamer.ViewModels.Player
         {
             get { return _player.playState; }
         }
-
-        // ICommand implementations..
 
         internal void PlayCurrentSong()
         {

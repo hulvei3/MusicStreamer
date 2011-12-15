@@ -31,6 +31,7 @@ namespace MusicStreamer.CustomCommands
 
             String url = _mwvm.Navigation.CurrentLocation + (String)parameter;
             PlaylistItemViewModel playlistItem = new PlaylistItemViewModel(url);
+            playlistItem.RemoveCommand = _mwvm.CommandLib.RemoveFromPlaylistCommand;
 
             bool isNotSupported = false;
             foreach (var type in SupportedFileTypes.ToStringArray())
@@ -54,7 +55,7 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute()
         {
-            Execute(_playlistItem._url);
+            Execute(_playlistItem.Url);
         }
 
         private PlaylistItemViewModel _playlistItem;

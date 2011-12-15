@@ -21,7 +21,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Name}" Grid.Column="0" ToolTip="{Binding Url}" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand"/>
                 <TextBlock Text="{Binding Length}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand">
+                <Button Name="ButtonAdd" Command="{Binding RemoveCommand}" Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand" CommandParameter="{Binding}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -112,10 +112,10 @@
 
                 <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="12,41,351,0" Height="45" />
                 <Button Command="{Binding CurrentSong.StopCommand}" Content="Stop" Name="buttonStop" VerticalAlignment="Top" Margin="71,41,294,0" Height="45" />
-                <Button Command="{Binding CurrentSong.PlayPauseCommand}" Height="45" Margin="128,41,233,0" Name="buttonPlay" VerticalAlignment="Top" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" Click="buttonPlay_Click" />
+                <Button Command="{Binding CurrentSong.PlayPauseCommand}" Height="45" Margin="128,41,233,0" Name="buttonPlay" VerticalAlignment="Top" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" />
                 <Button Command="{Binding CurrentSong.SkipCommand}" Content="Next" Height="45" Margin="189,41,172,0" Name="buttonNext" VerticalAlignment="Top" />
-                <Button Content="Shuffle" Height="45" Margin="326,41,48,0" Name="buttonShuffle" VerticalAlignment="Top" Click="buttonShuffle_Click" />
-                <Button Content="TEST" Height="45" Margin="374,41,0,0" Name="buttonRepeat" VerticalAlignment="Top" Click="buttonRepeat_Click" />
+                <Button Content="Shuffle" Height="45" Margin="326,41,48,0" Name="buttonShuffle" VerticalAlignment="Top" />
+                <Button Content="TEST" Height="45" Margin="374,41,0,0" Name="buttonRepeat" VerticalAlignment="Top" />
                 <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="248,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="78" Padding="0" />
                 
                 <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" Height="10" HorizontalAlignment="Left" Margin="12,90,0,0" Name="progressBar1" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="4000" BorderBrush="{x:Null}" Background="{x:Null}" />
@@ -173,8 +173,8 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Redo" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="button1" VerticalAlignment="Bottom" Width="75" Command="ApplicationCommands.Redo" />
-                <Button Content="Undo" HorizontalAlignment="Left" Margin="295,0,0,6" Name="button2" Width="75" Command="ApplicationCommands.Undo" Height="23" VerticalAlignment="Bottom" />
+                <Button Content="Redo" Height="23" HorizontalAlignment="Right" Margin="0,0,6,6" Name="buttonRedo" VerticalAlignment="Bottom" Width="75" Command="ApplicationCommands.Redo" />
+                <Button Content="Undo" HorizontalAlignment="Left" Margin="295,0,0,6" Name="buttonUndo" Width="75" Command="ApplicationCommands.Undo" Height="23" VerticalAlignment="Bottom" />
                 <Button Content="Debug window" Height="23" Margin="189,0,178,6" Name="buttonDebug" VerticalAlignment="Bottom" Click="buttonDebug_Click" />
             </Grid>
 

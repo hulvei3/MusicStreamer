@@ -84,8 +84,7 @@ namespace MusicStreamer.ViewModels.Playlist
                 // update UI playlist
                 for (int i = 0; i < firstlist.count; i++)
                 {
-                    var song = new PlaylistItemViewModel();
-                    song.Url = firstlist.get_Item(i).sourceURL;
+                    var song = new PlaylistItemViewModel(firstlist.get_Item(i).sourceURL);
                     song.DurationAsString = firstlist.get_Item(i).durationString;
 
                     CurrentUIPlaylist.Add(song);
@@ -103,7 +102,7 @@ namespace MusicStreamer.ViewModels.Playlist
 
         // impl. handlers
 
-        void MediaPlayer_CurrentPlaylistChange(WMPLib.WMPPlaylistChangeEventType change)
+        void MediaPlayer_CurrentPlaylistChange(WMPPlaylistChangeEventType change)
         {
 
             String e = "CurrentPlaylist Changed event: " + change;
@@ -122,7 +121,7 @@ namespace MusicStreamer.ViewModels.Playlist
         {
                 IWMPMedia media = _player.MediaPlayer.newMedia(song.Url);
 
-                if (media.durationString != null || media.durationString!= "0")
+                if (media.durationString != null || media.durationString != "0")
                     song.DurationAsString = media.durationString;
                 else
                     song.DurationAsString = "--";
