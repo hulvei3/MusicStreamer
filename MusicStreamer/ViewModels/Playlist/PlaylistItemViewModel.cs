@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using MusicStreamer.Exceptions;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace MusicStreamer.ViewModels.Playlist
 {
@@ -20,62 +21,41 @@ namespace MusicStreamer.ViewModels.Playlist
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-        /*
 
-        #region Name dependency property
-
-        public string Name
-        {
-            get { return (string)GetValue(NameProperty); }
-            set { SetValue(NameProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Name.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty NameProperty =
-            DependencyProperty.Register("Name", typeof(string), typeof(PlaylistItemViewModel), new UIPropertyMetadata("N/A"));
-        #endregion
-        */
-
-        public PlaylistItemViewModel()
-        {
-        }
+        public PlaylistItemViewModel() { }
 
         public PlaylistItemViewModel(string url)
         {
             Url = url;
-            Name = _name;
-            
+
+            int temp = Url.LastIndexOf("/") + 1;
+            Name = Url.Substring(temp);
         }
 
-        public string _url = "";
+        private string _url = "";
         public string Url
         {
             get { return _url; }
             set { _url = value; OnPropertyChanged("Url"); }
         }
 
-        public int _length;
+        private int _length;
         public int Length 
         {
             get { return _length; }
             set { _length = value; OnPropertyChanged("Length"); }
         }
 
-        public string _name = "";
+        private string _name;
         public string Name
         {
             get { return _name; }
-            set 
-            {          
-                int temp = Url.LastIndexOf("/")+1;
-                _name = Url.Substring(temp);
-                
-                OnPropertyChanged("Name"); 
-            }
+            set { _name = value; OnPropertyChanged("Name"); }
         }
 
         public string DurationAsString { get; set; }
 
+        public RoutedCommand RemoveCommand { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

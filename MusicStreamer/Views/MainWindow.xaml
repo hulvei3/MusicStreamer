@@ -21,7 +21,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Name}" Grid.Column="0" ToolTip="{Binding Url}" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand"/>
                 <TextBlock Text="{Binding Length}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand" >
+                <Button Name="ButtonAdd" Command="{Binding RemoveCommand}" Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand" CommandParameter="{Binding}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -282,7 +282,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Redo" Height="41" HorizontalAlignment="Right" Name="button1" VerticalAlignment="Bottom" Width="50" Command="ApplicationCommands.Redo" ToolTip="Redo" Margin="0,0,6,0">
+                <Button Content="Redo" Height="41" HorizontalAlignment="Right" Name="buttonRedo" VerticalAlignment="Bottom" Width="50" Command="ApplicationCommands.Redo" ToolTip="Redo" Margin="0,0,6,0">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -299,7 +299,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Undo" HorizontalAlignment="Left" Margin="354,0,0,0" Name="button2" Width="60" Command="ApplicationCommands.Undo" Height="41" VerticalAlignment="Bottom" ToolTip="Undo">
+                <Button Content="Undo" HorizontalAlignment="Left" Margin="354,0,0,0" Name="buttonUndo" Width="60" Command="ApplicationCommands.Undo" Height="41" VerticalAlignment="Bottom" ToolTip="Undo">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>

@@ -17,6 +17,10 @@ namespace MusicStreamer.ViewModels.Server
         public ServerlistItemViewModel(string name, string size)
         {
             Url = name;
+<<<<<<< HEAD
+=======
+            Name = name;
+>>>>>>> 7d36a33e31396d69709d175f831a2b8b96fdc731
             Size = size;
             Name = name;
         }
@@ -27,6 +31,7 @@ namespace MusicStreamer.ViewModels.Server
             get { return _url; }
             set { _url = value; }
         }
+        public string Name { get; set; }
 
         public string Size
         {

@@ -33,55 +33,20 @@ namespace MusicStreamer
             _vm.Playlist.OpenTestPlaylist();
         }
 
-        private void buttonShuffle_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void buttonPlay_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void windowMain_Loaded(object sender, RoutedEventArgs e)
         {
             _vm.CommandLib.UIParent = this;
-
+            
             // setting commands to buttons
             buttonConnect.Command = _vm.CommandLib.ConnectCommand;
-            //var tempParent = serverlistBox.TemplatedParent;
-            ////((Button)(serverlistBox.ItemTemplate.FindName("buttonAddToPlaylist",tempParent)));
-
-            //ListBoxItem serverListBoxItem =
-            //(ListBoxItem)(serverlistBox.ItemContainerGenerator.ContainerFromItem(serverlistBox.Items.CurrentItem));
-
-            //// Getting the ContentPresenter of myListBoxItem
-            //ContentPresenter myContentPresenter = FindVisualChild<ContentPresenter>(serverListBoxItem);
-
-            //// Finding textBlock from the DataTemplate that is set on that ContentPresenter
-            //DataTemplate myDataTemplate = myContentPresenter.ContentTemplate;
-            //Button addButton = (Button)myDataTemplate.FindName("buttonAddToPlaylist", myContentPresenter);
-
-            //// Do something to the DataTemplate-generated TextBlock
-            //addButton.Command = _vm.CommandLib.AddToPlaylistCommand;
+            buttonPlay.Command = _vm.CommandLib.PlayPauseCommand;
+            buttonNext.Command = _vm.CommandLib.NextCommand;
+            buttonPrev.Command = _vm.CommandLib.PrevCommand;
+            buttonStop.Command = _vm.CommandLib.StopCommand;
+            buttonShuffle.Command = _vm.CommandLib.ShuffleCommand;
+            buttonRepeat.Command = _vm.CommandLib.RepeatCommand;
             
-        }
-
-        private childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is childItem)
-                    return (childItem)child;
-                else
-                {
-                    childItem childOfChild = FindVisualChild<childItem>(child);
-                    if (childOfChild != null)
-                        return childOfChild;
-                }
-            }
-            return null;
+            
         }
 
         private void buttonDebug_Click(object sender, RoutedEventArgs e)
@@ -102,5 +67,6 @@ namespace MusicStreamer
                 _vm.Navigation.Navigate();
             }
         }
+
     }
 }

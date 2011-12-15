@@ -97,7 +97,7 @@
     <Compile Include="CustomCommands\ConnectCommand.cs" />
     <Compile Include="CustomCommands\Converters\ConnectConverter.cs" />
     <Compile Include="CustomCommands\LoadPlaylistCommand.cs" />
-    <Compile Include="CustomCommands\ClearPlaylistCommand.cs" />
+    <Compile Include="CustomCommands\RemoveFromPlaylistCommand.cs" />
     <Compile Include="CustomCommands\SavePlaylistCommand.cs" />
     <Compile Include="CustomCommands\PauseCommand.cs" />
     <Compile Include="CustomCommands\PlayPauseCommand.cs" />

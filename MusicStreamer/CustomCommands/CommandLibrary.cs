@@ -32,6 +32,7 @@ namespace MusicStreamer.CustomCommands
         public RoutedCommand ConnectCommand = new RoutedCommand();
 
         public RoutedCommand AddToPlaylistCommand = new RoutedCommand();
+        public RoutedCommand RemoveFromPlaylistCommand = new RoutedCommand();
 
         public RoutedCommand LoadPlaylistCommand = new RoutedCommand();
 
@@ -39,8 +40,11 @@ namespace MusicStreamer.CustomCommands
 
         public RoutedCommand PlayPauseCommand = new RoutedCommand();
         public RoutedCommand PrevCommand = new RoutedCommand();
+        public RoutedCommand NextCommand = new RoutedCommand();
         public RoutedCommand SkipCommand = new RoutedCommand();
         public RoutedCommand StopCommand = new RoutedCommand();
+        public RoutedCommand ShuffleCommand = new RoutedCommand();
+        public RoutedCommand RepeatCommand = new RoutedCommand();
 
         public CommandLibrary()
         {
@@ -72,7 +76,13 @@ namespace MusicStreamer.CustomCommands
             cbinding = new CommandBinding(AddToPlaylistCommand, AddToPlaylistExecute, AddToPlaylistCanExecute);
             _UIParent.CommandBindings.Add(cbinding);
 
-            ////// playPause
+            cbinding = new CommandBinding(RemoveFromPlaylistCommand, RemoveFromPlaylistExecute, RemoveFromPlaylistCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
+            
+            // playPause
+            cbinding = new CommandBinding(PlayPauseCommand, PlayPauseExecute, PlayPauseCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
+
             //cmd = new PlayPauseCommand(MainWindowViewModel.Instance.CurrentSong);
             //cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
             //_UIParent.CommandBindings.Add(cbinding);
@@ -119,15 +129,7 @@ namespace MusicStreamer.CustomCommands
             e.CanExecute = true;
         }
 
-        private void SavePlaylistExecute(object sender, ExecutedRoutedEventArgs e)
-        {
-            var cmd = new SavePlaylistCommand(MainWindowViewModel.Instance.Playlist);
-            cmd.Execute(null);
-        }
-        private void SavePlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
+        
 
         private void AddToPlaylistExecute(object sender, ExecutedRoutedEventArgs e)
         {
@@ -146,6 +148,17 @@ namespace MusicStreamer.CustomCommands
         {
             e.CanExecute = true;
         }
+        private void RemoveFromPlaylistExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new RemoveFromPlaylistCommand(MainWindowViewModel.Instance);
+            cmd.Execute(e.Parameter);
+            _undoRedoController.PushUndoStack(cmd);
+        }
+
+        private void RemoveFromPlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
 
         private void NavigateExecute(object sender, ExecutedRoutedEventArgs e)
         {
@@ -157,16 +170,19 @@ namespace MusicStreamer.CustomCommands
         {
             e.CanExecute = true;
         }
-        private void LoadPlaylistExecute(object sender, ExecutedRoutedEventArgs e)
-        {
-            var cmd = new LoadPlaylistCommand(MainWindowViewModel.Instance.Playlist);
-            cmd.Execute(null);
-        }
 
-        private void LoadPlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        private void PlayPauseExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new PlayPauseCommand(MainWindowViewModel.Instance);
+            cmd.Execute(e.Parameter);
+        }
+        private void PlayPauseCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }
+
+        #region AppCommands handlers
+
         private void CloseExecute(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("Bye");
@@ -184,14 +200,26 @@ namespace MusicStreamer.CustomCommands
         {
             e.CanExecute = true;
         }
-        private void NewExecute(object sender, ExecutedRoutedEventArgs e)
+        private void LoadPlaylistExecute(object sender, ExecutedRoutedEventArgs e)
         {
-            var cmd = new ClearPlaylistCommand(MainWindowViewModel.Instance);
-            cmd.Execute(e.Parameter);
+            var cmd = new LoadPlaylistCommand(MainWindowViewModel.Instance.Playlist);
+            cmd.Execute(null);
         }
-        private void NewCanExecute(object sender, CanExecuteRoutedEventArgs e)
+
+        private void LoadPlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
         }
+        private void SavePlaylistExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new SavePlaylistCommand(MainWindowViewModel.Instance.Playlist);
+            cmd.Execute(null);
+        }
+        private void SavePlaylistCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        #endregion
     }
 }
