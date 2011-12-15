@@ -5,9 +5,10 @@ using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Server;
-using MusicStreamer.Models.Server;
+//using MusicStreamer.Models.Server;
 using System.Windows;
 using MusicStreamer.Interfaces;
+using StreamerLib;
 
 namespace MusicStreamer.CustomCommands
 {

@@ -1,6 +1,6 @@
 ﻿Streaming af sang								- DONE
 Save og load playlist							- DONE
-Lav DLL
+Lav DLL											- DONE: Alle models, undtagen ServerList er flyttet op i DLLs
 Undo/Redo										- WORKING
 Exception handling								- IN PROGRESS
 Smid connection i en tråd

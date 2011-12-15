@@ -26,3 +26,10 @@ C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTes
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.csproj.ResolveComReference.cache
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.exe
 C:\Users\sha\Documents\Visual Studio 2010\Projects\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.pdb
+C:\Harving\Git\MusicStreamer\PlaybackTest\bin\Debug\PlaybackTest.exe
+C:\Harving\Git\MusicStreamer\PlaybackTest\bin\Debug\PlaybackTest.pdb
+C:\Harving\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Harving\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\Interop.WMPLib.dll
+C:\Harving\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.csproj.ResolveComReference.cache
+C:\Harving\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.exe
+C:\Harving\Git\MusicStreamer\PlaybackTest\obj\x86\Debug\PlaybackTest.pdb

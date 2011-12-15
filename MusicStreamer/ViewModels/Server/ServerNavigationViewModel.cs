@@ -6,10 +6,11 @@ using System.Net;
 using System.IO;
 
 using MusicStreamer.Exceptions;
-using MusicStreamer.Models.Server;
+//using MusicStreamer.Models.Server;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.Windows;
+using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Server
 {
@@ -59,7 +60,11 @@ namespace MusicStreamer.ViewModels.Server
                     }
                     if (slashCount > 3)
                     {
+<<<<<<< HEAD
+                        _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]", ""));
+=======
                         _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]",""));
+>>>>>>> 7d36a33e31396d69709d175f831a2b8b96fdc731
                     }
                 }
                 OnPropertyChanged("CurrentList");
@@ -96,7 +101,7 @@ namespace MusicStreamer.ViewModels.Server
             set
             {
                 OldCurrentLocation = _currentLocation;
-                _currentLocation = value + "/";
+                _currentLocation = value.TrimEnd('/')+"/";
                 
                 OnPropertyChanged("CurrentLocation");
             }
@@ -108,7 +113,7 @@ namespace MusicStreamer.ViewModels.Server
             get { return _oldCurrentLocation; }
             set
             {
-                _oldCurrentLocation = value + "/";
+                _oldCurrentLocation = value;
             }
         }
 
@@ -154,8 +159,10 @@ namespace MusicStreamer.ViewModels.Server
             {
                 _scvm.NewURL(CurrentLocation);
                 FtpWebResponse resp = null;
+                //resp = _scvm.ListCurrentDirDetails();
+                //CurrentList = listFilesDetails(resp, false);
                 resp = _scvm.ListCurrentDir();
-                CurrentList = listFiles(resp, false);
+                CurrentList = listFiles(resp);
 
             }
             catch (MusicStreamerException e)
@@ -170,16 +177,47 @@ namespace MusicStreamer.ViewModels.Server
             return CurrentList;
         }
 
-        //Sorts the files and only shows the files you want.
-        private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files, Boolean showAllFiles)
+        private IList<String> readFolderToString(FtpWebResponse files)
         {
-            
             Stream responseStream = files.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
             String filesFolders = reader.ReadToEnd();
-            //MessageBox.Show(filesFolders);
-                    
-            IList<String> fileArray = filesFolders.Split('\n').ToList<String>();
+
+            return filesFolders.Split('\n').ToList<String>();
+        }
+        private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files)
+        {
+            IList<String> fileArray = readFolderToString(files);
+
+            ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
+
+            foreach (String s in fileArray)
+            {
+                if (s.Length > 0)
+                {
+                    if (s.EndsWith("\r"))
+                    {
+                        String name = s.Substring(0, s.Length - 1);
+                        var listItem = new ServerlistItemViewModel(name, "");
+                        listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
+                        serverList.Add(listItem);
+                    }
+                    else
+                    {
+                        var listItem = new ServerlistItemViewModel(s, "");
+                        listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
+                        serverList.Add(listItem);
+                    }
+                }
+            }    
+            return serverList;
+        }
+
+        //Sorts the files and only shows the files you want.
+        private ObservableCollection<ServerlistItemViewModel> listFilesDetails(FtpWebResponse files, Boolean showAllFiles)
+        {
+
+            IList<String> fileArray = readFolderToString(files);
             
             ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
 
@@ -196,16 +234,16 @@ namespace MusicStreamer.ViewModels.Server
                             {
                                 if (c[i] == ':')
                                 {
-                                    
-                                    string st = s.Substring(i + 4);
+
+                                    string name = s.Substring(i + 4);
                                     string size = "";
-                           
+
                                     if (s.StartsWith("d")) { size = ""; }
                                     else
                                     {
                                         size = "To Be Updated";
                                     }
-                                    var listItem = new ServerlistItemViewModel(st.Substring(0, st.Length - 1), size);
+                                    var listItem = new ServerlistItemViewModel(name = name.Substring(0, name.Length - 1), size);
                                     listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
                                     serverList.Add(listItem);
                                 }

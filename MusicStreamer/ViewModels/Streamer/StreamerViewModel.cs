@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MusicStreamer.Exceptions;
-using MusicStreamer.Models.Server;
+//using MusicStreamer.Models.Server;
 using WMPLib;
 using System.Net;
 using MusicStreamer.Util;
+using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Streamer
 {
@@ -39,6 +40,7 @@ namespace MusicStreamer.ViewModels.Streamer
                 throw new StreamingInProgressException("Streaming already in progress\nMusic Streamer doesn't support multistreamning.");
             try
             {
+                _streamClient.Proxy = null;
                 _streamClient.DownloadFileAsync(new Uri(url), localfile);
             }
             catch (WebException)

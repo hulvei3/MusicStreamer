@@ -15,7 +15,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Harving\Desktop\MusicStreamerPublished\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,10 +26,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -54,7 +55,22 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>F14D40268CA09F54B78641D532E5ACC6AE284E59</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MusicStreamer_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StreamerLib">
+      <HintPath>..\DLLs\bin\Debug\StreamerLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -94,11 +110,9 @@
     <Compile Include="Exceptions\PlaylistException.cs" />
     <Compile Include="Exceptions\StreamingInProgressException.cs" />
     <Compile Include="Interfaces\IBaseCommand.cs" />
-    <Compile Include="Models\Playlist\PlaylistItem.cs" />
-    <Compile Include="Models\Playlist\PlaylistModel.cs" />
-    <Compile Include="Models\Server\ServerConnectionModel.cs" />
-    <Compile Include="Models\Server\ServerList.cs" />
-    <Compile Include="Models\Server\ServerNavigationModel.cs" />
+    <Compile Include="Models\Server\ServerList.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Resources\SupportedFileTypes.cs" />
     <Compile Include="Res\Filetypes.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -140,7 +154,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\PlayerEngineModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -164,6 +177,7 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="ClassDiagramMVVM.cd" />
+    <None Include="MusicStreamer_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -244,6 +258,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ClearPlaylist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Playlist\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PrevSong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StopSong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NextSong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PlayPause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Repeat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Shuffle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

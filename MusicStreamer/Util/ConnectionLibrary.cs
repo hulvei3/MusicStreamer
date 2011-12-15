@@ -2,7 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using MusicStreamer.Models.Server;
+//using MusicStreamer.Models.Server;
+using StreamerLib;
 
 namespace MusicStreamer.Util
 {
