@@ -44,7 +44,7 @@ namespace MusicStreamer.ViewModels.Server
 
         }
 
-        public FtpWebResponse ListCurrentDir()
+        public FtpWebResponse ListCurrentDirDetails()
         {
             FtpWebResponse result = null;
             try
@@ -66,6 +66,32 @@ namespace MusicStreamer.ViewModels.Server
                 
                 throw new MusicStreamerException("Tried to connect to unreachable host.");
                 
+            }
+            return result;
+        }
+
+        public FtpWebResponse ListCurrentDir()
+        {
+            FtpWebResponse result = null;
+            try
+            {
+                Request.Method = WebRequestMethods.Ftp.ListDirectory;
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new MusicStreamerException("URL not valid.");
+            }
+
+            try
+            {
+                FtpWebResponse response = (FtpWebResponse)Request.GetResponse();
+                result = response;
+            }
+            catch (WebException e)
+            {
+
+                throw new MusicStreamerException("Tried to connect to unreachable host.");
+
             }
             return result;
         }

@@ -155,7 +155,7 @@ namespace MusicStreamer.ViewModels.Server
             {
                 _scvm.NewURL(CurrentLocation);
                 FtpWebResponse resp = null;
-                resp = _scvm.ListCurrentDir();
+                resp = _scvm.ListCurrentDirDetails();
                 CurrentList = listFiles(resp, false);
 
             }
@@ -171,16 +171,20 @@ namespace MusicStreamer.ViewModels.Server
             return CurrentList;
         }
 
-        //Sorts the files and only shows the files you want.
-        private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files, Boolean showAllFiles)
+        private IList<String> readFolderToString(FtpWebResponse files)
         {
-            
             Stream responseStream = files.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
             String filesFolders = reader.ReadToEnd();
-            //MessageBox.Show(filesFolders);
-                    
-            IList<String> fileArray = filesFolders.Split('\n').ToList<String>();
+
+            return filesFolders.Split('\n').ToList<String>();
+        }
+
+        //Sorts the files and only shows the files you want.
+        private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files, Boolean showAllFiles)
+        {
+
+            IList<String> fileArray = readFolderToString(files);
             
             ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
 
@@ -197,16 +201,16 @@ namespace MusicStreamer.ViewModels.Server
                             {
                                 if (c[i] == ':')
                                 {
-                                    
+
                                     string name = s.Substring(i + 4);
                                     string size = "";
-                           
+
                                     if (s.StartsWith("d")) { size = ""; }
                                     else
                                     {
                                         size = "To Be Updated";
                                     }
-                                    var listItem = new ServerlistItemViewModel(name = name.Substring(0, name.Length-1), size);
+                                    var listItem = new ServerlistItemViewModel(name = name.Substring(0, name.Length - 1), size);
                                     listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
                                     serverList.Add(listItem);
                                 }
