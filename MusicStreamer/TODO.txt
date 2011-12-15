@@ -1,6 +1,9 @@
-﻿Streaming af sang - DONE
-Save og load playlist -  DONE
+﻿Streaming af sang								- DONE
+Save og load playlist							- DONE
 Lav DLL
-Undo/Redo
-Exception handling
+Undo/Redo										- WORKING
+Exception handling								- IN PROGRESS
 Smid connection i en tråd
+Stop knappen skal stoppe og "resete" sangen
+Spørg om man vil gemme før man clear playlist	- DONE
+Trimme navigation url

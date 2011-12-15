@@ -184,5 +184,10 @@ namespace MusicStreamer.ViewModels.Playlist
 
             CurrentUIPlaylist = (ObservableCollection<PlaylistItemViewModel>) mySerializer.Deserialize(fs);
         }
+
+        internal void ClearPlaylist()
+        {
+            CurrentUIPlaylist.Clear();
+        }
     }
 }

@@ -111,6 +111,9 @@ namespace MusicStreamer.CustomCommands
 
             cbinding = new CommandBinding(ApplicationCommands.Help, HelpExecute, HelpCanExecute);
             _UIParent.CommandBindings.Add(cbinding);
+
+            cbinding = new CommandBinding(ApplicationCommands.New, NewExecute, NewCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
         }
 
 
