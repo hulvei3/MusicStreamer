@@ -4,21 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using System.ComponentModel;
-<<<<<<< HEAD
-<<<<<<< HEAD
 using StreamerLib;
-//using MusicStreamer.Models;
-using MusicStreamer.CustomCommands;
-=======
-
-using MusicStreamer.Models;
->>>>>>> 7d36a33e31396d69709d175f831a2b8b96fdc731
-=======
-using StreamerLib;
-//using MusicStreamer.Models;
-using MusicStreamer.CustomCommands;
-
->>>>>>> 47fd055002a810fb8f1b8379868f111a6d56ba35
 using System.Windows;
 using System.IO;
 using MusicStreamer.ViewModels.Streamer;
