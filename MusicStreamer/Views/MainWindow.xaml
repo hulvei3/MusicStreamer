@@ -143,7 +143,7 @@
                     </Button.Template>
                 </Button>
                 <Button Command="{Binding CurrentSong.PlayPauseCommand}" Height="43" Margin="126,41,229,0" Name="buttonPlay" VerticalAlignment="Top"
-                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" Click="buttonPlay_Click">
+                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -175,7 +175,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Content="Shuffle" Height="45" Margin="326,41,48,0" Name="buttonShuffle" VerticalAlignment="Top" Click="buttonShuffle_Click">
+                <Button Content="Shuffle" Height="45" Margin="326,41,48,0" Name="buttonShuffle" VerticalAlignment="Top">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>

@@ -60,11 +60,8 @@ namespace MusicStreamer.ViewModels.Server
                     }
                     if (slashCount > 3)
                     {
-<<<<<<< HEAD
                         _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]", ""));
-=======
-                        _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]",""));
->>>>>>> 7d36a33e31396d69709d175f831a2b8b96fdc731
+
                     }
                 }
                 OnPropertyChanged("CurrentList");
