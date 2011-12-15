@@ -155,8 +155,10 @@ namespace MusicStreamer.ViewModels.Server
             {
                 _scvm.NewURL(CurrentLocation);
                 FtpWebResponse resp = null;
-                resp = _scvm.ListCurrentDirDetails();
-                CurrentList = listFiles(resp, false);
+                //resp = _scvm.ListCurrentDirDetails();
+                //CurrentList = listFilesDetails(resp, false);
+                resp = _scvm.ListCurrentDir();
+                CurrentList = listFiles(resp);
 
             }
             catch (MusicStreamerException e)
@@ -179,9 +181,36 @@ namespace MusicStreamer.ViewModels.Server
 
             return filesFolders.Split('\n').ToList<String>();
         }
+        private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files)
+        {
+            IList<String> fileArray = readFolderToString(files);
+
+            ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
+
+            foreach (String s in fileArray)
+            {
+                if (s.Length > 0)
+                {
+                    if (s.EndsWith("\r"))
+                    {
+                        String name = s.Substring(0, s.Length - 1);
+                        var listItem = new ServerlistItemViewModel(name, "");
+                        listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
+                        serverList.Add(listItem);
+                    }
+                    else
+                    {
+                        var listItem = new ServerlistItemViewModel(s, "");
+                        listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
+                        serverList.Add(listItem);
+                    }
+                }
+            }    
+            return serverList;
+        }
 
         //Sorts the files and only shows the files you want.
-        private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files, Boolean showAllFiles)
+        private ObservableCollection<ServerlistItemViewModel> listFilesDetails(FtpWebResponse files, Boolean showAllFiles)
         {
 
             IList<String> fileArray = readFolderToString(files);
