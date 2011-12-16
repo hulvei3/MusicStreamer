@@ -154,11 +154,11 @@ namespace MusicStreamer.ViewModels.Server
             {
                 _scvm.NewURL(CurrentLocation);
                 FtpWebResponse resp = null;
+                //Not used anymore
                 //resp = _scvm.ListCurrentDirDetails();
                 //CurrentList = listFilesDetails(resp, false);
                 resp = _scvm.ListCurrentDir();
                 CurrentList = listFiles(resp);
-
             }
             catch (MusicStreamerException e)
             {
@@ -180,9 +180,11 @@ namespace MusicStreamer.ViewModels.Server
 
             return filesFolders.Split('\n').ToList<String>();
         }
+
         private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files)
         {
             IList<String> fileArray = readFolderToString(files);
+            
             
             ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
 
@@ -190,73 +192,102 @@ namespace MusicStreamer.ViewModels.Server
             {
                 if (s.Length > 0)
                 {
-                    if (s.EndsWith("\r"))
-                    {
-                        String name = s.Substring(0, s.Length - 1);
-                        var listItem = new ServerlistItemViewModel(name, "");
-                        listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
-                        serverList.Add(listItem);
-                    }
-                    else
-                    {
-                        var listItem = new ServerlistItemViewModel(s, "");
-                        listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
-                        serverList.Add(listItem);
-                    }
-                }
-            }
-            
-            return serverList;
-        }
-
-        //Sorts the files and only shows the files you want.
-        private ObservableCollection<ServerlistItemViewModel> listFilesDetails(FtpWebResponse files, Boolean showAllFiles)
-        {
-
-            IList<String> fileArray = readFolderToString(files);
-            
-            ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
-
-            if (!showAllFiles)
-            {
-                foreach (String s in fileArray)
-                {
-                    if (s.Contains(Res.Filetypes.MP3) || s.Contains(Res.Filetypes.WMA) || s.Contains(Res.Filetypes.WAV) || s.StartsWith("d")) //Feel free to add the filetypes you like.
-                    {
-                        if (s.Length > 0)
+                        if (s.EndsWith("\r"))
                         {
-                            Char[] c = s.ToCharArray();
-                            for (int i = 0; i < c.Length; i++)
+                            string tempName;
+                            String name = s.Substring(0, s.Length - 1);
+                            try{
+                                tempName = name.Substring(name.Length-5);
+                            }
+                            catch(ArgumentOutOfRangeException e)
                             {
-                                if (c[i] == ':')
-                                {
-
-                                    string name = s.Substring(i + 4);
-                                    string size = "";
-
-                                    if (s.StartsWith("d")) { size = ""; }
-                                    else
-                                    {
-                                        size = "To Be Updated";
-                                    }
-                                    var listItem = new ServerlistItemViewModel(name = name.Substring(0, name.Length - 1), size);
-                                    listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
-                                    serverList.Add(listItem);
-                                }
+                                tempName = name;
+                            }
+                            if (!Path.HasExtension(tempName) || tempName.EndsWith(Res.Filetypes.MP3) || tempName.EndsWith(Res.Filetypes.WAV) || tempName.EndsWith(Res.Filetypes.WMA))
+                            {
+                                var listItem = new ServerlistItemViewModel(name, "");
+                                listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
+                                serverList.Add(listItem);
                             }
                         }
-                    }
+                        else
+                        {
+                            string tempName;
+                            try
+                            {
+                                tempName = s.Substring(s.Length - 5);
+                            }
+                            catch (ArgumentOutOfRangeException e)
+                            {
+                                tempName = s;
+                            }
+                            if (!Path.HasExtension(tempName) || s.EndsWith(Res.Filetypes.MP3) || s.EndsWith(Res.Filetypes.WAV) || s.EndsWith(Res.Filetypes.WMA))
+                            {
+                                var listItem = new ServerlistItemViewModel(s, "");
+                                listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
+                                serverList.Add(listItem);
+                            }
+                        }
+                    
                 }
             }
-            else
-            {
-                foreach (String s in fileArray)
-                {
-                    serverList.Add(new ServerlistItemViewModel(s,"0")); //Adds all directorydetails
-                }
-            }
-            //newList.Sort();
+            
             return serverList;
         }
+
+        //Not Used anymore
+        //Sorts the files and only shows the files you want.
+        //private ObservableCollection<ServerlistItemViewModel> listFilesDetails(FtpWebResponse files, Boolean showAllFiles)
+        //{
+
+        //    IList<String> fileArray = readFolderToString(files);
+            
+        //    ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
+
+        //    if (!showAllFiles)
+        //    {
+        //        foreach (String s in fileArray)
+        //        {
+        //            //if (s.Contains(Res.Filetypes.MP3) || s.Contains(Res.Filetypes.WMA) || s.Contains(Res.Filetypes.WAV) || s.StartsWith("d")) //Feel free to add the filetypes you like.
+        //            //{
+        //            //    if (s.Length > 0)
+        //            //    {
+        //            if (s.Contains(Res.Filetypes.MP3) || s.StartsWith("d")) //Feel free to add the filetypes you like.
+        //            {
+        //                if (s.Length > 0)
+        //                {
+        //                    //Char[] c = s.ToCharArray();
+        //                    //for (int i = 0; i < c.Length; i++)
+        //                    //{
+        //                    //    if (c[i] == ':')
+        //                    //    {
+
+        //                    //        string name = s.Substring(i + 4);
+        //                    //        string size = "";
+
+        //                    //        if (s.StartsWith("d")) { size = ""; }
+        //                    //        else
+        //                    //        {
+        //                    //            size = "To Be Updated";
+        //                    //        }
+        //                            var listItem = new ServerlistItemViewModel(s.Substring(0,s.Length-1), "");
+        //                            listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
+        //                            serverList.Add(listItem);
+        //                        //}
+        //                    }
+        //                }
+        //            }
+                
+        //    }
+        //    else
+        //    {
+        //        foreach (String s in fileArray)
+        //        {
+        //            serverList.Add(new ServerlistItemViewModel(s,"0")); //Adds all directorydetails
+        //        }
+        //    }
+        //    //newList.Sort();
+        //    return serverList;
+        //}
     }
 }
