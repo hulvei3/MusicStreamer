@@ -21,7 +21,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Name}" Grid.Column="0" ToolTip="{Binding Url}" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand"/>
                 <TextBlock Text="{Binding Length}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button Name="ButtonAdd" Command="{Binding RemoveCommand}" Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand" CommandParameter="{Binding}">
+                <Button Name="ButtonRemove" Command="{Binding RemoveCommand}" Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand" CommandParameter="{Binding}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -213,7 +213,8 @@
                 <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" Height="10" HorizontalAlignment="Left" Margin="12,92,0,0" Name="progressBar1" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="4000" BorderBrush="{x:Null}" Background="{x:Null}" />
 
                 <Slider Value="{Binding Path=CurrentSong.CurrentTime}" Maximum="{Binding Path=CurrentSong.SongLength}" Height="23" HorizontalAlignment="Left" Margin="12,101,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="402" />
-                <TextBox Text="{Binding Path=Playlist.SelectedPlaylistItem.Url}" Height="23" HorizontalAlignment="Left" Margin="12,6,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="408" />
+                <TextBox Text="{Binding Path=Playlist.SelectedPlaylistItem.Url}" Height="23" HorizontalAlignment="Left" Margin="12,6,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="196" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                <TextBox Text="{Binding Path=Playlist.Playing.Name}" Height="23" HorizontalAlignment="Left" Margin="214,6,0,0" Name="textBoxPlayingSong" VerticalAlignment="Top" Width="206" IsReadOnly="True" />
             </Grid>
             <!-- Playlist Area-->
 

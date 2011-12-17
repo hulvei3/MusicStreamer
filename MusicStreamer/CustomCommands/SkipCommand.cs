@@ -5,10 +5,11 @@ using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Player;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class SkipCommand : ICommand
+    class SkipCommand : IBaseCommand
     {
         CurrentSongViewModel _vm;
 
@@ -17,16 +18,26 @@ namespace MusicStreamer.CustomCommands
             _vm = vm;
         }
 
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public event EventHandler CanExecuteChanged;
-
         public void Execute(object parameter)
         {
             _vm.NextSongInPlaylist();
         }
+
+        public void Execute()
+        {
+            Execute(null);
+        }
+
+        public void UnExecute()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public event EventHandler CanExecuteChanged;
     }
 }

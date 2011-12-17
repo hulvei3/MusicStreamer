@@ -83,9 +83,21 @@ namespace MusicStreamer.CustomCommands
             cbinding = new CommandBinding(PlayPauseCommand, PlayPauseExecute, PlayPauseCanExecute);
             _UIParent.CommandBindings.Add(cbinding);
 
-            //cmd = new PlayPauseCommand(MainWindowViewModel.Instance.CurrentSong);
-            //cbinding = new CommandBinding(cmd, cmd.Execute, cmd.CanExecute);
-            //_UIParent.CommandBindings.Add(cbinding);
+            // skip
+            cbinding = new CommandBinding(SkipCommand, SkipExecute, SkipCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
+
+            // prev
+            cbinding = new CommandBinding(PrevCommand, PrevExecute, PrevCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
+
+            // stop
+            cbinding = new CommandBinding(StopCommand, StopExecute, StopCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
+
+            // repeat
+
+            // shuffle
 
         }
 
@@ -169,6 +181,7 @@ namespace MusicStreamer.CustomCommands
             e.CanExecute = true;
         }
 
+        #region Playercontrols
         private void PlayPauseExecute(object sender, ExecutedRoutedEventArgs e)
         {
             var cmd = new PlayPauseCommand(MainWindowViewModel.Instance);
@@ -178,6 +191,34 @@ namespace MusicStreamer.CustomCommands
         {
             e.CanExecute = true;
         }
+        private void SkipExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new SkipCommand(MainWindowViewModel.Instance.CurrentSong);
+            cmd.Execute();
+        }
+        private void SkipCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void PrevExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new PrevCommand(MainWindowViewModel.Instance.CurrentSong);
+            cmd.Execute();
+        }
+        private void PrevCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void StopExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            var cmd = new StopCommand(MainWindowViewModel.Instance.CurrentSong);
+            cmd.Execute();
+        }
+        private void StopCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        #endregion
 
         #region AppCommands handlers
 

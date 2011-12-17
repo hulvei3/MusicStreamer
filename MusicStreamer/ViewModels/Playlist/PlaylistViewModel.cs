@@ -15,7 +15,7 @@ using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Playlist
 {
-    [Serializable]
+    
     class PlaylistViewModel : PropertyAndErrorHandler
     {
 
@@ -28,7 +28,7 @@ namespace MusicStreamer.ViewModels.Playlist
 
             CurrentUIPlaylist = new ObservableCollection<PlaylistItemViewModel>();
 
-           
+            
 
             // måske skal denne bruges senere??
             //player.MediaPlayer.NewStream += new WMPLib._WMPOCXEvents_NewStreamEventHandler(MediaPlayer_NewStream);
@@ -39,7 +39,9 @@ namespace MusicStreamer.ViewModels.Playlist
 
             
         }
-        
+
+        public PlaylistItemViewModel Playing { get; set; }
+
         private ObservableCollection<PlaylistItemViewModel> _currentPlaylist;
         public ObservableCollection<PlaylistItemViewModel> CurrentUIPlaylist
         {
@@ -71,7 +73,7 @@ namespace MusicStreamer.ViewModels.Playlist
         public IWMPPlaylist CurrentDLLPlaylist { get; set; }
         public WMPLib.IWMPPlaylistCollection PlayListLibrary { get; set; }
 
-
+        #region test-code
         public void OpenTestPlaylist()
         {
             // hvis playlisten findes
@@ -98,7 +100,7 @@ namespace MusicStreamer.ViewModels.Playlist
                 MessageBox.Show(string.Format("WMP.dll indeholder ikke playlisten: {0}", default_playlist));
             }
         }
-
+        #endregion
 
 
         // impl. handlers
@@ -131,7 +133,6 @@ namespace MusicStreamer.ViewModels.Playlist
                 //ShowFileInfo(media);
 
                 CurrentUIPlaylist.Add(song);
-                OnPropertyChanged("CurrentUIPlaylist");
                 
             
 
@@ -140,7 +141,23 @@ namespace MusicStreamer.ViewModels.Playlist
         internal void RemoveFromPLaylist(PlaylistItemViewModel song)
         {
             CurrentUIPlaylist.Remove(song);
-            OnPropertyChanged("CurrentUIPlaylist");
+        }
+
+        public PlaylistItemViewModel GetNextSong()
+        {
+            PlaylistItemViewModel next = null;
+
+            var index = CurrentUIPlaylist.IndexOf(Playing);
+
+            if (index < CurrentUIPlaylist.Count - 1)
+                next = CurrentUIPlaylist[index + 1];
+            else if (index == CurrentUIPlaylist.Count - 1)
+            {
+                // TODO  repeat!
+                next = CurrentUIPlaylist[0];
+            }
+
+            return next;
         }
 
         public void ShowFileInfo(IWMPMedia media)

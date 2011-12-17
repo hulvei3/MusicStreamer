@@ -5,10 +5,11 @@ using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Player;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class PrevCommand : ICommand
+    class PrevCommand : IBaseCommand
     {
         CurrentSongViewModel _vm;
 
@@ -27,6 +28,16 @@ namespace MusicStreamer.CustomCommands
         public void Execute(object parameter)
         {
             _vm.PreviousSongInPlaylist();
+        }
+
+        public void Execute()
+        {
+            Execute(null);
+        }
+
+        public void UnExecute()
+        {
+            throw new NotImplementedException();
         }
     }
 }

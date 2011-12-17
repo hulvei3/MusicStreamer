@@ -125,6 +125,9 @@ namespace MusicStreamer.ViewModels.Player
             TimeUpdaterThread = new System.Threading.Thread(new System.Threading.ThreadStart(RunTimeService));
             TimeUpdaterThread.Start();
 
+            // set 'playing' in playlist (used for next/prev)
+            //MainWindowViewModel.Instance.Playlist.Playing = 
+
             // plays content from 'Url'
             _controls.play();
             DebugText = "Playing..";
@@ -160,10 +163,32 @@ namespace MusicStreamer.ViewModels.Player
             DebugText = "Player paused";
             // stop/pause timer-updater-thread
         }
+        internal void UnPause()
+        {
+            _controls.play();
+        }
 
         internal void NextSongInPlaylist()
         {
-            _controls.next();
+
+            // next song in playlist
+            var next = MainWindowViewModel.Instance.Playlist.GetNextSong();
+
+            StopCurrentSong();
+
+            if (next != null)
+            {
+                PlayCurrentSong(next.Url);
+                
+            }
+                
+            
+
+            //PlayCurrentSong
+
+
+            // wmp.dll
+            //_controls.next();
         }
 
         internal void PreviousSongInPlaylist()

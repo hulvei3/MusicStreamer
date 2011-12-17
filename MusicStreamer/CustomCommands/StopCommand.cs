@@ -5,10 +5,11 @@ using System.Text;
 using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Player;
+using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class StopCommand : ICommand
+    class StopCommand : IBaseCommand
     {
         private readonly CurrentSongViewModel _vm;
 
@@ -29,6 +30,16 @@ namespace MusicStreamer.CustomCommands
         }
 
         public event EventHandler CanExecuteChanged;
-        
+
+
+        public void Execute()
+        {
+            Execute(null);
+        }
+
+        public void UnExecute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
