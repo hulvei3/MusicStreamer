@@ -3,7 +3,7 @@ using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Playlist;
 using MusicStreamer.Interfaces;
 using MusicStreamer.Exceptions;
-using MusicStreamer.Resources;
+using MusicStreamer.Controls;
 
 namespace MusicStreamer.CustomCommands
 {

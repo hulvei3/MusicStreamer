@@ -91,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\PlayerButton.xaml.cs">
+      <DependentUpon>PlayerButton.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CustomCommands\AddToPlaylistCommand.cs" />
     <Compile Include="CustomCommands\BaseCommand.cs" />
     <Compile Include="CustomCommands\CommandLibrary.cs" />
@@ -128,6 +132,10 @@
     <Compile Include="ViewModels\Playlist\PlaylistItemViewModel.cs" />
     <Compile Include="ViewModels\Playlist\PlaylistViewModel.cs" />
     <Compile Include="CustomCommands\StopCommand.cs" />
+    <Page Include="Controls\PlayerButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -289,6 +297,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Shuffle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\calendar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
