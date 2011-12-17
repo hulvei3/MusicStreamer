@@ -41,7 +41,7 @@
 
         </Grid>
     </DataTemplate>
-    
+
     <DataTemplate x:Key="serverListTemplate">
         <Grid>
             <Grid.RowDefinitions>
@@ -77,5 +77,149 @@
             <!--<TextBox Name="size" Text="{Binding Size}" Grid.Column="2" />-->
         </Grid>
     </DataTemplate>
+
+    <ControlTemplate x:Key="PrevButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/PrevSong.png" VerticalAlignment="Top" ToolTip="Previous Song"/>
+            <Image Name="Pressed" Source="" Visibility="Hidden"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="StopButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/StopSong.png" VerticalAlignment="Top" ToolTip="Stop Song"/>
+            <Image Name="Pressed" Source="" Visibility="Hidden"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PlayButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/PlayPause.png" VerticalAlignment="Top" ToolTip="Play/Pause Song"/>
+            <Image Name="Pressed" Source="" Visibility="Hidden"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="NextButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/NextSong.png" VerticalAlignment="Top" ToolTip="Skip Song"/>
+            <Image Name="Pressed" Source="" Visibility="Hidden"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
     
+    <ControlTemplate x:Key="ShuffleButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/Shuffle.png" VerticalAlignment="Top" ToolTip="Shuffle Playlist"/>
+            <Image Name="Pressed" Source="" Visibility="Hidden"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="RepeatButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/Repeat.png" VerticalAlignment="Top"/>
+            <Image Name="Pressed"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ClearPlaylistButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/ClearPlaylist.png" VerticalAlignment="Top"/>
+            <Image Name="Pressed"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SavePlaylistButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/SavePlaylist.png" VerticalAlignment="Top"/>
+            <Image Name="Pressed"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="LoadPlaylistButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/LoadPlaylist.png" VerticalAlignment="Top"/>
+            <Image Name="Pressed"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="RedoButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/Redo.png" VerticalAlignment="Center"/>
+            <Image Name="Pressed" Source="" Visibility="Hidden" VerticalAlignment="Center"/>
+            <Image Name="Disabled" Source="" Visibility="Hidden"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="UndoButton" TargetType="{x:Type Button}">
+        <Grid>
+            <Image Name="Normal" Source="pack://application:,,,/Resources/Undo.png" VerticalAlignment="Center" />
+            <Image Name="Pressed" Source="" Visibility="Hidden" VerticalAlignment="Center"/>
+            <Image Name="Disabled" Source="" Visibility="Hidden"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>

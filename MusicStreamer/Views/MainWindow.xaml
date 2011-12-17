@@ -39,104 +39,17 @@
 
                 <Slider Value="{Binding Path=Player.Volume}" Grid.RowSpan="3" Height="103" HorizontalAlignment="Left" Margin="8,15,0,0" Name="sliderVolume" VerticalAlignment="Top" Width="23" Orientation="Vertical" Maximum="100" Grid.Column="1" SmallChange="1" LargeChange="10" />
 
-                <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="14,41,363,0" Height="44" >
-                    <Button.Template>
-                        <ControlTemplate x:Name="PrevButton" TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/PrevSong.png" VerticalAlignment="Top" ToolTip="Previous Song"/>
-                                <Image Name="Pressed" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Command="{Binding CurrentSong.StopCommand}" Content="Stop" Name="buttonStop" VerticalAlignment="Top" Margin="68,41,309,0" Height="37">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/StopSong.png" VerticalAlignment="Top" ToolTip="Stop Song"/>
-                                <Image Name="Pressed" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Command="{Binding CurrentSong.PlayPauseCommand}" Height="43" Margin="126,41,229,0" Name="buttonPlay" VerticalAlignment="Top"
-                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/PlayPause.png" VerticalAlignment="Top" ToolTip="Play/Pause Song"/>
-                                <Image Name="Pressed" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Command="{Binding CurrentSong.SkipCommand}" Content="Next" Height="45" Margin="189,41,186,0" Name="buttonNext" VerticalAlignment="Top" >
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/NextSong.png" VerticalAlignment="Top" ToolTip="Skip Song"/>
-                                <Image Name="Pressed" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Content="Shuffle" Height="45" Margin="326,41,48,0" Name="buttonShuffle" VerticalAlignment="Top">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/Shuffle.png" VerticalAlignment="Top" ToolTip="Shuffle Playlist"/>
-                                <Image Name="Pressed" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-
-                <Button Content="Repeat" Height="45" Margin="374,41,0,0" Name="buttonRepeat" VerticalAlignment="Top" Click="buttonRepeat_Click" ToolTip="Repeat Playlist">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/Repeat.png" VerticalAlignment="Top"/>
-                                <Image Name="Pressed"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                <Button Template="{StaticResource PrevButton}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" 
+                        Margin="14,41,363,0" Height="44" />
+                <Button Template="{StaticResource StopButton}" Content="Stop" Name="buttonStop" VerticalAlignment="Top" 
+                        Margin="68,41,309,0" Height="37"/>
+                <Button Template="{StaticResource PlayButton}" Height="43" Margin="126,41,229,0" Name="buttonPlay" VerticalAlignment="Top"
+                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}"/>
+                <Button Template="{StaticResource NextButton}" Content="Next" Height="45" Margin="189,41,186,0" 
+                        Name="buttonNext" VerticalAlignment="Top" />
+                <Button Template="{StaticResource ShuffleButton}" Content="Shuffle" Height="45" Margin="326,41,48,0" Name="buttonShuffle" VerticalAlignment="Top"/>
+                <Button Template="{StaticResource RepeatButton}" Content="Repeat" Height="45" Margin="374,41,0,0" Name="buttonRepeat" VerticalAlignment="Top" 
+                        ToolTip="Repeat Playlist"/>
                 <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="240,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Padding="0" />
 
                 <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" Height="10" HorizontalAlignment="Left" Margin="12,92,0,0" Name="progressBar1" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="4000" BorderBrush="{x:Null}" Background="{x:Null}" />
@@ -162,89 +75,17 @@
 
                 <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
                 <!-- PLAYLIST -->
-                <Button Content="New playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand" ToolTip="Clear Playlist">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/ClearPlaylist.png" VerticalAlignment="Top"/>
-                                <Image Name="Pressed"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                <Button Template="{StaticResource ClearPlaylistButton}" Content="Clear playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" 
+                        Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand" ToolTip="Clear Playlist"/>
 
-                <Button Content="Save playlist" HorizontalAlignment="Left" Margin="41,0,0,0" Name="SavePlaylistButton" Width="46" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.Save" Cursor="Hand" ToolTip="Save Playlist">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/SavePlaylist.png" VerticalAlignment="Top"/>
-                                <Image Name="Pressed"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Content="Load playlist" Command="ApplicationCommands.Open" HorizontalAlignment="Left" Margin="88,0,0,0" Name="LoadPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Cursor="Hand" ToolTip="Open Playlist">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/LoadPlaylist.png" VerticalAlignment="Top"/>
-                                <Image Name="Pressed"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Content="Redo" Height="41" HorizontalAlignment="Right" Name="buttonRedo" VerticalAlignment="Bottom" Width="50" Command="ApplicationCommands.Redo" ToolTip="Redo" Margin="0,0,6,0">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/Redo.png" VerticalAlignment="Center"/>
-                                <Image Name="Pressed" Source="" Visibility="Hidden" VerticalAlignment="Center"/>
-                                <Image Name="Disabled" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Content="Undo" HorizontalAlignment="Left" Margin="354,0,0,0" Name="buttonUndo" Width="60" Command="ApplicationCommands.Undo" Height="41" VerticalAlignment="Bottom" ToolTip="Undo">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/Undo.png" VerticalAlignment="Center" />
-                                <Image Name="Pressed" Source="" Visibility="Hidden" VerticalAlignment="Center"/>
-                                <Image Name="Disabled" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                <Button Template="{StaticResource SavePlaylistButton}" Content="Save playlist" HorizontalAlignment="Left" Margin="41,0,0,0" Name="SavePlaylistButton" Width="46" Height="35" VerticalAlignment="Bottom" 
+                        Command="ApplicationCommands.Save" Cursor="Hand" ToolTip="Save Playlist"/>
+                <Button Template="{StaticResource LoadPlaylistButton}" Content="Load playlist" Command="ApplicationCommands.Open" HorizontalAlignment="Left" Margin="88,0,0,0" 
+                        Name="LoadPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Cursor="Hand" ToolTip="Open Playlist"/>
+                <Button Template="{StaticResource RedoButton}" Content="Redo" Height="41" HorizontalAlignment="Right" Name="buttonRedo" VerticalAlignment="Bottom" Width="50" 
+                        Command="ApplicationCommands.Redo" ToolTip="Redo" Margin="0,0,6,0"/>
+                <Button Template="{StaticResource UndoButton}" Content="Undo" HorizontalAlignment="Left" Margin="354,0,0,0" Name="buttonUndo" Width="60" 
+                        Command="ApplicationCommands.Undo" Height="41" VerticalAlignment="Bottom" ToolTip="Undo"/>
                 <Button Content="Debug window" Height="23" Margin="189,0,178,6" Name="buttonDebug" VerticalAlignment="Bottom" Click="buttonDebug_Click" />
             </Grid>
 
