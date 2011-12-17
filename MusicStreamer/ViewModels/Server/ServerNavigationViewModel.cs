@@ -146,6 +146,7 @@ namespace MusicStreamer.ViewModels.Server
 
             return Navigate();
         }
+
         public ObservableCollection<ServerlistItemViewModel> Navigate()
         {
             // set new cuurent dir to new url
@@ -153,12 +154,12 @@ namespace MusicStreamer.ViewModels.Server
             try
             {
                 _scvm.NewURL(CurrentLocation);
-                FtpWebResponse resp = null;
+                //FtpWebResponse resp = null;
                 //Not used anymore
                 //resp = _scvm.ListCurrentDirDetails();
                 //CurrentList = listFilesDetails(resp, false);
-                resp = _scvm.ListCurrentDir();
-                CurrentList = listFiles(resp);
+                Response = _scvm.ListCurrentDir();
+                CurrentList = listFiles();
             }
             catch (MusicStreamerException e)
             {
@@ -172,19 +173,24 @@ namespace MusicStreamer.ViewModels.Server
             return CurrentList;
         }
 
-        private IList<String> readFolderToString(FtpWebResponse files)
+        private FtpWebResponse Response
         {
-            Stream responseStream = files.GetResponseStream();
+            get;
+            set;
+        }
+
+        private IList<String> readFolderToString()
+        {
+            Stream responseStream = Response.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
             String filesFolders = reader.ReadToEnd();
 
             return filesFolders.Split('\n').ToList<String>();
         }
 
-        private ObservableCollection<ServerlistItemViewModel> listFiles(FtpWebResponse files)
+        private ObservableCollection<ServerlistItemViewModel> listFiles()
         {
-            IList<String> fileArray = readFolderToString(files);
-            
+            IList<String> fileArray = readFolderToString();
             
             ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
 
