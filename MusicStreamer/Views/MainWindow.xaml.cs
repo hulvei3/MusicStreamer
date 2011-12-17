@@ -40,7 +40,7 @@ namespace MusicStreamer
             // setting commands to buttons
             buttonConnect.Command = _vm.CommandLib.ConnectCommand;
             buttonPlay.Command = _vm.CommandLib.PlayPauseCommand;
-            buttonNext.Command = _vm.CommandLib.NextCommand;
+            buttonSkip.Command = _vm.CommandLib.NextCommand;
             buttonPrev.Command = _vm.CommandLib.PrevCommand;
             buttonStop.Command = _vm.CommandLib.StopCommand;
             buttonShuffle.Command = _vm.CommandLib.ShuffleCommand;
@@ -53,7 +53,7 @@ namespace MusicStreamer
         {
             
             new DebugWindow(this).Show();
-            buttonDebug.IsEnabled = false;
+            //buttonDebug.IsEnabled = false;
         }
 
         //test

@@ -19,7 +19,7 @@ namespace MusicStreamer.Views
 
         private void Window_Closed(object sender, System.EventArgs e)
         {
-            ((MainWindow)DataContext).buttonDebug.IsEnabled = true;
+            //((MainWindow)DataContext).buttonDebug.IsEnabled = true;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

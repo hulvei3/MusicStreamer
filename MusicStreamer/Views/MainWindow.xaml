@@ -39,29 +39,38 @@
                 </Grid.RowDefinitions>
 
                 <Slider Value="{Binding Path=Player.Volume}" Grid.RowSpan="3" Height="103" HorizontalAlignment="Left" Margin="8,15,0,0" Name="sliderVolume" VerticalAlignment="Top" Width="23" Orientation="Vertical" Maximum="100" Grid.Column="1" SmallChange="1" LargeChange="10" />
-                <!--<controls:ImageButton x:Name="buttonPrev" Image="pack://application:,,,/Resources/calendar.png" Text="UserControl" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="16" ImageHeight="16" Margin="10"/>-->
-                <Button Template="{StaticResource PrevButton}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" 
+                
+                <controls:PlayerButton x:Name="buttonPlay" Image="pack://application:,,,/Resources/PlayPause.png" HorizontalAlignment="Right" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="0,41,249,0" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/PrevSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="12,41,0,0" x:Name="buttonPrev" Background="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/StopSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="66,41,0,0" x:Name="buttonStop" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/NextSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="174,41,0,0" x:Name="buttonSkip" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Shuffle.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="317,41,0,0" x:Name="buttonShuffle" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Repeat.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,41,0,0" x:Name="buttonRepeat" />
+                
+                <!--<Button Template="{StaticResource PrevButton}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" 
                         Margin="14,41,351,0" Height="44" />
                 <Button Template="{StaticResource StopButton}" Content="Stop" Name="buttonStop" VerticalAlignment="Top" 
                         Margin="68,41,309,0" Height="37"/>
-
-                <controls:PlayerButton x:Name="buttonPlay" Image="pack://application:,,,/Resources/PlayPause.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="16" ImageHeight="16" Margin="117,41,0,0" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" />
-
-                <!--<Button Template="{StaticResource PlayButton}" Height="43" Margin="126,41,229,0" Name="buttonPlay" VerticalAlignment="Top"
-                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}"/>-->
+                <Button Template="{StaticResource PlayButton}" Height="43" Margin="126,41,229,0" Name="buttonPlay" VerticalAlignment="Top"
+                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}"/>
                 <Button Template="{StaticResource NextButton}" Content="Next" Height="45" Margin="189,41,186,0" 
                         Name="buttonNext" VerticalAlignment="Top" />
                 <Button Template="{StaticResource ShuffleButton}" Content="Shuffle" Height="45" Margin="326,41,48,0" Name="buttonShuffle" VerticalAlignment="Top"/>
                 <Button Template="{StaticResource RepeatButton}" Content="Repeat" Height="45" Margin="374,41,0,0" Name="buttonRepeat" VerticalAlignment="Top" 
-                        ToolTip="Repeat Playlist"/>
-                <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="240,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Padding="0" />
-
+                        ToolTip="Repeat Playlist"/>-->
+                
+                <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="228,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Padding="0" />
                 <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" Height="10" HorizontalAlignment="Left" Margin="12,92,0,0" Name="progressBar1" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="4000" BorderBrush="{x:Null}" Background="{x:Null}" />
 
                 <Slider Value="{Binding Path=CurrentSong.CurrentTime}" Maximum="{Binding Path=CurrentSong.SongLength}" Height="23" HorizontalAlignment="Left" Margin="12,101,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="402" />
                 <TextBox Text="{Binding Path=Playlist.SelectedPlaylistItem.Url}" Height="23" HorizontalAlignment="Left" Margin="12,6,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="408" />
+                
             </Grid>
             <!-- Playlist Area-->
 
@@ -80,8 +89,11 @@
                 </Button>
 
                 <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" Command="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,338,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" Command="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,338,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" Command="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,338,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" />
                 <!-- PLAYLIST -->
-                <Button Template="{StaticResource ClearPlaylistButton}" Content="Clear playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" 
+                <!--<Button Template="{StaticResource ClearPlaylistButton}" Content="Clear playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" 
                         Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand" ToolTip="Clear Playlist"/>
                 <Button Template="{StaticResource SavePlaylistButton}" Content="Save playlist" HorizontalAlignment="Left" Margin="41,0,0,0" Name="SavePlaylistButton" 
                         Width="46" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.Save" Cursor="Hand" ToolTip="Save Playlist"/>
@@ -91,7 +103,7 @@
                         Command="ApplicationCommands.Redo" ToolTip="Redo" Margin="0,0,6,0"/>
                 <Button Template="{StaticResource UndoButton}" Content="Undo" HorizontalAlignment="Left" Margin="354,0,0,0" Name="buttonUndo" Width="60" 
                         Command="ApplicationCommands.Undo" Height="41" VerticalAlignment="Bottom" ToolTip="Undo"/>
-                <Button Content="Debug window" Height="23" Margin="189,0,178,6" Name="buttonDebug" VerticalAlignment="Bottom" Click="buttonDebug_Click" />
+                <Button Content="Debug window" Height="23" Margin="189,0,178,6" Name="buttonDebug" VerticalAlignment="Bottom" Click="buttonDebug_Click" />-->
             </Grid>
 
 
