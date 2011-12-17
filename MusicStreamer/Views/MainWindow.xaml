@@ -1,81 +1,10 @@
 ﻿<Window x:Class="MusicStreamer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:converter="clr-namespace:MusicStreamer.CustomCommands.Converters" xmlns:serverlist="clr-namespace:MusicStreamer.Models.Server"
+        xmlns:converter="clr-namespace:MusicStreamer.CustomCommands.Converters" 
         Title="MusicStreamer" Height="627" Width="784" Name="windowMain" ResizeMode="CanResizeWithGrip" Background="{StaticResource GradientHoriBackground}" Loaded="windowMain_Loaded" Icon="pack://application:,,,/Resources/ApplicationIcon.png">
     <Window.Resources>
-        <!--<CollectionViewSource x:Key="PlayListView" Source="{Binding Path=Playlist.CurrentPlaylist}"></CollectionViewSource>-->
         <converter:ConnectConverter x:Key="ConnectConverterKey"></converter:ConnectConverter>
-
-        <serverlist:ServerList x:Key="ServerContentList"></serverlist:ServerList>
-
-        <DataTemplate x:Key="playlistTemplate">
-            <Grid Grid.ColumnSpan="3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="360" />
-                    <ColumnDefinition Width="55" />
-                    <ColumnDefinition Width="20"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding Name}" Grid.Column="0" ToolTip="{Binding Url}" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand"/>
-                <TextBlock Text="{Binding Length}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button Name="ButtonAdd" Command="{Binding RemoveCommand}" Grid.Column="2" HorizontalAlignment="Right" Width="20" Cursor="Hand" CommandParameter="{Binding}">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/RemoveFromPlaylistNotPressed2.png" VerticalAlignment="Center" ToolTip="Remove song from playlist"/>
-                                <Image Name="Pressed" Source="pack://application:,,,/Resources/RemoveFromPlaylistPressed2.png" Visibility="Hidden" VerticalAlignment="Center"/>
-                                <Image Name="Disabled" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-
-            </Grid>
-        </DataTemplate>
-        <DataTemplate x:Key="serverListTemplate">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="5" />
-                    <ColumnDefinition Width="Auto" />
-                    <!--<ColumnDefinition Width="Auto" />-->
-                </Grid.ColumnDefinitions>
-                <!-- Command="{Binding Path=DataContext.AddToPlaylistCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=Window, AncestorLevel=1}}" -->
-                <Button Command="{Binding AddCommand}" Name="buttonAddToPlaylist" CommandParameter="{Binding Url}" 
-                        Grid.Column="0" Cursor="Hand" VerticalAlignment="Center">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/AddToPlaylistNotPressed2.png" VerticalAlignment="Top" ToolTip="Add song to playlist"/>
-                                <Image Name="Pressed" Source="pack://application:,,,/Resources/AddToPlaylistPressed2.png" Visibility="Hidden" VerticalAlignment="Top"/>
-                                <Image Name="Disabled" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <TextBlock Grid.Column="1"/>
-                <TextBlock Text="{Binding Name}" Grid.Column="2" Cursor="Hand" VerticalAlignment="Center"/>
-                <!--<TextBox Name="size" Text="{Binding Size}" Grid.Column="2" />-->
-            </Grid>
-        </DataTemplate>
     </Window.Resources>
     <Grid Name="gridMain">
         <Grid Name="gridMain2" Margin="-2,54,-1,2">
@@ -112,7 +41,7 @@
 
                 <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="14,41,363,0" Height="44" >
                     <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate x:Name="PrevButton" TargetType="{x:Type Button}">
                             <Grid>
                                 <Image Name="Normal" Source="pack://application:,,,/Resources/PrevSong.png" VerticalAlignment="Top" ToolTip="Previous Song"/>
                                 <Image Name="Pressed" Source="" Visibility="Hidden"/>
