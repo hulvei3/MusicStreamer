@@ -9,7 +9,7 @@ using MusicStreamer.Interfaces;
 
 namespace MusicStreamer.CustomCommands
 {
-    class ClearPlaylistCommand : BaseCommand, IBaseCommand
+    class ClearPlaylistCommand : IBaseCommand
     {
         MainWindowViewModel _mwvm;
         public ClearPlaylistCommand(MainWindowViewModel mwvm)

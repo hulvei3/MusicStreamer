@@ -93,8 +93,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\PlayerButton.xaml.cs">
+      <DependentUpon>PlayerButton.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CustomCommands\AddToPlaylistCommand.cs" />
     <Compile Include="CustomCommands\BaseCommand.cs" />
+    <Compile Include="CustomCommands\ClearPlaylistCommand.cs" />
     <Compile Include="CustomCommands\CommandLibrary.cs" />
     <Compile Include="CustomCommands\ConnectCommand.cs" />
     <Compile Include="CustomCommands\Converters\ConnectConverter.cs" />
@@ -112,9 +117,6 @@
     <Compile Include="Exceptions\PlaylistException.cs" />
     <Compile Include="Exceptions\StreamingInProgressException.cs" />
     <Compile Include="Interfaces\IBaseCommand.cs" />
-    <Compile Include="Models\Server\ServerList.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Resources\SupportedFileTypes.cs" />
     <Compile Include="Res\Filetypes.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -129,6 +131,10 @@
     <Compile Include="ViewModels\Playlist\PlaylistItemViewModel.cs" />
     <Compile Include="ViewModels\Playlist\PlaylistViewModel.cs" />
     <Compile Include="CustomCommands\StopCommand.cs" />
+    <Page Include="Controls\PlayerButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -299,6 +305,44 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Shuffle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Player Icons\Audio-Speaker.ico" />
+    <Resource Include="Resources\Player Icons\Audio.ico" />
+    <Resource Include="Resources\Player Icons\Button-Eject.ico" />
+    <Resource Include="Resources\Player Icons\Button-Next.ico" />
+    <Resource Include="Resources\Player Icons\Button-Pause.ico" />
+    <Resource Include="Resources\Player Icons\Button-Play.ico" />
+    <Resource Include="Resources\Player Icons\Button-Previous.ico" />
+    <Resource Include="Resources\Player Icons\Button-Stop.ico" />
+    <Resource Include="Resources\Player Icons\Headphones.ico" />
+    <Resource Include="Resources\Player Icons\Monitor.ico" />
+    <Resource Include="Resources\Player Icons\Sound-System.ico" />
+    <Resource Include="Resources\Player Icons\Stereo.ico" />
+    <Resource Include="Resources\Player Icons\Video.ico" />
+    <Resource Include="Resources\Player Icons\Videoconference.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Player PNGs\Audio-Speaker.png" />
+    <Resource Include="Resources\Player PNGs\Audio.png" />
+    <Resource Include="Resources\Player PNGs\Button-Eject.png" />
+    <Resource Include="Resources\Player PNGs\Button-Next.png" />
+    <Resource Include="Resources\Player PNGs\Button-Pause.png" />
+    <Resource Include="Resources\Player PNGs\Button-Play.png" />
+    <Resource Include="Resources\Player PNGs\Button-Previous.png" />
+    <Resource Include="Resources\Player PNGs\Button-Stop.png" />
+    <Resource Include="Resources\Player PNGs\Headphones.png" />
+    <Resource Include="Resources\Player PNGs\Monitor.png" />
+    <Resource Include="Resources\Player PNGs\Sound-System.png" />
+    <Resource Include="Resources\Player PNGs\Stereo.png" />
+    <Resource Include="Resources\Player PNGs\Video.png" />
+    <Resource Include="Resources\Player PNGs\Videoconference.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Player PNGs\Repeat-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Player PNGs\Shuffle-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
