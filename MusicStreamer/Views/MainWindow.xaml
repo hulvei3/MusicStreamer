@@ -89,9 +89,9 @@
                 </Button>
 
                 <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" Command="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,338,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" Command="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,338,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" Command="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,338,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" ButtonCommand="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,338,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" ButtonCommand="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,338,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" ButtonCommand="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,338,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" />
                 <!-- PLAYLIST -->
                 <!--<Button Template="{StaticResource ClearPlaylistButton}" Content="Clear playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" 
                         Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand" ToolTip="Clear Playlist"/>

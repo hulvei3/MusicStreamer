@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="MusicStreamer.Controls.PlayerButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Name="UC">
+    <Grid>
+        <Button Command="{Binding Path=ButtonCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=1}}" Background="{x:Null}">
+            <StackPanel Orientation="Horizontal" Margin="0">
+                <Image Source="{Binding ElementName=UC, Path=Image}"
+                       Width="{Binding ElementName=UC, Path=ImageWidth}"
+                       Height="{Binding ElementName=UC, Path=ImageHeight}"
+                       Name="image"/>
+                <TextBlock Text="{Binding ElementName=UC, Path=Text}"
+                           Margin="0,0,0,0"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>
