@@ -2,12 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:converter="clr-namespace:MusicStreamer.CustomCommands.Converters" 
-        Title="MusicStreamer" Height="627" Width="784" Name="windowMain" ResizeMode="CanResizeWithGrip" Background="{StaticResource GradientHoriBackground}" Loaded="windowMain_Loaded" Icon="pack://application:,,,/Resources/ApplicationIcon.png">
+        Title="MusicStreamer" Height="627" Width="784" Name="windowMain" ResizeMode="CanResizeWithGrip" Loaded="windowMain_Loaded" Icon="pack://application:,,,/Resources/ApplicationIcon.png">
     <Window.Resources>
         <converter:ConnectConverter x:Key="ConnectConverterKey"></converter:ConnectConverter>
     </Window.Resources>
+	<Window.Background>
+		<StaticResource ResourceKey="AppGradientBackground"/>
+	</Window.Background>
     <Grid Name="gridMain">
-        <Grid Name="gridMain2" Margin="-2,54,-1,2">
+        <Grid Name="gridMain2" Margin="0,54,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="420" />
                 <ColumnDefinition Width="43" />
@@ -37,7 +40,7 @@
                     <RowDefinition Height="24" />
                 </Grid.RowDefinitions>
 
-                <Slider Value="{Binding Path=Player.Volume}" Grid.RowSpan="3" Height="103" HorizontalAlignment="Left" Margin="8,15,0,0" Name="sliderVolume" VerticalAlignment="Top" Width="23" Orientation="Vertical" Maximum="100" Grid.Column="1" SmallChange="1" LargeChange="10" />
+                <Slider Value="{Binding Path=Player.Volume}" Grid.RowSpan="3" Height="103" HorizontalAlignment="Left" Margin="8,15,0,0" Name="sliderVolume" VerticalAlignment="Top" Width="23" Orientation="Vertical" Maximum="100" Grid.Column="1" SmallChange="1" LargeChange="10" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Value}" AutoToolTipPlacement="TopLeft" />
 
                 <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="14,41,363,0" Height="44" >
                     <Button.Template>
@@ -72,7 +75,7 @@
                     </Button.Template>
                 </Button>
                 <Button Command="{Binding CurrentSong.PlayPauseCommand}" Height="43" Margin="126,41,229,0" Name="buttonPlay" VerticalAlignment="Top"
-                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}">
+                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" Click="buttonPlay_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -121,7 +124,7 @@
                     </Button.Template>
                 </Button>
 
-                <Button Content="Repeat" Height="45" Margin="374,41,0,0" Name="buttonRepeat" VerticalAlignment="Top" Click="buttonRepeat_Click" ToolTip="Repeat Playlist">
+                <Button Content="Repeat" Height="45" Margin="374,41,0,0" Name="buttonRepeat" VerticalAlignment="Top" ToolTip="Repeat Playlist">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Grid>
@@ -139,7 +142,7 @@
                 </Button>
                 <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="240,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Padding="0" />
 
-                <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" Height="10" HorizontalAlignment="Left" Margin="12,92,0,0" Name="progressBar1" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="4000" BorderBrush="{x:Null}" Background="{x:Null}" />
+                <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" IsIndeterminate="{Binding Path=CurrentSong.Streaming}" Height="10" HorizontalAlignment="Left" Margin="12,92,0,0" Name="progressBarStreaming" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="100" BorderBrush="{x:Null}" Background="{x:Null}"  />
 
                 <Slider Value="{Binding Path=CurrentSong.CurrentTime}" Maximum="{Binding Path=CurrentSong.SongLength}" Height="23" HorizontalAlignment="Left" Margin="12,101,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="402" />
                 <TextBox Text="{Binding Path=Playlist.SelectedPlaylistItem.Url}" Height="23" HorizontalAlignment="Left" Margin="12,6,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="196" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
@@ -148,20 +151,7 @@
             <!-- Playlist Area-->
 
             <Grid Grid.Row="2" Name="gridPlaylist" HorizontalAlignment="Left" Width="457" Grid.ColumnSpan="2">
-                <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
-                <TextBox Name="textBoxUser" Text="streamer" Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
-                <TextBox Name="textBoxPassword" Text="streamerpassword" Margin="208,0,0,0" HorizontalAlignment="Left" Width="89" Height="22" VerticalAlignment="Top" ToolTip="Put FTP-password here" />
-                <Button Content="Connect" Name="buttonConnect" Margin="308,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143" ToolTip="Connect to the server">
-                    <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource ConnectConverterKey}">
-                            <Binding ElementName="textBoxIP" Path="Text"/>
-                            <Binding ElementName="textBoxUser" Path="Text"/>
-                            <Binding ElementName="textBoxPassword" Path="Text"/>
-                        </MultiBinding>
-                    </Button.CommandParameter>
-                </Button>
-
-                <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
+                <ListBox Name="playlist" Margin="6,6,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
                 <!-- PLAYLIST -->
                 <Button Content="New playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand" ToolTip="Clear Playlist">
                     <Button.Template>
@@ -253,23 +243,25 @@
             <!-- Server area -->
 
             <Grid Grid.Column="2" Name="gridServer" Grid.RowSpan="3" Grid.ColumnSpan="2" >
-                <ListBox ItemsSource="{Binding Path=Navigation.CurrentList}" ItemTemplate="{StaticResource serverListTemplate}" Margin="6,43,6,38" Name="serverlistBox" 
-                      SelectedValue="{Binding Path=Navigation.SelectedServerListItem}" >
-                </ListBox>
+                <ListBox ItemsSource="{Binding Path=Navigation.CurrentList}" ItemTemplate="{StaticResource serverListTemplate}" Margin="6,69,6,38" Name="serverlistBox" 
+                      SelectedValue="{Binding Path=Navigation.SelectedServerListItem}" />
                 <TextBox Text="{Binding Path=Navigation.CurrentLocation}" Height="23" Margin="6,6,6,0" PreviewKeyUp="currentLocationTextBox_PreviewKeyUp"
                      IsReadOnly="False" Name="currentLocationTextBox" VerticalAlignment="Top" />
+                <Label Content="{Binding Path=CurrentSong.BytesReceived}" Name="labelStreamingStatus" HorizontalAlignment="Right" Width="81" Height="28" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" />
+                <Button Click="buttonConnect_Click" Content="Connection Manager" Name="buttonConnect" Margin="176,41,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117" ToolTip="Connect to the server"></Button>
+                <ComboBox Height="23" Margin="6,40,129,0" Name="ServerComboBox" VerticalAlignment="Top" ItemsSource="{Binding Path=Servers.Connections}" />
             </Grid>
 
 
-            <StatusBar Grid.Row="3" Margin="0,1,0,0" Name="statusBar" Grid.ColumnSpan="3" Height="23" VerticalAlignment="Top">
+            <StatusBar Grid.Row="3" Margin="0" Name="statusBar" Grid.ColumnSpan="3" Height="23" VerticalAlignment="Bottom">
                 <StatusBarItem Content="{Binding Path=CurrentSong.DebugText}" />
                 <StatusBarItem Content="{Binding Path=CurrentSong.PlayerState}" HorizontalContentAlignment="Right"/>
             </StatusBar>
         </Grid>
 
 
-        <Menu Name="HelpMenu" Height="21" VerticalAlignment="Top">
-            <MenuItem Name="File" Header="File" Width="Auto" Height="Auto">
+        <Menu Name="MenuBar" Height="21" VerticalAlignment="Top">
+            <MenuItem Name="File" Header="File" Width="Auto" Height="Auto" Padding="7,2,8,3">
                 <MenuItem Header="Clear Playlist" Command="ApplicationCommands.New">
                     <MenuItem.Icon>
                         <Image Source="pack://application:,,,/Resources/ClearPlaylist.png" Width="20" Height="20"></Image>
@@ -286,7 +278,9 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Close" Command="ApplicationCommands.Close"></MenuItem>
+                <MenuItem Header="Connections.." Click="ConnectionMenuItem_Click" Name="ConnectionMenuItem" />
+                <Separator/>
+                <MenuItem Header="_Close" Command="ApplicationCommands.Close"></MenuItem>
             </MenuItem>
             <MenuItem Name="Edit" Header="Edit" Width="Auto" Height="Auto">
                 <MenuItem Header="Undo" Command="ApplicationCommands.Undo"></MenuItem>

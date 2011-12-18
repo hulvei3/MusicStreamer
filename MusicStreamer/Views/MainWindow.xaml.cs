@@ -5,6 +5,7 @@ using MusicStreamer.Views;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using MusicStreamer.CustomCommands;
 
 namespace MusicStreamer
 {
@@ -23,24 +24,14 @@ namespace MusicStreamer
             InitializeComponent();
         }
 
-        // this is only here for testing
-
-        private void buttonRepeat_Click(object sender, RoutedEventArgs e)
-        {
-            //textBoxCurrentSong.Text = @"C:\Users\Morten Hulvej\Desktop\07 I Remember.mp3";
-
-
-            _vm.Playlist.OpenTestPlaylist();
-        }
-
         private void windowMain_Loaded(object sender, RoutedEventArgs e)
         {
             _vm.CommandLib.UIParent = this;
             
             // setting commands to buttons
-            buttonConnect.Command = _vm.CommandLib.ConnectCommand;
+            //buttonConnect.Command = _vm.CommandLib.ConnectCommand;
             buttonPlay.Command = _vm.CommandLib.PlayPauseCommand;
-            buttonNext.Command = _vm.CommandLib.NextCommand;
+            buttonNext.Command = _vm.CommandLib.SkipCommand;
             buttonPrev.Command = _vm.CommandLib.PrevCommand;
             buttonStop.Command = _vm.CommandLib.StopCommand;
             buttonShuffle.Command = _vm.CommandLib.ShuffleCommand;
@@ -66,6 +57,32 @@ namespace MusicStreamer
                 currentLocationTextBox.CaretIndex = currentLocationTextBox.Text.Length;
                 _vm.Navigation.Navigate();
             }
+        }
+
+        private void buttonPlay_Click(object sender, RoutedEventArgs e)
+        {
+            DeactivatePlayerInterface();
+        }
+
+        private void DeactivatePlayerInterface()
+        {
+
+        }
+
+        private void ConnectionMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenConnectionWindow();
+        }
+
+        private void buttonConnect_Click(object sender, RoutedEventArgs e)
+        {
+            OpenConnectionWindow();
+        }
+
+        private void OpenConnectionWindow()
+        {
+            var window = new ConnectionWindow();
+            window.ShowDialog();
         }
 
     }

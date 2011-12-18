@@ -39,6 +39,8 @@ namespace MusicStreamer.ViewModels.Server
             CurrentLocation = scm.Host;
         }
 
+        public ServerConnectionModel CurrentServer { get { return _scvm.GetModel(); } }
+
         //Property for current list of files to show
         public ObservableCollection<ServerlistItemViewModel> CurrentList
         {

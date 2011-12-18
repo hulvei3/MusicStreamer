@@ -33,29 +33,13 @@ namespace MusicStreamer.CustomCommands
         {
             //Skal have username, pw og host url ind fra MainWindow.xaml
            
-            String[] info = (String[])parameter;
+            var model = (ServerConnectionModel)parameter;
             //MessageBox.Show(info[0] + info[1] + info[2]);
 
-            // TODO: var model = new ConnectionLibrary().Connections.First();
-            if (info[0].EndsWith("/"))
-            {
-                info[0] = info[0].Remove(info[0].Length - 1);
-            }
+            MainWindowViewModel.Instance.Navigation.setConnectionModel(model);
+            MainWindowViewModel.Instance.Navigation.Navigate();
 
-            _mwvm.Navigation.setConnectionModel(new ServerConnectionModel(info[0], info[1], info[2]));
-            _mwvm.Navigation.Navigate();
-
-
-
-            //StringBuilder sList = new StringBuilder();
-            //foreach (var item in _mwvm.Navigation.Navigate())
-            //{
-            //    sList.AppendLine(item);
-            //}
-           
-            //MessageBox.Show(sList.ToString());
-            
-            //Skal vise roden af ftp serveren her
+            MainWindowViewModel.Instance.CurrentSong.SetupStreamer();
         }
 
         public void UnExecute()

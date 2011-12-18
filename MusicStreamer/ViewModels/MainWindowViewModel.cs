@@ -12,6 +12,7 @@ using System.Windows;
 using MusicStreamer.ViewModels.Player;
 using MusicStreamer.ViewModels.Playlist;
 using StreamerLib;
+using MusicStreamer.Util;
 
 namespace MusicStreamer.ViewModels
 {
@@ -56,8 +57,8 @@ namespace MusicStreamer.ViewModels
         }
 
         public Server.ServerNavigationViewModel Navigation { get; set; }
-        //public ICommand ConnectCommand { get; set; }
-        //public ICommand AddToPlaylistCommand { get; set; }
+
+        public ConnectionLibrary Servers { get; set; }
 
 
         public MainWindowViewModel()
@@ -70,6 +71,7 @@ namespace MusicStreamer.ViewModels
             CurrentSong = new CurrentSongViewModel(playerEngine);
             Playlist = new PlaylistViewModel(playerEngine);
             Navigation = new Server.ServerNavigationViewModel();
+            Servers = new ConnectionLibrary();
 
             // undo/redo
             CommandLib = new CommandLibrary();

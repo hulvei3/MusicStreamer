@@ -4,18 +4,28 @@ using System.Linq;
 using System.Text;
 //using MusicStreamer.Models.Server;
 using StreamerLib;
+using MusicStreamer.Exceptions;
 
 namespace MusicStreamer.Util
 {
-    class ConnectionLibrary
+    public class ConnectionLibrary : PropertyAndErrorHandler
     {
-
-        public ObservableCollection<ServerConnectionModel> Connections { get; private set; }
+        private ObservableCollection<ServerConnectionModel> _connections;
+        public ObservableCollection<ServerConnectionModel> Connections
+        {
+            get { return _connections; }
+            private set
+            {
+                _connections = value;
+                OnPropertyChanged("Connections");
+            }
+        }
 
         public ConnectionLibrary()
         {
             Init();
             AddConnection(new ServerConnectionModel("90.184.75.15", "streamer", "streamerpassword"));
+            AddConnection(new ServerConnectionModel("jpics.dk", "Having", "Harving2011"));
         }
 
         private void Init()
@@ -29,5 +39,10 @@ namespace MusicStreamer.Util
         {
             Connections.Add(newModel);
         }
+        public void RemoveConnection(ServerConnectionModel model)
+        {
+            Connections.Remove(model);
+        }
+        public ServerConnectionModel Current { get; set; }
     }
 }

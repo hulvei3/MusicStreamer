@@ -26,10 +26,15 @@ namespace MusicStreamer.ViewModels.Playlist
 
         public PlaylistItemViewModel(string url)
         {
-            Url = url;
+            if (url.Equals("[dummyItem]"))
+                Name = "";
+            else
+            {
+                Url = url;
 
-            int temp = Url.LastIndexOf("/") + 1;
-            Name = Url.Substring(temp);
+                int temp = Url.LastIndexOf("/") + 1;
+                Name = Url.Substring(temp);
+            }
         }
 
         private string _url = "";

@@ -1,0 +1,39 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="MusicStreamer.Views.ConnectionWindow"
+        Title="Servers" Height="311" Width="440" ResizeMode="NoResize">
+	<Window.Resources>
+		<DataTemplate x:Key="ConnectionsDataTemplate">
+			<Grid>
+                
+				<TextBlock Text="{Binding Path=Host}" />
+                
+			</Grid>
+		</DataTemplate>
+	</Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="117.399" />
+            <ColumnDefinition Width="7" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="212*" />
+            <RowDefinition Height="49*" />
+        </Grid.RowDefinitions>
+        <Button Content="Ok" Grid.Row="1" Height="23" x:Name="OKbutton" VerticalAlignment="Bottom" Grid.Column="2" Margin="207,0,12,12" Click="OKbutton_Click" />
+        <ListBox HorizontalAlignment="Left" x:Name="ServerListBox" Width="105" Margin="12,9,0,0" ItemsSource="{Binding Path=Servers.Connections}"
+                 ItemTemplate="{StaticResource ConnectionsDataTemplate}" SelectionChanged="ServerListBox_SelectionChanged" />
+        <Button Content="Add" Grid.Row="1" Height="23" HorizontalAlignment="Left" x:Name="AddButton" VerticalAlignment="Top" Width="45" Margin="12,0,0,0" Click="AddButton_Click" />
+        <Button Content="Remove" Grid.Row="1" Height="23" HorizontalAlignment="Right" x:Name="RemoveButton" VerticalAlignment="Top" Width="54" Click="RemoveButton_Click" />
+        
+        <TextBox Grid.Column="2" Height="23" HorizontalAlignment="Left" Margin="78,26,0,0" x:Name="HostTextBox" VerticalAlignment="Top" Width="208" />
+        <Label Content="Host" Grid.Column="2" Height="28" HorizontalAlignment="Left" Margin="0,24,0,0" x:Name="label1" VerticalAlignment="Top" Width="72" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="78,55,0,0" x:Name="UserTextBox" VerticalAlignment="Top" Width="208" Grid.Column="2" />
+        <Label Content="Username" Height="28" HorizontalAlignment="Left" Margin="0,53,0,0" x:Name="label2" VerticalAlignment="Top" Width="72" Grid.Column="2" />
+        <PasswordBox Height="23" HorizontalAlignment="Left" Margin="78,79,0,0" x:Name="PasswordTextBox" VerticalAlignment="Top" Width="208" Grid.Column="2" />
+        <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="0,77,0,0" x:Name="label3" VerticalAlignment="Top" Width="72" Grid.Column="2" />
+        <Button Content="Tilslut" Grid.Column="2" Grid.Row="1" Margin="124,0,95,12" Name="Connectbutton" Height="23" VerticalAlignment="Bottom" />
+    </Grid>
+</Window>

@@ -23,6 +23,11 @@ namespace MusicStreamer.ViewModels.Server
             NewURL(_model.Host);   
         }
 
+        public ServerConnectionModel GetModel()
+        {
+            return _model;
+        }
+
         private FtpWebRequest Request
         {
             get;

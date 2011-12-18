@@ -6,6 +6,7 @@ using System.Windows.Input;
 using MusicStreamer.ViewModels;
 using MusicStreamer.Interfaces;
 using MusicStreamer.ViewModels.Player;
+using MusicStreamer.Exceptions;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -20,7 +21,26 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            string url = (string)parameter;
+            //string url = (string)parameter;
+
+            var song = _vm.Playlist.SelectedPlaylistItem;
+            if (song == null)
+            {
+                try
+                {
+                    _vm.Playlist.CurrentUIPlaylist.ElementAt(0);
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    return;
+                    //try
+                    //{
+                    //    throw new PlaylistException("Playlist is empty!\n\nConnect to a server and add songs to the playlist, or load one.");
+                    //}
+                    //catch (PlaylistException ex) { return; }
+                }
+            }
+            var url = song.Url;
 
             // parameter comes from the view (textBoxCurrentSong.Content)
             switch (_vm.CurrentSong.PlayerState)
@@ -39,7 +59,7 @@ namespace MusicStreamer.CustomCommands
                     break;
                 case WMPLib.WMPPlayState.wmppsReady:
                     //play new song passing the new url
-                    _vm.CurrentSong.PlayCurrentSong((string)parameter);
+                    _vm.CurrentSong.PlayCurrentSong(song);
                     break;
                 case WMPLib.WMPPlayState.wmppsReconnecting:
                     break;
@@ -48,13 +68,12 @@ namespace MusicStreamer.CustomCommands
                 case WMPLib.WMPPlayState.wmppsScanReverse:
                     break;
                 case WMPLib.WMPPlayState.wmppsStopped:
-                    _vm.CurrentSong.PlayCurrentSong((string)parameter);
+                    _vm.CurrentSong.PlayCurrentSong(song);
                     break;
                 case WMPLib.WMPPlayState.wmppsTransitioning:
                     break;
                 case WMPLib.WMPPlayState.wmppsUndefined:
-                    if (url == "") return;
-                    _vm.CurrentSong.PlayCurrentSong((string)parameter);
+                    _vm.CurrentSong.PlayCurrentSong(song);
                     break;
                 case WMPLib.WMPPlayState.wmppsWaiting:
                     break;

@@ -40,7 +40,6 @@ namespace MusicStreamer.CustomCommands
 
         public RoutedCommand PlayPauseCommand = new RoutedCommand();
         public RoutedCommand PrevCommand = new RoutedCommand();
-        public RoutedCommand NextCommand = new RoutedCommand();
         public RoutedCommand SkipCommand = new RoutedCommand();
         public RoutedCommand StopCommand = new RoutedCommand();
         public RoutedCommand ShuffleCommand = new RoutedCommand();

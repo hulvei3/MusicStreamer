@@ -40,7 +40,18 @@ namespace MusicStreamer.ViewModels.Playlist
             
         }
 
-        public PlaylistItemViewModel Playing { get; set; }
+        private PlaylistItemViewModel _playing;
+        public PlaylistItemViewModel Playing
+        { 
+            get { return _playing; }
+            set
+            {
+                if (value == null)
+                    _playing = new PlaylistItemViewModel();
+                else _playing = value;
+                OnPropertyChanged("Playing");
+            }
+        }
 
         private ObservableCollection<PlaylistItemViewModel> _currentPlaylist;
         public ObservableCollection<PlaylistItemViewModel> CurrentUIPlaylist
@@ -157,7 +168,28 @@ namespace MusicStreamer.ViewModels.Playlist
                 next = CurrentUIPlaylist[0];
             }
 
+            if (next != null)
+                SelectedPlaylistItem = next;
+
             return next;
+        }
+
+        public PlaylistItemViewModel GetPreviousSong()
+        {
+            PlaylistItemViewModel prev = null;
+
+            var index = CurrentUIPlaylist.IndexOf(Playing);
+
+            
+            if (index > 0)
+            {
+                prev = CurrentUIPlaylist[index - 1];
+            }
+
+            if (prev != null)
+                SelectedPlaylistItem = prev;
+
+            return prev;
         }
 
         public void ShowFileInfo(IWMPMedia media)
