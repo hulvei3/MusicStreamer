@@ -114,9 +114,6 @@
     <Compile Include="Exceptions\PlaylistException.cs" />
     <Compile Include="Exceptions\StreamingInProgressException.cs" />
     <Compile Include="Interfaces\IBaseCommand.cs" />
-    <Compile Include="Models\Server\ServerList.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Resources\SupportedFileTypes.cs" />
     <Compile Include="Res\Filetypes.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -273,6 +270,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Playlist\" />
+    <Folder Include="Models\Server\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\PrevSong.png" />
@@ -297,9 +295,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Shuffle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\calendar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,7 +18,7 @@ namespace MusicStreamer.Controls
     /// <summary>
     /// Interaction logic for PlayerButton.xaml
     /// </summary>
-    public partial class PlayerButton : UserControl
+    public partial class PlayerButton : Button
     {
         public PlayerButton()
         {
@@ -64,20 +64,6 @@ namespace MusicStreamer.Controls
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(PlayerButton), new UIPropertyMetadata(""));
-
-        public ICommand ButtonCommand { get; set; }
-
-
-
-        public Object CommandParameter  
-        {
-            get { return (Object)GetValue(CommandParameterProperty); }
-            set { SetValue(CommandParameterProperty, value); }
-        }       
-
-        // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register("CommandParameter", typeof(Object), typeof(PlayerButton), new UIPropertyMetadata(null));
 
     }
 }

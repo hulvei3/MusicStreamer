@@ -39,12 +39,12 @@ namespace MusicStreamer
             
             // setting commands to buttons
             buttonConnect.Command = _vm.CommandLib.ConnectCommand;
-            buttonPlay.ButtonCommand = _vm.CommandLib.PlayPauseCommand;
-            //buttonSkip.Command = _vm.CommandLib.NextCommand;
-            //buttonPrev.Command = _vm.CommandLib.PrevCommand;
-            //buttonStop.Command = _vm.CommandLib.StopCommand;
-            //buttonShuffle.Command = _vm.CommandLib.ShuffleCommand;
-            //buttonRepeat.Command = _vm.CommandLib.RepeatCommand;
+            buttonPlay.Command = _vm.CommandLib.PlayPauseCommand;
+            buttonSkip.Command = _vm.CommandLib.NextCommand;
+            buttonPrev.Command = _vm.CommandLib.PrevCommand;
+            buttonStop.Command = _vm.CommandLib.StopCommand;
+            buttonShuffle.Command = _vm.CommandLib.ShuffleCommand;
+            buttonRepeat.Command = _vm.CommandLib.RepeatCommand;
             
             
         }

@@ -41,17 +41,17 @@
                 <Slider Value="{Binding Path=Player.Volume}" Grid.RowSpan="3" Height="103" HorizontalAlignment="Left" Margin="8,15,0,0" Name="sliderVolume" VerticalAlignment="Top" Width="23" Orientation="Vertical" Maximum="100" Grid.Column="1" SmallChange="1" LargeChange="10" />
                 
                 <controls:PlayerButton x:Name="buttonPlay" Image="pack://application:,,,/Resources/PlayPause.png" HorizontalAlignment="Right" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="0,41,249,0" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" />
+                        ImageWidth="45" ImageHeight="45" Margin="0,41,249,0" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/PrevSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
                         ImageWidth="45" ImageHeight="45" Margin="12,41,0,0" x:Name="buttonPrev" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/StopSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="66,41,0,0" x:Name="buttonStop" />
+                        ImageWidth="45" ImageHeight="45" Margin="66,41,0,0" x:Name="buttonStop" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/NextSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="174,41,0,0" x:Name="buttonSkip" />
+                        ImageWidth="45" ImageHeight="45" Margin="174,41,0,0" x:Name="buttonSkip" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/Shuffle.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="317,41,0,0" x:Name="buttonShuffle" />
+                        ImageWidth="45" ImageHeight="45" Margin="317,41,0,0" x:Name="buttonShuffle" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/Repeat.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,41,0,0" x:Name="buttonRepeat" />
+                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,41,0,0" x:Name="buttonRepeat" Background="{x:Null}" />
                 
                 <!--<Button Template="{StaticResource PrevButton}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" 
                         Margin="14,41,351,0" Height="44" />
@@ -89,9 +89,9 @@
                 </Button>
 
                 <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" ButtonCommand="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,338,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" ButtonCommand="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,338,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" ButtonCommand="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,338,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" Command="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,338,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" Command="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,338,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" Command="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,338,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
                 <!-- PLAYLIST -->
                 <!--<Button Template="{StaticResource ClearPlaylistButton}" Content="Clear playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" 
                         Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand" ToolTip="Clear Playlist"/>
