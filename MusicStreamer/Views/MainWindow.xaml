@@ -37,18 +37,18 @@
 
                 <Slider Value="{Binding Path=Player.Volume}" Grid.RowSpan="3" Height="103" HorizontalAlignment="Left" Margin="8,15,0,0" Name="sliderVolume" VerticalAlignment="Top" Width="23" Orientation="Vertical" Maximum="100" Grid.Column="1" SmallChange="1" LargeChange="10" />
                 
-                <controls:PlayerButton x:Name="buttonPlay" Image="pack://application:,,,/Resources/PlayPause.png" HorizontalAlignment="Right" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="0,41,249,0" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" Background="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/PrevSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="12,41,0,0" x:Name="buttonPrev" Background="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/StopSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="66,41,0,0" x:Name="buttonStop" Background="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/NextSong.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="174,41,0,0" x:Name="buttonSkip" Background="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/Shuffle.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="317,41,0,0" x:Name="buttonShuffle" Background="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/Repeat.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,41,0,0" x:Name="buttonRepeat" Background="{x:Null}" />
+                <controls:PlayerButton x:Name="buttonPlay" Image="pack://application:,,,/Resources/Player PNGs/Button-Play.png" HorizontalAlignment="Right" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="0,41,249,0" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Previous.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="12,41,0,0" x:Name="buttonPrev" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Stop.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="66,41,0,0" x:Name="buttonStop" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Next.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="174,41,0,0" x:Name="buttonSkip" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Shuffle-64.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="317,41,0,0" x:Name="buttonShuffle" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Repeat-64.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,41,0,0" x:Name="buttonRepeat" Background="{x:Null}" BorderBrush="{x:Null}" />
                 
                 <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="228,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Padding="0" />
                 <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" Height="10" HorizontalAlignment="Left" Margin="12,92,0,0" Name="progressBar1" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="4000" BorderBrush="{x:Null}" Background="{x:Null}" />
