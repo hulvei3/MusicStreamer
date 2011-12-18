@@ -21,10 +21,7 @@
                 <RowDefinition Height="24" />
             </Grid.RowDefinitions>
 
-
-
             <!-- Player Area -->
-
             <Grid Height="124" Name="gridPlayer" VerticalAlignment="Top" HorizontalAlignment="Left" Width="457" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="420" />
@@ -53,18 +50,6 @@
                 <controls:PlayerButton Image="pack://application:,,,/Resources/Repeat.png" HorizontalAlignment="Left" VerticalAlignment="Top"
                         ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,41,0,0" x:Name="buttonRepeat" Background="{x:Null}" />
                 
-                <!--<Button Template="{StaticResource PrevButton}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" 
-                        Margin="14,41,351,0" Height="44" />
-                <Button Template="{StaticResource StopButton}" Content="Stop" Name="buttonStop" VerticalAlignment="Top" 
-                        Margin="68,41,309,0" Height="37"/>
-                <Button Template="{StaticResource PlayButton}" Height="43" Margin="126,41,229,0" Name="buttonPlay" VerticalAlignment="Top"
-                        CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}"/>
-                <Button Template="{StaticResource NextButton}" Content="Next" Height="45" Margin="189,41,186,0" 
-                        Name="buttonNext" VerticalAlignment="Top" />
-                <Button Template="{StaticResource ShuffleButton}" Content="Shuffle" Height="45" Margin="326,41,48,0" Name="buttonShuffle" VerticalAlignment="Top"/>
-                <Button Template="{StaticResource RepeatButton}" Content="Repeat" Height="45" Margin="374,41,0,0" Name="buttonRepeat" VerticalAlignment="Top" 
-                        ToolTip="Repeat Playlist"/>-->
-                
                 <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="228,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Padding="0" />
                 <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" Height="10" HorizontalAlignment="Left" Margin="12,92,0,0" Name="progressBar1" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="4000" BorderBrush="{x:Null}" Background="{x:Null}" />
 
@@ -72,8 +57,8 @@
                 <TextBox Text="{Binding Path=Playlist.SelectedPlaylistItem.Url}" Height="23" HorizontalAlignment="Left" Margin="12,6,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="408" />
                 
             </Grid>
+            
             <!-- Playlist Area-->
-
             <Grid Grid.Row="2" Name="gridPlaylist" HorizontalAlignment="Left" Width="457" Grid.ColumnSpan="2">
                 <TextBox Name="textBoxIP" Text="90.184.75.15" Margin="6,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" ToolTip="Put host address here" />
                 <TextBox Name="textBoxUser" Text="streamer" Margin="107,0,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" ToolTip="Put FTP-username here" />
@@ -87,28 +72,15 @@
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>
-
+                <!-- PLAYLIST -->
                 <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" Command="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,338,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" Command="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,338,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" Command="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,338,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
-                <!-- PLAYLIST -->
-                <!--<Button Template="{StaticResource ClearPlaylistButton}" Content="Clear playlist" HorizontalAlignment="Left" Margin="6,0,0,0" Name="ClearPlaylistButton" 
-                        Width="38" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.New" Cursor="Hand" ToolTip="Clear Playlist"/>
-                <Button Template="{StaticResource SavePlaylistButton}" Content="Save playlist" HorizontalAlignment="Left" Margin="41,0,0,0" Name="SavePlaylistButton" 
-                        Width="46" Height="35" VerticalAlignment="Bottom" Command="ApplicationCommands.Save" Cursor="Hand" ToolTip="Save Playlist"/>
-                <Button Template="{StaticResource LoadPlaylistButton}" Content="Load playlist" Command="ApplicationCommands.Open" HorizontalAlignment="Left" Margin="88,0,0,0" 
-                        Name="LoadPlaylistButton" Width="38" Height="35" VerticalAlignment="Bottom" Cursor="Hand" ToolTip="Open Playlist"/>
-                <Button Template="{StaticResource RedoButton}" Content="Redo" Height="41" HorizontalAlignment="Right" Name="buttonRedo" VerticalAlignment="Bottom" Width="50" 
-                        Command="ApplicationCommands.Redo" ToolTip="Redo" Margin="0,0,6,0"/>
-                <Button Template="{StaticResource UndoButton}" Content="Undo" HorizontalAlignment="Left" Margin="354,0,0,0" Name="buttonUndo" Width="60" 
-                        Command="ApplicationCommands.Undo" Height="41" VerticalAlignment="Bottom" ToolTip="Undo"/>
-                <Button Content="Debug window" Height="23" Margin="189,0,178,6" Name="buttonDebug" VerticalAlignment="Bottom" Click="buttonDebug_Click" />-->
+                
             </Grid>
 
-
             <!-- Server area -->
-
             <Grid Grid.Column="2" Name="gridServer" Grid.RowSpan="3" Grid.ColumnSpan="2" >
                 <ListBox ItemsSource="{Binding Path=Navigation.CurrentList}" ItemTemplate="{StaticResource serverListTemplate}" Margin="6,43,6,38" Name="serverlistBox" 
                      SelectedValue="{Binding Path=Navigation.SelectedServerListItem}" >
@@ -124,7 +96,7 @@
             </StatusBar>
         </Grid>
 
-
+        <!--Top Menu-->
         <Menu Name="HelpMenu" Height="21" VerticalAlignment="Top">
             <MenuItem Name="File" Header="File" Width="Auto" Height="Auto">
                 <MenuItem Header="Clear Playlist" Command="ApplicationCommands.New">
