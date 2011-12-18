@@ -222,7 +222,8 @@ namespace MusicStreamer.CustomCommands
         }
         private void NewExecute(object sender, ExecutedRoutedEventArgs e)
         {
-            MainWindowViewModel.Instance.Playlist.ClearPlaylist();
+            var cmd = new ClearPlaylistCommand(MainWindowViewModel.Instance);
+            cmd.Execute(null);
         }
         private void NewCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {

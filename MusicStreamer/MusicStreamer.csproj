@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="CustomCommands\AddToPlaylistCommand.cs" />
     <Compile Include="CustomCommands\BaseCommand.cs" />
+    <Compile Include="CustomCommands\ClearPlaylistCommand.cs" />
     <Compile Include="CustomCommands\CommandLibrary.cs" />
     <Compile Include="CustomCommands\ConnectCommand.cs" />
     <Compile Include="CustomCommands\Converters\ConnectConverter.cs" />
