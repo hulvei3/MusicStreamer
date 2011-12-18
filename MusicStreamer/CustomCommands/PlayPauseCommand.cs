@@ -7,6 +7,7 @@ using MusicStreamer.ViewModels;
 using MusicStreamer.Interfaces;
 using MusicStreamer.ViewModels.Player;
 using MusicStreamer.Exceptions;
+using MusicStreamer.ViewModels.Playlist;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -52,14 +53,14 @@ namespace MusicStreamer.CustomCommands
                 case WMPLib.WMPPlayState.wmppsMediaEnded:
                     break;
                 case WMPLib.WMPPlayState.wmppsPaused:
-                    _vm.CurrentSong.PlayCurrentSong();
+                    _vm.CurrentSong.UnPauseCurrentSong();
                     break;
                 case WMPLib.WMPPlayState.wmppsPlaying:
                     _vm.CurrentSong.PauseCurrentSong();
                     break;
                 case WMPLib.WMPPlayState.wmppsReady:
                     //play new song passing the new url
-                    _vm.CurrentSong.PlayCurrentSong(song);
+                    DoIt(song);
                     break;
                 case WMPLib.WMPPlayState.wmppsReconnecting:
                     break;
@@ -68,12 +69,12 @@ namespace MusicStreamer.CustomCommands
                 case WMPLib.WMPPlayState.wmppsScanReverse:
                     break;
                 case WMPLib.WMPPlayState.wmppsStopped:
-                    _vm.CurrentSong.PlayCurrentSong(song);
+                    DoIt(song);
                     break;
                 case WMPLib.WMPPlayState.wmppsTransitioning:
                     break;
                 case WMPLib.WMPPlayState.wmppsUndefined:
-                    _vm.CurrentSong.PlayCurrentSong(song);
+                    DoIt(song);
                     break;
                 case WMPLib.WMPPlayState.wmppsWaiting:
                     break;
@@ -81,6 +82,15 @@ namespace MusicStreamer.CustomCommands
                     break;
             }
         }
+
+        private void DoIt(PlaylistItemViewModel song)
+        {
+            new Action(() =>
+                {
+                    _vm.CurrentSong.BeginStreaming(song);
+                }).BeginInvoke(null, null);
+        }
+
 
         public bool CanExecute(object parameter)
         {

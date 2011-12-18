@@ -23,7 +23,7 @@ namespace StreamerLib
         public String Host
         {
             get { return _hostIP; }
-            set { _hostIP = "ftp://" + value; }
+            set { _hostIP = value.StartsWith("ftp://") ? value : "ftp://" + value; }
         }
 
         public String User

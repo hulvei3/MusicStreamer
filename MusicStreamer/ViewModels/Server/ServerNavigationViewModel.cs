@@ -165,8 +165,16 @@ namespace MusicStreamer.ViewModels.Server
             }
             catch (MusicStreamerException e)
             {
-                _scvm.NewURL(OldCurrentLocation);
-                CurrentLocation = OldCurrentLocation;
+                try
+                {
+                    _scvm.NewURL(OldCurrentLocation);
+                    CurrentLocation = OldCurrentLocation;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+                
 
             }
           

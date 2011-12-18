@@ -37,7 +37,7 @@ namespace MusicStreamer.ViewModels.Player
             _controls = _player.controls;
             //handle er nede i bunden
             _player.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(_player_PlayStateChange);
-            Streaming = false;
+            Streaming = "";
         }
 
         public void SetupStreamer()
@@ -139,37 +139,25 @@ namespace MusicStreamer.ViewModels.Player
             get { return _player.playState; }
         }
 
-        internal void PlayCurrentSong()
+        private void PlayCurrentSong(string localurl)
         {
-            if (_player.URL == null) return;
-
-            // starting time updater thread
-            TimeUpdaterThread = new System.Threading.Thread(new System.Threading.ThreadStart(RunTimeService));
-            TimeUpdaterThread.Start();
-
-            
-
-            // plays content from 'Url'
-            _controls.play();
-            DebugText = "Playing..";
-        }
-        internal void PlayCurrentSong(PlaylistItemViewModel song)
-        {
-
-
-            // start prepare service
-            // parse remote-url to local-url (temp)
-            string localurl = PrepareSongService(song.Url);
             if (localurl == null) return;
 
             Url = localurl;
             
             //CurrentMedia = _player.currentMedia;
 
-            PlayCurrentSong();
+            if (_player.URL == null) return;
 
-            // set 'playing' in playlist (used for next/prev)
-            MainWindowViewModel.Instance.Playlist.Playing = song;
+            // starting time updater thread
+            TimeUpdaterThread = new System.Threading.Thread(new System.Threading.ThreadStart(RunTimeService));
+            TimeUpdaterThread.Start();
+
+
+            // plays content from 'Url'
+            _controls.play();
+            DebugText = "Playing..";
+
         }
         internal void StopCurrentSong()
         {
@@ -182,7 +170,7 @@ namespace MusicStreamer.ViewModels.Player
             TimeUpdaterThread = null;
 
             // TODO removes temp-files
-
+            CurrentFile.Delete();
         }
         internal void PauseCurrentSong()
         {
@@ -190,7 +178,7 @@ namespace MusicStreamer.ViewModels.Player
             DebugText = "Player paused";
             // stop/pause timer-updater-thread
         }
-        internal void UnPause()
+        internal void UnPauseCurrentSong()
         {
             _controls.play();
             DebugText = "Playing...";
@@ -206,7 +194,7 @@ namespace MusicStreamer.ViewModels.Player
 
             if (next != null)
             {
-                PlayCurrentSong(next);
+                BeginStreaming(next);
                 
             }
 
@@ -223,23 +211,39 @@ namespace MusicStreamer.ViewModels.Player
 
             if (prev != null)
             {
-                PlayCurrentSong(prev);
+                BeginStreaming(prev);
             }
 
             // wmp.dll
             //_controls.previous();
         }
 
-        // seperate thread for preparing downloaded track (not downloading itself)
-        private string PrepareSongService(string remoteUrl)
+        public void BeginStreaming(PlaylistItemViewModel song)
         {
+            var remoteUrl = song.Url;
 
+            if (Streamer == null)
+            {
+                var result = MessageBox.Show("Not connected to a server!\n", "MusicStreamer", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            
             //remote-to-local url parsing
             var filename = Streamer.StreamMedia(remoteUrl);
 
-            if (filename == null) return null;
+            PrepareAndPlaySong(filename);
 
-            Streaming = true;
+            // set 'playing' in playlist (used for next/prev)
+            MainWindowViewModel.Instance.Playlist.Playing = song;
+        }
+
+        // seperate thread for preparing downloaded track (not downloading itself)
+        private void PrepareAndPlaySong(string filename)
+        {
+
+            if (filename == null) return;
+
+            Streaming = "Buffering...";
 
             CurrentFile = new FileInfo(filename);
             //TODO loading indicator here..
@@ -251,7 +255,7 @@ namespace MusicStreamer.ViewModels.Player
             }
             //TODO loading indicator remove here..
 
-            return filename;
+            PlayCurrentSong(filename);
         }
 
         // seperate thread for updating time counter
@@ -301,10 +305,11 @@ namespace MusicStreamer.ViewModels.Player
 
         void streamer_DownloadCompleted(object sender, AsyncCompletedEventArgs e)
         {
-
+            if (e.Cancelled)
+                return;
 
             
-            Streaming = false;
+            Streaming = "";
             //MainWindowViewModel.Instance.Playlist.ShowFileInfo(_player.currentMedia);
 
             SongLength = _player.newMedia(CurrentFile.Name).duration;
@@ -314,9 +319,9 @@ namespace MusicStreamer.ViewModels.Player
             //CurrentMedia = _player.currentMedia;
         }
 
-        private bool _streaming;
+        private string _streaming;
 
-        public bool Streaming
+        public string Streaming
         {
             get { return _streaming; }
             set { _streaming = value; OnPropertyChanged("Streaming"); }

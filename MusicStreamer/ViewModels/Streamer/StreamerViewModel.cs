@@ -52,12 +52,15 @@ namespace MusicStreamer.ViewModels.Streamer
         // returns true if streaming was started
         public string StreamMedia(string url)
         {
-            Mouse.OverrideCursor = Cursors.Wait;
+            //Mouse.OverrideCursor = Cursors.Wait;
 
             var localfile = string.Format("{0}.mp3",Guid.NewGuid().ToString());
 
             if (_streamClient.IsBusy)
-                throw new StreamingInProgressException("Streaming already in progress\nMusic Streamer doesn't support multistreamning.");
+            {
+                _streamClient.CancelAsync();
+                while (_streamClient.IsBusy);
+            }
             try
             {
                 _streamClient.Proxy = null;
@@ -70,7 +73,7 @@ namespace MusicStreamer.ViewModels.Streamer
             }
             finally
             {
-                Mouse.OverrideCursor = null;
+                //Mouse.OverrideCursor = null;
             }
 
 

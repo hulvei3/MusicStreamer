@@ -36,6 +36,7 @@ namespace MusicStreamer.ViewModels.Server
 
         public void NewURL(String url)
         {
+
             try
             {
                 Request = (FtpWebRequest)WebRequest.Create(url);
@@ -43,6 +44,10 @@ namespace MusicStreamer.ViewModels.Server
                 Request.Proxy = null;
             }
             catch (UriFormatException e)
+            {
+                return;
+            }
+            catch (ArgumentNullException ex)
             {
                 return;
             }

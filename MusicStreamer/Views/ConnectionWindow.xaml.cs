@@ -19,6 +19,7 @@ namespace MusicStreamer.Views
             var cmdBind = new CommandBinding(MainWindowViewModel.Instance.CommandLib.ConnectCommand,
                     (e2, args) =>
                     {
+                        saveModel();
                         new ConnectCommand(null).Execute(SelectedServer);
                         this.Close();
                     },
@@ -59,7 +60,17 @@ namespace MusicStreamer.Views
 
         private void OKbutton_Click(object sender, RoutedEventArgs e)
         {
+            saveModel();
             this.Close();
+        }
+
+        private void saveModel()
+        {
+            SelectedServer.Host = HostTextBox.Text;
+            SelectedServer.User = UserTextBox.Text;
+            SelectedServer.Password = PasswordTextBox.Password;
+            //var modelToSave = new ServerConnectionModel(HostTextBox.Text, HostTextBox.Text, PasswordTextBox.Password);
+            //MainWindowViewModel.Instance.Servers.UpdateConnection(SelectedServer, modelToSave);
         }
 
         

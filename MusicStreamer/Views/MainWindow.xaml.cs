@@ -37,7 +37,6 @@ namespace MusicStreamer
             buttonShuffle.Command = _vm.CommandLib.ShuffleCommand;
             buttonRepeat.Command = _vm.CommandLib.RepeatCommand;
             
-            
         }
 
         private void buttonDebug_Click(object sender, RoutedEventArgs e)
@@ -84,6 +83,15 @@ namespace MusicStreamer
             var window = new ConnectionWindow();
             window.ShowDialog();
         }
+
+        private void ServerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ServerComboBox.SelectedIndex == -1)
+                DefaultComboTextBlock.Visibility = System.Windows.Visibility.Visible;
+            else
+                DefaultComboTextBlock.Visibility = System.Windows.Visibility.Hidden;
+        }
+
 
     }
 }
