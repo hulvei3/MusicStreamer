@@ -95,9 +95,12 @@ namespace MusicStreamer.CustomCommands
             _UIParent.CommandBindings.Add(cbinding);
 
             // repeat
+            cbinding = new CommandBinding(RepeatCommand, RepeatExecute, RepeatCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
 
             // shuffle
-
+            cbinding = new CommandBinding(ShuffleCommand, ShuffleExecute, ShuffleCanExecute);
+            _UIParent.CommandBindings.Add(cbinding);
         }
 
         // ApplicationCommands (indbygget i en WPF-applikation)
@@ -183,6 +186,7 @@ namespace MusicStreamer.CustomCommands
             e.CanExecute = true;
         }
 
+        
         #region Playercontrols
         private void PlayPauseExecute(object sender, ExecutedRoutedEventArgs e)
         {
@@ -220,6 +224,24 @@ namespace MusicStreamer.CustomCommands
         {
             e.CanExecute = true;
         }
+        private void RepeatExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+        private void RepeatCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ShuffleExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+        private void ShuffleCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
         #endregion
 
         #region AppCommands handlers

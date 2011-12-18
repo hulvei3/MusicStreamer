@@ -1,14 +1,9 @@
 ﻿<Window x:Class="MusicStreamer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-
         xmlns:controls="clr-namespace:MusicStreamer.Controls"
-        Title="MusicStreamer" Height="627" Width="784" Name="windowMain" ResizeMode="CanResizeWithGrip" Background="{StaticResource GradientHoriBackground}" Loaded="windowMain_Loaded" Icon="pack://application:,,,/Resources/ApplicationIcon.png">
-	<Window.Background>
-		<StaticResource ResourceKey="AppGradientBackground"/>
-	</Window.Background>
-    <Window.Resources>
-        <converter:ConnectConverter x:Key="ConnectConverterKey"></converter:ConnectConverter>
+        Title="MusicStreamer" Height="627" Width="784" Name="windowMain" ResizeMode="CanResizeWithGrip" Background="{StaticResource AppGradientBackground}" Loaded="windowMain_Loaded" Icon="pack://application:,,,/Resources/ApplicationIcon.png">
+
     <Grid Name="gridMain">
         <Grid Name="gridMain2" Margin="0,54,0,0">
             <Grid.ColumnDefinitions>
@@ -38,57 +33,42 @@
                 </Grid.RowDefinitions>
 
                 <Slider Value="{Binding Path=Player.Volume}" Grid.RowSpan="3" Height="103" HorizontalAlignment="Left" Margin="8,15,0,0" Name="sliderVolume" VerticalAlignment="Top" Width="23" Orientation="Vertical" Maximum="100" Grid.Column="1" SmallChange="1" LargeChange="10" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Value}" AutoToolTipPlacement="TopLeft" />
-                
-                <controls:PlayerButton x:Name="buttonPlay" Image="pack://application:,,,/Resources/Player PNGs/Button-Play.png" HorizontalAlignment="Right" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="0,41,249,0" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" Background="{x:Null}" BorderBrush="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Previous.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="12,41,0,0" x:Name="buttonPrev" Background="{x:Null}" BorderBrush="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Stop.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="66,41,0,0" x:Name="buttonStop" Background="{x:Null}" BorderBrush="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Next.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="174,41,0,0" x:Name="buttonSkip" Background="{x:Null}" BorderBrush="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Shuffle-64.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="317,41,0,0" x:Name="buttonShuffle" Background="{x:Null}" BorderBrush="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Repeat-64.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,41,0,0" x:Name="buttonRepeat" Background="{x:Null}" BorderBrush="{x:Null}" />
 
-                <Button Command="{Binding CurrentSong.PrevCommand}" Content="Prev" Name="buttonPrev" VerticalAlignment="Top" Margin="14,41,363,0" Height="44" >
-                    <Button.Template>
-                        <ControlTemplate x:Name="PrevButton" TargetType="{x:Type Button}">
-                            <Grid>
-                                <Image Name="Normal" Source="pack://application:,,,/Resources/PrevSong.png" VerticalAlignment="Top" ToolTip="Previous Song"/>
-                                <Image Name="Pressed" Source="" Visibility="Hidden"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="Pressed" Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                
+                <controls:PlayerButton x:Name="buttonPlay" Image="pack://application:,,,/Resources/Player PNGs/Button-Play.png" HorizontalAlignment="Right" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="0,33,249,0" CommandParameter="{Binding ElementName=textBoxCurrentSong, Path=Text}" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Previous.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="12,33,0,0" x:Name="buttonPrev" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Stop.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="66,33,0,0" x:Name="buttonStop" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Next.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="174,33,0,0" x:Name="buttonSkip" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Shuffle-64.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Margin="317,33,0,0" x:Name="buttonShuffle" Background="{x:Null}" BorderBrush="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Repeat-64.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,33,0,0" x:Name="buttonRepeat" Background="{x:Null}" BorderBrush="{x:Null}" />
+
                 <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="228,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Padding="0" />
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
                 <Grid>
                     <ProgressBar Value="{Binding Path=CurrentSong.StreamerDownloadProgress}" IsIndeterminate="{Binding Path=CurrentSong.Streaming}" Height="18" HorizontalAlignment="Left" Margin="12,84,0,0" Name="progressBarStreaming" VerticalAlignment="Top" Width="408" Opacity="0.5" Maximum="100" BorderBrush="{x:Null}" Background="{x:Null}" />
-                    <TextBlock Text="{Binding Path=CurrentSong.Streaming}" Margin="0,84,0,22" TextAlignment="Center" />
+                    <TextBlock Text="{Binding Path=CurrentSong.Streaming}" Margin="0,84,0,22" TextAlignment="Center" Foreground="White" FontWeight="Bold" />
                 </Grid>
-                
+
 
                 <Slider Value="{Binding Path=CurrentSong.CurrentTime}" Maximum="{Binding Path=CurrentSong.SongLength}" Height="23" HorizontalAlignment="Left" Margin="12,101,0,0" Name="sliderSeeker" VerticalAlignment="Top" Width="402" />
                 <TextBox Text="{Binding Path=Playlist.SelectedPlaylistItem.Url}" Height="23" HorizontalAlignment="Left" Margin="12,6,0,0" Name="textBoxCurrentSong" VerticalAlignment="Top" Width="196" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
                 <TextBox Text="{Binding Path=Playlist.Playing.Name}" Height="23" HorizontalAlignment="Left" Margin="214,6,0,0" Name="textBoxPlayingSong" VerticalAlignment="Top" Width="206" IsReadOnly="True" />
-                
+
             </Grid>
-            
+
             <!-- Playlist Area-->
             <Grid Grid.Row="2" Name="gridPlaylist" HorizontalAlignment="Left" Width="457" Grid.ColumnSpan="2">
 
                 <!-- PLAYLIST -->
-                <ListBox Name="playlist" Margin="6,46,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
+                <ListBox Name="playlist" Margin="6,6,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" Command="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,338,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" Command="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,338,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" Command="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,338,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
-                
+
             </Grid>
 
             <!-- Server area -->
@@ -99,14 +79,14 @@
                      IsReadOnly="False" Name="currentLocationTextBox" VerticalAlignment="Top" />
                 <Label Content="{Binding Path=CurrentSong.BytesReceived}" Name="labelStreamingStatus" HorizontalAlignment="Right" Width="81" Height="28" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" />
                 <Button Click="buttonConnect_Click" Content="Connection Manager" Name="buttonConnect" Margin="0,41,6,0" Height="22" VerticalAlignment="Top" ToolTip="Connect to the server" HorizontalAlignment="Right" Width="117"></Button>
-                
+
                 <Grid>
                     <ComboBox Height="23" Margin="6,40,129,0" Name="ServerComboBox" VerticalAlignment="Top" ItemsSource="{Binding Path=Servers.Connections}" SelectionChanged="ServerComboBox_SelectionChanged" />
                     <TextBlock Text="Choose a Server..."  TextAlignment="Center" IsHitTestVisible="False" Margin="6,44,129,0" Height="16" VerticalAlignment="Top" Name="DefaultComboTextBlock" />
                 </Grid>
-                
-                
-                
+
+
+
             </Grid>
 
 

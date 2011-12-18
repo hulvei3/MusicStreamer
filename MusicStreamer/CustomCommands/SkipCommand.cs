@@ -20,7 +20,10 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            _vm.NextSongInPlaylist();
+            new Action(() =>
+                {
+                    _vm.NextSongInPlaylist();
+                }).BeginInvoke(null, null);
         }
 
         public void Execute()

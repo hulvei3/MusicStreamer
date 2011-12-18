@@ -162,6 +162,7 @@ namespace MusicStreamer.ViewModels.Player
         internal void StopCurrentSong()
         {
             _controls.stop();
+            //_player.currentMedia = null;
             DebugText = "Stopping";
 
             // stop and remove timer-updater-thread
@@ -170,7 +171,7 @@ namespace MusicStreamer.ViewModels.Player
             TimeUpdaterThread = null;
 
             // TODO removes temp-files
-            CurrentFile.Delete();
+            //CurrentFile.Delete();
         }
         internal void PauseCurrentSong()
         {
@@ -192,14 +193,12 @@ namespace MusicStreamer.ViewModels.Player
 
             StopCurrentSong();
 
+            //MessageBox.Show(string.Format("Ready to play next song: \n{0}: {1}",next.Name,next.Url));
+
             if (next != null)
             {
                 BeginStreaming(next);
-                
             }
-
-            // wmp.dll
-            //_controls.next();
         }
 
         internal void PreviousSongInPlaylist()
@@ -213,9 +212,6 @@ namespace MusicStreamer.ViewModels.Player
             {
                 BeginStreaming(prev);
             }
-
-            // wmp.dll
-            //_controls.previous();
         }
 
         public void BeginStreaming(PlaylistItemViewModel song)
@@ -330,6 +326,16 @@ namespace MusicStreamer.ViewModels.Player
 
         void _player_PlayStateChange(int NewState)
         {
+            //MessageBox.Show(string.Format("PlayStateChange: {0}",NewState));
+
+            if (NewState == (int)WMPPlayState.wmppsMediaEnded)
+            {
+                new Action(() =>
+                    {
+                        NextSongInPlaylist();
+                    }).BeginInvoke(null, null);
+                
+            }
             OnPropertyChanged("PlayerState");
         }
 

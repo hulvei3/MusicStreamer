@@ -29,7 +29,7 @@ namespace MusicStreamer.CustomCommands
             {
                 try
                 {
-                    _vm.Playlist.CurrentUIPlaylist.ElementAt(0);
+                    song = _vm.Playlist.CurrentUIPlaylist.ElementAt(0);
                 }
                 catch (ArgumentOutOfRangeException e)
                 {
