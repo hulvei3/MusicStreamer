@@ -231,6 +231,7 @@ namespace MusicStreamer.ViewModels.Playlist
             FileStream fs = new FileStream(selectedFile, FileMode.Open);
 
             CurrentUIPlaylist = (ObservableCollection<PlaylistItemViewModel>) mySerializer.Deserialize(fs);
+            fs.Close();
         }
 
         internal void ClearPlaylist()

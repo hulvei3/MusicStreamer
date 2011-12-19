@@ -24,7 +24,8 @@
         </Grid.RowDefinitions>
         <Button Content="Ok" Grid.Row="1" Height="23" x:Name="OKbutton" VerticalAlignment="Bottom" Grid.Column="2" Margin="207,0,12,12" Click="OKbutton_Click" />
         <ListBox HorizontalAlignment="Left" x:Name="ServerListBox" Width="105" Margin="12,9,0,0" ItemsSource="{Binding Path=Servers.Connections}"
-                 ItemTemplate="{StaticResource ConnectionsDataTemplate}" SelectionChanged="ServerListBox_SelectionChanged" />
+                 ItemTemplate="{StaticResource ConnectionsDataTemplate}" SelectionChanged="ServerListBox_SelectionChanged" >
+        </ListBox>
         <Button Content="Add" Grid.Row="1" Height="23" HorizontalAlignment="Left" x:Name="AddButton" VerticalAlignment="Top" Width="45" Margin="12,0,0,0" Click="AddButton_Click" />
         <Button Content="Remove" Grid.Row="1" Height="23" HorizontalAlignment="Right" x:Name="RemoveButton" VerticalAlignment="Top" Width="54" Click="RemoveButton_Click" />
         

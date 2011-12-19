@@ -3,11 +3,11 @@
                     >
 	<LinearGradientBrush x:Key="ServerBackgroundGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.7">
 		<GradientStop Color="Black" Offset="1"/>
-		<GradientStop Color="Red"/>
+		<GradientStop Color="#66FF0000"/>
 	</LinearGradientBrush>
-	<LinearGradientBrush x:Key="PlayerBackgroundGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.5">
+	<LinearGradientBrush x:Key="PlayerBackgroundGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.7">
 		<GradientStop Color="Black" Offset="1"/>
-		<GradientStop Color="#FF0056FF"/>
+		<GradientStop Color="#66004AFF"/>
 	</LinearGradientBrush>
 
     <LinearGradientBrush x:Key="AppGradientBackground" EndPoint="1,0.5" StartPoint="0,0.5">
@@ -80,46 +80,5 @@
             <TextBlock Text="{Binding Name}" Grid.Column="2" Cursor="Hand" VerticalAlignment="Center"/>
         </Grid>
     </DataTemplate>
-	
-	<ControlTemplate x:Key="ServerListBoxTemplate" TargetType="{x:Type ListBox}">
-        		<Grid>
-        			<Grid.Background>
-        				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-        					<GradientStop Color="Black" Offset="1"/>
-        					<GradientStop/>
-        				</LinearGradientBrush>
-        			</Grid.Background>
-        			<TextBlock x:Name="BackgroundText" Height="60" TextWrapping="Wrap" Text="Server Side" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto" Margin="0" FontSize="48" FontWeight="Normal" FontFamily="Segoe UI" Foreground="{DynamicResource ServerBackgroundGradientBrush}"/>
-            </Grid>
-        	</ControlTemplate>
-	<ControlTemplate x:Key="PlayerListBoxTemplate" TargetType="{x:Type ListBox}">
-		<Grid>
-			<Grid.Background>
-				<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" Opacity="1">
-					<GradientStop Color="Black" Offset="1"/>
-					<GradientStop/>
-				</LinearGradientBrush>
-			</Grid.Background>
-			<TextBlock x:Name="BackgroundText" Height="60" TextWrapping="Wrap" Text="Playlist" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto" Margin="0" FontSize="48" FontWeight="Normal" FontFamily="Segoe UI" Foreground="{DynamicResource PlayerBackgroundGradientBrush}"/>
-		</Grid>
-	</ControlTemplate>
-	<ControlTemplate x:Key="ConnectionListBoxTemplate" TargetType="{x:Type ListBox}">
-		<Grid>
-			<Grid.Background>
-				<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-					<GradientStop Color="Black" Offset="1"/>
-					<GradientStop Color="White"/>
-				</LinearGradientBrush>
-			</Grid.Background>
-			<TextBlock x:Name="BackgroundText" Height="32.531" TextWrapping="Wrap" Text="Servers" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="Auto" Margin="0,0,0.49,0" FontSize="26.667" FontWeight="Bold" FontFamily="Segoe UI" Foreground="{DynamicResource ServerBackgroundGradientBrush}">
-				<TextBlock.Effect>
-					<BlurEffect Radius="2"/>
-				</TextBlock.Effect>
-			</TextBlock>
-		</Grid>
-	</ControlTemplate>
-	<ControlTemplate x:Key="WindowControlTemplate" TargetType="{x:Type Window}">
-        		<Grid/>
-        	</ControlTemplate>
 
 </ResourceDictionary>
