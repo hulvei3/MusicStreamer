@@ -4,6 +4,7 @@ using MusicStreamer.ViewModels.Playlist;
 using MusicStreamer.Interfaces;
 using MusicStreamer.Exceptions;
 using MusicStreamer.Controls;
+using StreamerLib;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -30,7 +31,7 @@ namespace MusicStreamer.CustomCommands
             //RedoContext = parameter;
 
             String url = _mwvm.Navigation.CurrentLocation + (String)parameter;
-            PlaylistItemViewModel playlistItem = new PlaylistItemViewModel(url);
+            PlaylistItemModel playlistItem = new PlaylistItemModel(url);
             playlistItem.RemoveCommand = _mwvm.CommandLib.RemoveFromPlaylistCommand;
 
             bool isNotSupported = false;
@@ -58,7 +59,7 @@ namespace MusicStreamer.CustomCommands
             Execute(_playlistItem.Url);
         }
 
-        private PlaylistItemViewModel _playlistItem;
+        private PlaylistItemModel _playlistItem;
 
         public void UnExecute()
         {

@@ -8,6 +8,7 @@ using MusicStreamer.Interfaces;
 using MusicStreamer.ViewModels.Player;
 using MusicStreamer.Exceptions;
 using MusicStreamer.ViewModels.Playlist;
+using StreamerLib;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -83,7 +84,7 @@ namespace MusicStreamer.CustomCommands
             }
         }
 
-        private void DoIt(PlaylistItemViewModel song)
+        private void DoIt(PlaylistItemModel song)
         {
             new Action(() =>
                 {

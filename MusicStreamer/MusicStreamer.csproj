@@ -160,7 +160,6 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Exceptions\PropertyAndErrorHandler.cs" />
     <Compile Include="ViewModels\Player\PlayerEngineViewModel.cs" />
-    <Compile Include="ViewModels\Playlist\PlaylistItemViewModel.cs" />
     <Compile Include="ViewModels\Playlist\PlaylistViewModel.cs" />
     <Compile Include="CustomCommands\StopCommand.cs" />
     <Page Include="Controls\PlayerButton.xaml">
@@ -188,9 +187,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\Server\ServerConnectionViewModel.cs" />
-    <Compile Include="ViewModels\Server\ServerlistItemViewModel.cs" />
     <Compile Include="ViewModels\Server\ServerNavigationViewModel.cs" />
-    <Compile Include="ViewModels\Server\ServerTest.cs" />
     <Compile Include="ViewModels\Streamer\StreamerViewModel.cs" />
     <Compile Include="Views\ConnectionWindow.xaml.cs">
       <DependentUpon>ConnectionWindow.xaml</DependentUpon>
@@ -226,7 +223,7 @@
       <LastGenOutput>Filetypes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="ClassDiagramMVVM.cd" />
     <None Include="MusicStreamer_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
@@ -312,7 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Models\Playlist\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\PrevSong.png" />

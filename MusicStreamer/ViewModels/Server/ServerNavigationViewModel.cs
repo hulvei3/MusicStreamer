@@ -18,12 +18,12 @@ namespace MusicStreamer.ViewModels.Server
         private String _currentLocation;
         private String _oldCurrentLocation;
         private ServerConnectionViewModel _scvm;
-        private ObservableCollection<ServerlistItemViewModel> _currentList;
-        private ServerlistItemViewModel _selectedItem;
+        private ObservableCollection<ServerlistItemModel> _currentList;
+        private ServerlistItemModel _selectedItem;
 
         public ServerNavigationViewModel()
         {
-            CurrentList = new ObservableCollection<ServerlistItemViewModel>();
+            CurrentList = new ObservableCollection<ServerlistItemModel>();
         }
 
         // skal sandsynligvis ikke bruges
@@ -42,7 +42,7 @@ namespace MusicStreamer.ViewModels.Server
         public ServerConnectionModel CurrentServer { get { return _scvm.GetModel(); } }
 
         //Property for current list of files to show
-        public ObservableCollection<ServerlistItemViewModel> CurrentList
+        public ObservableCollection<ServerlistItemModel> CurrentList
         {
             get { return _currentList; }
             set
@@ -61,14 +61,14 @@ namespace MusicStreamer.ViewModels.Server
                     }
                     if (slashCount > 3)
                     {
-                        _currentList.Insert(0, new ServerlistItemViewModel("[Parent directory..]",""));
+                        _currentList.Insert(0, new ServerlistItemModel("[Parent directory..]",""));
                     }
                 }
                 OnPropertyChanged("CurrentList");
             }
         }
 
-        public ServerlistItemViewModel SelectedServerListItem
+        public ServerlistItemModel SelectedServerListItem
         {
             get{return _selectedItem;}
             set
@@ -131,7 +131,7 @@ namespace MusicStreamer.ViewModels.Server
             //MessageBox.Show(parentDirectory); 
         }
 
-        public ObservableCollection<ServerlistItemViewModel> Navigate(string url)
+        public ObservableCollection<ServerlistItemModel> Navigate(string url)
         {
             // set new cuurent dir to new url
             try
@@ -149,7 +149,7 @@ namespace MusicStreamer.ViewModels.Server
             return Navigate();
         }
 
-        public ObservableCollection<ServerlistItemViewModel> Navigate()
+        public ObservableCollection<ServerlistItemModel> Navigate()
         {
             // set new cuurent dir to new url
             
@@ -198,11 +198,11 @@ namespace MusicStreamer.ViewModels.Server
             return filesFolders.Split('\n').ToList<String>();
         }
 
-        private ObservableCollection<ServerlistItemViewModel> listFiles()
+        private ObservableCollection<ServerlistItemModel> listFiles()
         {
             IList<String> fileArray = readFolderToString();
             
-            ObservableCollection<ServerlistItemViewModel> serverList = new ObservableCollection<ServerlistItemViewModel>();
+            ObservableCollection<ServerlistItemModel> serverList = new ObservableCollection<ServerlistItemModel>();
 
             foreach (String s in fileArray)
             {
@@ -221,7 +221,7 @@ namespace MusicStreamer.ViewModels.Server
                             }
                             if (!Path.HasExtension(tempName) || tempName.EndsWith(Res.Filetypes.MP3) || tempName.EndsWith(Res.Filetypes.WAV) || tempName.EndsWith(Res.Filetypes.WMA))
                             {
-                                var listItem = new ServerlistItemViewModel(name, "");
+                                var listItem = new ServerlistItemModel(name, "");
                                 listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
                                 serverList.Add(listItem);
                             }
@@ -239,7 +239,7 @@ namespace MusicStreamer.ViewModels.Server
                             }
                             if (!Path.HasExtension(tempName) || s.EndsWith(Res.Filetypes.MP3) || s.EndsWith(Res.Filetypes.WAV) || s.EndsWith(Res.Filetypes.WMA))
                             {
-                                var listItem = new ServerlistItemViewModel(s, "");
+                                var listItem = new ServerlistItemModel(s, "");
                                 listItem.AddCommand = MainWindowViewModel.Instance.CommandLib.AddToPlaylistCommand;
                                 serverList.Add(listItem);
                             }

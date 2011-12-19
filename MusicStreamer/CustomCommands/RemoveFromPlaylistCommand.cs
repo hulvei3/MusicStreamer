@@ -5,6 +5,7 @@ using System.Text;
 using MusicStreamer.Interfaces;
 using MusicStreamer.ViewModels;
 using MusicStreamer.ViewModels.Playlist;
+using StreamerLib;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -19,14 +20,14 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            PlaylistItemViewModel item = (PlaylistItemViewModel)parameter;
+            PlaylistItemModel item = (PlaylistItemModel)parameter;
 
             _mwvm.Playlist.RemoveFromPLaylist(item);
 
             _playlistItem = item;
         }
 
-        PlaylistItemViewModel _playlistItem;
+        PlaylistItemModel _playlistItem;
 
         public void UnExecute()
         {
