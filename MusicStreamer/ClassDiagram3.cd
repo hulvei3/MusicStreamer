@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MusicStreamer.App" Collapsed="true">
+    <Position X="25.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.MainWindow" Collapsed="true">
+    <Position X="25.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABAEBAAAAAAAAAAAAAACAAAQAACAAAAgAAAAAACAAI=</HashCode>
+      <FileName>Views\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Controls.PlayerButton" Collapsed="true">
+    <Position X="25.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAABAAAAAAAAAAAAAAAAhABEAAACAAAIAA=</HashCode>
+      <FileName>Controls\PlayerButton.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Controls.SupportedFileTypes" Collapsed="true">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\SupportedFileTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.AddToPlaylistCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACIAQAAEAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\AddToPlaylistCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.ClearPlaylistCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAAQAAEAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\ClearPlaylistCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.CommandLibrary" Collapsed="true">
+    <Position X="21" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gsGmCAACABAECJQDAgBIAAAAjoqACAAwIJYAAAgigiE=</HashCode>
+      <FileName>CustomCommands\CommandLibrary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.ConnectCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAAQAAEAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\ConnectCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.LoadPlaylistCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABACAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\LoadPlaylistCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.NavigateCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAAQAAEAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\NavigateCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.PauseCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\PauseCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.PlaylistCommands" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\PlaylistCommands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.PlayPauseCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAACAAQAAEAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\PlayPauseCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.PrevCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAAQAAEAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\PrevCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.RemoveFromPlaylistCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACIAQAAEAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\RemoveFromPlaylistCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.SavePlaylistCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABACAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\SavePlaylistCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.SkipCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAAQAAEAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\SkipCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.StopCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAAQAAEAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CustomCommands\StopCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MusicStreamer.CustomCommands.UndoRedoController" HideInheritanceLine="true">
+    <Position X="15.25" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIEAAAAAAAlBAAAAAAAAAABAAAAAAAAQAAAAAgAAAA=</HashCode>
+      <FileName>CustomCommands\UndoRedoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Exceptions.MusicStreamerException" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\MusicStreamerException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Exceptions.PlaylistException" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\PlaylistException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Exceptions.PropertyAndErrorHandler" Collapsed="true">
+    <Position X="9" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAIAAIAAAAgAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Exceptions\PropertyAndErrorHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MusicStreamer.Exceptions.StreamingInProgressException" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\StreamingInProgressException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Properties.Resources" Collapsed="true">
+    <Position X="25.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Properties.Settings">
+    <Position X="32" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Res.Filetypes" Collapsed="true">
+    <Position X="32" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAABFAAAAwAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Util.ConnectionLibrary" HideInheritanceLine="true">
+    <Position X="16.25" Y="10.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAEAAACAAAAAAAAAAAAAAAACACABBAA=</HashCode>
+      <FileName>Util\ConnectionLibrary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.ViewModels.MainWindowViewModel" HideInheritanceLine="true">
+    <Position X="16.25" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAACQAACSAAAAAAQBAIAQCAQAA=</HashCode>
+      <FileName>ViewModels\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.ViewModels.Player.CurrentSongViewModel" HideInheritanceLine="true">
+    <Position X="6.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAJCAASAAABAQAAEAGAkCARAAAgIECAACgAABEAQ=</HashCode>
+      <FileName>ViewModels\Player\CurrentSongViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.ViewModels.Player.PlayerEngineViewModel" HideInheritanceLine="true">
+    <Position X="8.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgQgAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Player\PlayerEngineViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.ViewModels.Playlist.PlaylistViewModel" HideInheritanceLine="true">
+    <Position X="11" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>FMAAAAAAIgAgAEAAQAAwCAAIAEAAAAAAAAAgACQQAhA=</HashCode>
+      <FileName>ViewModels\Playlist\PlaylistViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.ViewModels.Server.ServerConnectionViewModel" HideInheritanceLine="true">
+    <Position X="11" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACACAAAAAAgAAAAAAAAAAgAABAIAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Server\ServerConnectionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.ViewModels.Server.ServerNavigationViewModel" HideInheritanceLine="true">
+    <Position X="8.5" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABCBQAAABAEAEAAAAQAAgBAQAAIAAAAAAQGABACAA=</HashCode>
+      <FileName>ViewModels\Server\ServerNavigationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.ViewModels.Server.ServerTest">
+    <Position X="31.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Server\ServerTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.ViewModels.Streamer.StreamerViewModel" HideInheritanceLine="true">
+    <Position X="13.75" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAgAAAAwEACAAAAAAgAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Streamer\StreamerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Views.ConnectionWindow" Collapsed="true">
+    <Position X="25.25" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAABAAAAAIAAIAACAAACAAAAAAAAA=</HashCode>
+      <FileName>Views\ConnectionWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicStreamer.Views.DebugWindow" Collapsed="true">
+    <Position X="31.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DebugWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StreamerLib.PlayerEngineModel">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="StreamerLib.PlaylistItemModel">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="StreamerLib.PlaylistModel" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="StreamerLib.ServerConnectionModel">
+    <Position X="2.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="StreamerLib.ServerlistItemModel">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="StreamerLib.ServerNavigationModel">
+    <Position X="2.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="MusicStreamer.Interfaces.IBaseCommand" Collapsed="true">
+    <Position X="31.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBaseCommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MusicStreamer.ViewModels.Streamer.Status" Collapsed="true">
+    <Position X="31.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Streamer\StreamerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

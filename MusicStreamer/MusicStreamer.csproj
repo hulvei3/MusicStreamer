@@ -188,7 +188,6 @@
     </Compile>
     <Compile Include="ViewModels\Server\ServerConnectionViewModel.cs" />
     <Compile Include="ViewModels\Server\ServerNavigationViewModel.cs" />
-    <Compile Include="ViewModels\Server\ServerTest.cs" />
     <Compile Include="ViewModels\Streamer\StreamerViewModel.cs" />
     <Compile Include="Views\ConnectionWindow.xaml.cs">
       <DependentUpon>ConnectionWindow.xaml</DependentUpon>
@@ -224,7 +223,7 @@
       <LastGenOutput>Filetypes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="ClassDiagramMVVM.cd" />
     <None Include="MusicStreamer_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
@@ -310,7 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Models\Playlist\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\PrevSong.png" />
@@ -375,7 +374,7 @@
     <Resource Include="Resources\Player PNGs\Shuffle-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!--<Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />-->
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
