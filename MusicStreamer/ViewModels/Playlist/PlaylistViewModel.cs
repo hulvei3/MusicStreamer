@@ -24,7 +24,7 @@ namespace MusicStreamer.ViewModels.Playlist
         {
             _player = player;
 
-            CurrentUIPlaylist = new ObservableCollection<PlaylistItemViewModel>();
+            CurrentUIPlaylist = new ObservableCollection<PlaylistItemModel>();
 
             
 
@@ -38,21 +38,21 @@ namespace MusicStreamer.ViewModels.Playlist
             
         }
 
-        private PlaylistItemViewModel _playing;
-        public PlaylistItemViewModel Playing
+        private PlaylistItemModel _playing;
+        public PlaylistItemModel Playing
         { 
             get { return _playing; }
             set
             {
                 if (value == null)
-                    _playing = new PlaylistItemViewModel();
+                    _playing = new PlaylistItemModel();
                 else _playing = value;
                 OnPropertyChanged("Playing");
             }
         }
 
-        private ObservableCollection<PlaylistItemViewModel> _currentPlaylist;
-        public ObservableCollection<PlaylistItemViewModel> CurrentUIPlaylist
+        private ObservableCollection<PlaylistItemModel> _currentPlaylist;
+        public ObservableCollection<PlaylistItemModel> CurrentUIPlaylist
         {
             get { return _currentPlaylist; }
             set 
@@ -63,8 +63,8 @@ namespace MusicStreamer.ViewModels.Playlist
             
         }
 
-        private PlaylistItemViewModel _selectedPlaylistItem;
-        public PlaylistItemViewModel SelectedPlaylistItem
+        private PlaylistItemModel _selectedPlaylistItem;
+        public PlaylistItemModel SelectedPlaylistItem
         {
             get { return _selectedPlaylistItem; }
             set
@@ -96,7 +96,7 @@ namespace MusicStreamer.ViewModels.Playlist
                 // update UI playlist
                 for (int i = 0; i < firstlist.count; i++)
                 {
-                    var song = new PlaylistItemViewModel(firstlist.get_Item(i).sourceURL);
+                    var song = new PlaylistItemModel(firstlist.get_Item(i).sourceURL);
                     song.DurationAsString = firstlist.get_Item(i).durationString;
 
                     CurrentUIPlaylist.Add(song);
@@ -129,7 +129,7 @@ namespace MusicStreamer.ViewModels.Playlist
         }
 
         // adds song to playlist (not loaded yet)
-        internal void AddToPlaylist(PlaylistItemViewModel song)
+        internal void AddToPlaylist(PlaylistItemModel song)
         {
                 IWMPMedia media = _player.MediaPlayer.newMedia(song.Url);
 
@@ -147,14 +147,14 @@ namespace MusicStreamer.ViewModels.Playlist
 
         }
 
-        internal void RemoveFromPLaylist(PlaylistItemViewModel song)
+        internal void RemoveFromPLaylist(PlaylistItemModel song)
         {
             CurrentUIPlaylist.Remove(song);
         }
 
-        public PlaylistItemViewModel GetNextSong()
+        public PlaylistItemModel GetNextSong()
         {
-            PlaylistItemViewModel next = null;
+            PlaylistItemModel next = null;
 
             var index = CurrentUIPlaylist.IndexOf(Playing);
 
@@ -172,9 +172,9 @@ namespace MusicStreamer.ViewModels.Playlist
             return next;
         }
 
-        public PlaylistItemViewModel GetPreviousSong()
+        public PlaylistItemModel GetPreviousSong()
         {
-            PlaylistItemViewModel prev = null;
+            PlaylistItemModel prev = null;
 
             var index = CurrentUIPlaylist.IndexOf(Playing);
 
@@ -216,7 +216,7 @@ namespace MusicStreamer.ViewModels.Playlist
 
         public void SavePlaylist(String destination)
         {
-            XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemViewModel>));
+            XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemModel>));
             
             TextWriter textStream = new StreamWriter(destination);
             
@@ -227,10 +227,10 @@ namespace MusicStreamer.ViewModels.Playlist
 
         public void LoadPlaylist(String selectedFile)
         {
-            XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemViewModel>));
+            XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemModel>));
             FileStream fs = new FileStream(selectedFile, FileMode.Open);
 
-            CurrentUIPlaylist = (ObservableCollection<PlaylistItemViewModel>) mySerializer.Deserialize(fs);
+            CurrentUIPlaylist = (ObservableCollection<PlaylistItemModel>) mySerializer.Deserialize(fs);
         }
 
         internal void ClearPlaylist()

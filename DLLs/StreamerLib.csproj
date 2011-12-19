@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PlayerEngineModel.cs" />
+    <Compile Include="PlaylistItemModel.cs" />
     <Compile Include="PlaylistModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerConnectionModel.cs" />
+    <Compile Include="ServerlistItemModel.cs" />
     <Compile Include="ServerNavigationModel.cs" />
   </ItemGroup>
   <ItemGroup>

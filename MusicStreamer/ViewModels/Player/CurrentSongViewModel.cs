@@ -209,7 +209,7 @@ namespace MusicStreamer.ViewModels.Player
             }
         }
 
-        public void BeginStreaming(PlaylistItemViewModel song)
+        public void BeginStreaming(PlaylistItemModel song)
         {
             var remoteUrl = song.Url;
 

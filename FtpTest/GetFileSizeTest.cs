@@ -9,7 +9,7 @@ using System.IO;
 
 namespace FtpTest
 {
-    class Program
+    class GetFileSizeTest
     {
         private FtpWebRequest Request { get; set; }
 
@@ -17,16 +17,17 @@ namespace FtpTest
 
         static void Main(string[] args)
         {
-            Program prog = new Program();
+            GetFileSizeTest prog = new GetFileSizeTest();
             prog.run();
 
         }
 
         public void run()
         {
-            String user = "streamer";
-            String pw = "streamerpassword";
-            String host = "ftp://90.184.75.15/OpenShare/Music/classical.WAV";
+            //Put your own userinfo here
+            String user = "xxx";
+            String pw = "xxx";
+            String host = "xxx";
 
             //Console.WriteLine(host, user, pw);
 

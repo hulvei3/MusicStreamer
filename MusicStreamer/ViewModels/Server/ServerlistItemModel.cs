@@ -9,12 +9,12 @@ using System.Windows.Input;
 
 namespace MusicStreamer.ViewModels.Server
 {
-    class ServerlistItemViewModel : INotifyPropertyChanged
+    class ServerlistItemModel : INotifyPropertyChanged
     {
         private string _url;
         private string _size;
 
-        public ServerlistItemViewModel(string name, string size)
+        public ServerlistItemModel(string name, string size)
         {
             Url = name;
             Size = size;
