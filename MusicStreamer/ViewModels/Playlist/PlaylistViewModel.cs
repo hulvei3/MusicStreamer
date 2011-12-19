@@ -9,8 +9,6 @@ using System.IO;
 
 using WMPLib;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
-using MusicStreamer.CustomCommands;
 using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Playlist

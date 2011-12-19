@@ -43,9 +43,9 @@
                 <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Button-Next.png" HorizontalAlignment="Left" VerticalAlignment="Top"
                         ImageWidth="45" ImageHeight="45" Margin="174,33,0,0" x:Name="buttonSkip" Background="{x:Null}" BorderBrush="{x:Null}" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Shuffle-64.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Margin="317,33,0,0" x:Name="buttonShuffle" Background="{x:Null}" BorderBrush="{x:Null}" />
+                        ImageWidth="45" ImageHeight="45" Margin="317,33,0,0" x:Name="buttonShuffle" Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="NOT IMPLEMENTED" />
                 <controls:PlayerButton Image="pack://application:,,,/Resources/Player PNGs/Repeat-64.png" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,33,0,0" x:Name="buttonRepeat" Background="{x:Null}" BorderBrush="{x:Null}" />
+                        ImageWidth="45" ImageHeight="45" Grid.ColumnSpan="2" Margin="370,33,0,0" x:Name="buttonRepeat" Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="NOT IMPLEMENTED" />
 
                 <TextBox Text="{Binding Path=CurrentSong.CurrentTimeFormatted, Mode=OneWay}" FontSize="18" FontWeight="Bold" Height="32" IsReadOnly="True" Margin="228,46,0,0" MaxLines="1" Name="textBoxTime" Opacity="0.7" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86" Padding="0" />
                 <Grid>
@@ -65,9 +65,9 @@
 
                 <!-- PLAYLIST -->
                 <ListBox Name="playlist" Margin="6,6,0,38" ItemsSource="{Binding Path=Playlist.CurrentUIPlaylist}" ItemTemplate="{StaticResource playlistTemplate}" SelectedItem="{Binding Path=Playlist.SelectedPlaylistItem}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" Command="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,338,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" Command="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,338,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
-                <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" Command="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,338,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/ClearPlaylist.png" Command="ApplicationCommands.New" HorizontalAlignment="Left" Margin="8,340,0,0" x:Name="ClearPlaylistButton" VerticalAlignment="Top" Height="38" Width="38" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/SavePlaylist.png" Command="ApplicationCommands.Save" HorizontalAlignment="Right" Margin="0,340,368,0" x:Name="SavePlaylistButton" VerticalAlignment="Top" Height="38" Width="40" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
+                <controls:PlayerButton Image="pack://application:,,,/Resources/LoadPlaylist.png" Command="ApplicationCommands.Open" HorizontalAlignment="Right" Margin="0,340,323,0" x:Name="LoadPlaylistButton" VerticalAlignment="Top" Height="38" Width="42" ImageHeight="30" ImageWidth="30" Background="{x:Null}" />
 
             </Grid>
 
@@ -82,7 +82,7 @@
 
                 <Grid>
                     <ComboBox Height="23" Margin="6,40,129,0" Name="ServerComboBox" VerticalAlignment="Top" ItemsSource="{Binding Path=Servers.Connections}" SelectionChanged="ServerComboBox_SelectionChanged" />
-                    <TextBlock Text="Choose a Server..."  TextAlignment="Center" IsHitTestVisible="False" Margin="6,44,129,0" Height="16" VerticalAlignment="Top" Name="DefaultComboTextBlock" />
+                    <TextBlock Text="Choose a Server..."  TextAlignment="Center" IsHitTestVisible="False" Margin="6,44,129,0" Height="16" VerticalAlignment="Top" Name="DefaultComboTextBlock" ToolTip="NOT IMPLEMENTED" />
                 </Grid>
 
 

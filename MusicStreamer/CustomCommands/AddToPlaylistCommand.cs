@@ -7,7 +7,7 @@ using MusicStreamer.Controls;
 
 namespace MusicStreamer.CustomCommands
 {
-    class AddToPlaylistCommand : BaseCommand, IBaseCommand
+    class AddToPlaylistCommand : IBaseCommand
     {
         //private PlaylistViewModel _plwm;
         private MainWindowViewModel _mwvm;
