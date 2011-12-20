@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MusicStreamer.Exceptions;
-//using MusicStreamer.Models.Server;
-using WMPLib;
-using System.Net;
-using MusicStreamer.Util;
-using StreamerLib;
 using System.ComponentModel;
-using System.Windows.Input;
+using System.IO;
+using System.Net;
+using MusicStreamer.Exceptions;
+using StreamerLib;
 
 namespace MusicStreamer.ViewModels.Streamer
 {
     public class StreamerViewModel : PropertyAndErrorHandler
     {
-        private ServerConnectionModel _scm;
         private WebClient _streamClient;
 
         private Status _streamerStatus;
@@ -52,9 +45,11 @@ namespace MusicStreamer.ViewModels.Streamer
         // returns true if streaming was started
         public string StreamMedia(string url)
         {
-            //Mouse.OverrideCursor = Cursors.Wait;
 
-            var localfile = string.Format("{0}.mp3",Guid.NewGuid().ToString());
+            var dir = Directory.CreateDirectory("tempdata");
+            dir.Attributes = FileAttributes.Normal;
+
+            var localfile = string.Format("{1}/{0}.mp3",Guid.NewGuid().ToString(),dir.FullName);
 
             if (_streamClient.IsBusy)
             {

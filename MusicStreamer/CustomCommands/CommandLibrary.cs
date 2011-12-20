@@ -1,7 +1,9 @@
-﻿using MusicStreamer.ViewModels;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows;
 using MusicStreamer.Exceptions;
+using MusicStreamer.ViewModels;
+using MusicStreamer.Controls;
+using System.IO;
 
 namespace MusicStreamer.CustomCommands
 {
@@ -18,10 +20,6 @@ namespace MusicStreamer.CustomCommands
             InitAppCommands();
             }
         }
-
-
-        // bliver ikke brugt endnu..
-        //public IList<ICommand> CustomCommands { get; set; }
 
         public UndoRedoController UndoRedoController { get; private set; }
 
@@ -57,7 +55,6 @@ namespace MusicStreamer.CustomCommands
         private void InitCustomCommands()
         {
             //Her initialiseres alle vores egne Commands..
-
 
             // connect
             var cbinding = new CommandBinding(ConnectCommand, ConnectExecute, ConnectCanExecute);
@@ -139,9 +136,6 @@ namespace MusicStreamer.CustomCommands
         {
             e.CanExecute = true;
         }
-
-        
-
         private void AddToPlaylistExecute(object sender, ExecutedRoutedEventArgs e)
         {
             var cmd = new AddToPlaylistCommand(MainWindowViewModel.Instance);
@@ -244,7 +238,21 @@ namespace MusicStreamer.CustomCommands
 
         private void CloseExecute(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Bye");
+            StopCommand.Execute(null, null);
+            //MessageBox.Show("Bye");
+            
+            //var di = new DirectoryInfo("tempdata");
+
+            //foreach (var file in di.GetFiles("*", SearchOption.AllDirectories))
+            //    file.Attributes = FileAttributes.ReadOnly;
+            try
+            {
+                Directory.Delete("tempdata", true);
+            }
+            catch (System.Exception)
+            {
+            }
+
             Application.Current.Shutdown();
         }
         private void CloseCanExecute(object sender, CanExecuteRoutedEventArgs e)

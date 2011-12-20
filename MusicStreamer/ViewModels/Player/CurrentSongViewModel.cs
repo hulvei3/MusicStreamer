@@ -93,6 +93,8 @@ namespace MusicStreamer.ViewModels.Player
             }
         }
 
+        public bool DoRepeat { get; set; }
+
         public double SongLength
         {
             get;
@@ -165,8 +167,8 @@ namespace MusicStreamer.ViewModels.Player
                 TimeUpdaterThread.Abort();
             TimeUpdaterThread = null;
 
-            // TODO removes temp-files
-            //CurrentFile.Delete();
+            MainWindowViewModel.Instance.Playlist.Playing = null;
+            
         }
         internal void PauseCurrentSong()
         {
@@ -237,6 +239,8 @@ namespace MusicStreamer.ViewModels.Player
             Streaming = "Buffering...";
 
             CurrentFile = new FileInfo(filename);
+            //CurrentFile.Attributes = FileAttributes.Normal;
+            //CurrentFile.Attributes = FileAttributes.Hidden;
             //TODO loading indicator here..
             while (File.Exists(filename) && filename != null)
             {
@@ -252,7 +256,6 @@ namespace MusicStreamer.ViewModels.Player
         // seperate thread for updating time counter
         private void RunTimeService()
         {
-            bool isSonglengthSet = false;
 
             System.Threading.Thread.CurrentThread.Name = "Time Updater Service Thread";
             
@@ -301,7 +304,16 @@ namespace MusicStreamer.ViewModels.Player
 
             
             Streaming = "";
-            //MainWindowViewModel.Instance.Playlist.ShowFileInfo(_player.currentMedia);
+            
+
+            var playing = MainWindowViewModel.Instance.Playlist.Playing;
+            var media = _player.currentMedia;
+
+            //MainWindowViewModel.Instance.Playlist.ShowFileInfo(media);
+
+            playing.Artist = media.getItemInfo(media.getAttributeName(0));
+            playing.DurationAsString = _player.newMedia(CurrentFile.Name).durationString;
+            playing.Name = string.Format("{0} - {1}",playing.Artist, media.getItemInfo(media.getAttributeName(11)));
 
             SongLength = _player.newMedia(CurrentFile.Name).duration;
             OnPropertyChanged("SongLength");

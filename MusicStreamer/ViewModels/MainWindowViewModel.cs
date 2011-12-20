@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using System.Windows.Input;
-using MusicStreamer.CustomCommands;
-using MusicStreamer.ViewModels.Server;
+﻿using MusicStreamer.CustomCommands;
 using System.Windows;
 using MusicStreamer.ViewModels.Player;
 using MusicStreamer.ViewModels.Playlist;
@@ -58,7 +51,6 @@ namespace MusicStreamer.ViewModels
 
         public ConnectionLibrary Servers { get; set; }
 
-
         public MainWindowViewModel()
         {
             // init instance of wmp-player from wmp.dll
@@ -74,7 +66,7 @@ namespace MusicStreamer.ViewModels
             // undo/redo
             CommandLib = new CommandLibrary();
 
-            Player.Volume = 50;
+            Player.Volume = 80;
 
             _this = this;
         }

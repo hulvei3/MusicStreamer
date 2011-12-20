@@ -27,7 +27,14 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            _vm.PreviousSongInPlaylist();
+            new Action(() =>
+                {
+                    try 
+	                {	        
+		                _vm.PreviousSongInPlaylist();
+	                }
+	                catch (ArgumentOutOfRangeException e) { return; }
+                }).BeginInvoke(null, null);
         }
 
         public void Execute()

@@ -22,7 +22,11 @@ namespace MusicStreamer.CustomCommands
         {
             new Action(() =>
                 {
-                    _vm.NextSongInPlaylist();
+                    try
+                    {
+                        _vm.NextSongInPlaylist();
+                    }
+                    catch (ArgumentOutOfRangeException e) { return; }
                 }).BeginInvoke(null, null);
         }
 

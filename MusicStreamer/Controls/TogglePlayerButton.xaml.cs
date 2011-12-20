@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace MusicStreamer.Controls
@@ -7,9 +7,9 @@ namespace MusicStreamer.Controls
     /// <summary>
     /// Interaction logic for PlayerButton.xaml
     /// </summary>
-    public partial class PlayerButton : Button
+    public partial class TogglePlayerButton : ToggleButton
     {
-        public PlayerButton()
+        public TogglePlayerButton()
         {
             InitializeComponent();
         }

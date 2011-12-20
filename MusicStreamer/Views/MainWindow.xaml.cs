@@ -6,6 +6,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using MusicStreamer.CustomCommands;
+using StreamerLib;
+using System;
+using System.Windows.Interactivity;
 
 namespace MusicStreamer
 {
@@ -21,13 +24,12 @@ namespace MusicStreamer
         {
             _vm = new MainWindowViewModel();
             this.DataContext = _vm;
-            InitializeComponent();
+            InitializeComponent();        
         }
 
         private void windowMain_Loaded(object sender, RoutedEventArgs e)
         {
             _vm.CommandLib.UIParent = this;
-            
             // setting commands to buttons
             //buttonConnect.Command = _vm.CommandLib.ConnectCommand;
             buttonPlay.Command = _vm.CommandLib.PlayPauseCommand;
@@ -36,8 +38,9 @@ namespace MusicStreamer
             buttonStop.Command = _vm.CommandLib.StopCommand;
             buttonShuffle.Command = _vm.CommandLib.ShuffleCommand;
             buttonRepeat.Command = _vm.CommandLib.RepeatCommand;
-            
+
         }
+
 
         private void buttonDebug_Click(object sender, RoutedEventArgs e)
         {
@@ -56,16 +59,6 @@ namespace MusicStreamer
                 currentLocationTextBox.CaretIndex = currentLocationTextBox.Text.Length;
                 _vm.Navigation.Navigate();
             }
-        }
-
-        private void buttonPlay_Click(object sender, RoutedEventArgs e)
-        {
-            DeactivatePlayerInterface();
-        }
-
-        private void DeactivatePlayerInterface()
-        {
-
         }
 
         private void ConnectionMenuItem_Click(object sender, RoutedEventArgs e)
@@ -90,6 +83,14 @@ namespace MusicStreamer
                 DefaultComboTextBlock.Visibility = System.Windows.Visibility.Visible;
             else
                 DefaultComboTextBlock.Visibility = System.Windows.Visibility.Hidden;
+
+            var box = e.OriginalSource as ComboBox;
+            _vm.CommandLib.ConnectCommand.Execute(box.SelectedValue, null);
+        }
+
+        private void windowMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ApplicationCommands.Close.Execute(null, null);
         }
 
 

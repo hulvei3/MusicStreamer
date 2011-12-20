@@ -31,15 +31,15 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            //Skal have username, pw og host url ind fra MainWindow.xaml
            
             var model = (ServerConnectionModel)parameter;
-            //MessageBox.Show(info[0] + info[1] + info[2]);
-
-            MainWindowViewModel.Instance.Navigation.setConnectionModel(model);
-            MainWindowViewModel.Instance.Navigation.Navigate();
-
-            MainWindowViewModel.Instance.CurrentSong.SetupStreamer();
+            new Action(() =>
+                {
+                    MainWindowViewModel.Instance.Navigation.setConnectionModel(model);
+                    MainWindowViewModel.Instance.Navigation.Navigate();
+                    MainWindowViewModel.Instance.CurrentSong.SetupStreamer();
+                }).BeginInvoke(null, null);
+            
         }
 
         public void UnExecute()

@@ -42,12 +42,16 @@ namespace MusicStreamer.Views
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindowViewModel.Instance.Servers.RemoveConnection(SelectedServer);
+            if (SelectedServer != null)
+                MainWindowViewModel.Instance.Servers.RemoveConnection(SelectedServer);
         }
 
         private void ServerListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             var server = (ServerConnectionModel)ServerListBox.SelectedItem;
+
+            if (server == null)
+                return;
 
             var sel = new string[3];
 
@@ -66,6 +70,8 @@ namespace MusicStreamer.Views
 
         private void saveModel()
         {
+            if (SelectedServer == null)
+                return;
             SelectedServer.Host = HostTextBox.Text;
             SelectedServer.User = UserTextBox.Text;
             SelectedServer.Password = PasswordTextBox.Password;

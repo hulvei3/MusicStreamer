@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-using System.IO;
-
-using MusicStreamer.Exceptions;
-using System.Collections.Specialized;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Net;
 using System.Windows;
+using MusicStreamer.Exceptions;
 using StreamerLib;
+using System.Windows.Input;
 
 namespace MusicStreamer.ViewModels.Server
 {
@@ -24,19 +22,13 @@ namespace MusicStreamer.ViewModels.Server
         public ServerNavigationViewModel()
         {
             CurrentList = new ObservableCollection<ServerlistItemModel>();
-        }
-
-        // skal sandsynligvis ikke bruges
-        public ServerNavigationViewModel(ServerConnectionModel scm)
-        {
-            _scvm = new ServerConnectionViewModel(scm);
-            CurrentLocation = scm.Host;
+            IsNavigating = Visibility.Hidden;
         }
 
         public void setConnectionModel(ServerConnectionModel scm)
         {
             _scvm = new ServerConnectionViewModel(scm);
-            CurrentLocation = scm.Host;
+            CurrentLocation = scm != null ? scm.Host : null;
         }
 
         public ServerConnectionModel CurrentServer { get { return _scvm.GetModel(); } }
@@ -73,20 +65,26 @@ namespace MusicStreamer.ViewModels.Server
             get{return _selectedItem;}
             set
             {
-                _selectedItem = value;
-                 
-                if (value.Url.Equals("[Parent directory..]"))
-                {
-                    LevelUp();
-                    Navigate();
-                }
-                else if (value.Url.EndsWith(Res.Filetypes.MP3) || value.Url.EndsWith(Res.Filetypes.WAV) || value.Url.EndsWith(Res.Filetypes.WMA))
-                {
-                    AddToPlayList(value.Url);
-                    Navigate();
-                }
-                else
-                    Navigate(value.Url);
+                Mouse.OverrideCursor = Cursors.Wait;
+                var _selectedItem = value;
+                IsNavigating = Visibility.Visible;
+                //new Action(() =>
+                //{
+                    if (value.Url.Equals("[Parent directory..]"))
+                    {
+                        LevelUp();
+                        Navigate();
+                    }
+                    else if (_selectedItem.Url.EndsWith(Res.Filetypes.MP3) || _selectedItem.Url.EndsWith(Res.Filetypes.WAV) || _selectedItem.Url.EndsWith(Res.Filetypes.WMA))
+                    {
+                        AddToPlayList(_selectedItem.Url);
+                        Navigate();
+                    }
+                    else
+                        Navigate(_selectedItem.Url);
+                    IsNavigating = Visibility.Hidden;
+                //}).BeginInvoke(null, null);
+                    Mouse.OverrideCursor = null;
             }
             
         }
@@ -151,8 +149,8 @@ namespace MusicStreamer.ViewModels.Server
 
         public ObservableCollection<ServerlistItemModel> Navigate()
         {
+            IsNavigating = Visibility.Visible;
             // set new cuurent dir to new url
-            
             try
             {
                 _scvm.NewURL(CurrentLocation);
@@ -174,14 +172,12 @@ namespace MusicStreamer.ViewModels.Server
                 {
                     return null;
                 }
-                
-
             }
-          
-            
-            //CurrentList = new ServerList();
+            IsNavigating = Visibility.Hidden;
             return CurrentList;
         }
+        private Visibility _isNavigating;
+        public Visibility IsNavigating { get { return _isNavigating; } private set { _isNavigating = value; OnPropertyChanged("IsNavigating"); } }
 
         private FtpWebResponse Response
         {
@@ -251,7 +247,7 @@ namespace MusicStreamer.ViewModels.Server
             return serverList;
         }
 
-        //Not Used anymore
+        #region Not Used anymore
         //Sorts the files and only shows the files you want.
         //private ObservableCollection<ServerlistItemViewModel> listFilesDetails(FtpWebResponse files, Boolean showAllFiles)
         //{
@@ -305,5 +301,6 @@ namespace MusicStreamer.ViewModels.Server
         //    //newList.Sort();
         //    return serverList;
         //}
+        #endregion
     }
 }

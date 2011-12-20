@@ -2,6 +2,24 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Name="UC">
+    <Button.FocusVisualStyle>
+        <Style>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="0" SnapsToDevicePixels="true" Stroke="#000000" StrokeThickness="0" StrokeDashArray="0"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Button.FocusVisualStyle>
+    <Button.BorderBrush>
+        <SolidColorBrush Color="Transparent" Opacity="0"/>
+    </Button.BorderBrush>
+    <Button.Background>
+        <SolidColorBrush Color="Transparent"></SolidColorBrush>
+    </Button.Background>
+    
     <Grid>
             <StackPanel Orientation="Horizontal" Margin="0">
                 <Image Source="{Binding ElementName=UC, Path=Image}"

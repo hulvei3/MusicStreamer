@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Windows.Input;
-using MusicStreamer.ViewModels;
 using MusicStreamer.Interfaces;
-using MusicStreamer.ViewModels.Player;
-using MusicStreamer.Exceptions;
-using MusicStreamer.ViewModels.Playlist;
+using MusicStreamer.ViewModels;
 using StreamerLib;
 
 namespace MusicStreamer.CustomCommands
@@ -23,7 +17,6 @@ namespace MusicStreamer.CustomCommands
 
         public void Execute(object parameter)
         {
-            //string url = (string)parameter;
 
             var song = _vm.Playlist.SelectedPlaylistItem;
             if (song == null)
@@ -35,11 +28,6 @@ namespace MusicStreamer.CustomCommands
                 catch (ArgumentOutOfRangeException e)
                 {
                     return;
-                    //try
-                    //{
-                    //    throw new PlaylistException("Playlist is empty!\n\nConnect to a server and add songs to the playlist, or load one.");
-                    //}
-                    //catch (PlaylistException ex) { return; }
                 }
             }
             var url = song.Url;
@@ -92,14 +80,11 @@ namespace MusicStreamer.CustomCommands
                 }).BeginInvoke(null, null);
         }
 
-
         public bool CanExecute(object parameter)
         {
             return true;
         }
         public event EventHandler CanExecuteChanged;
-
-
 
         public void Execute()
         {

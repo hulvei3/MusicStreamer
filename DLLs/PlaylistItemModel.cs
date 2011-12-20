@@ -52,6 +52,12 @@ namespace StreamerLib
             get { return _name; }
             set { _name = value; OnPropertyChanged("Name"); }
         }
+        private string _artist;
+        public string Artist
+        {
+            get { return _artist; }
+            set { _artist = value; OnPropertyChanged("Name"); }
+        }
 
         public string DurationAsString { get; set; }
 

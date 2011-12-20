@@ -25,7 +25,7 @@ namespace MusicStreamer.Util
         {
             Init();
             AddConnection(new ServerConnectionModel("90.184.75.15", "streamer", "streamerpassword"));
-            AddConnection(new ServerConnectionModel("jpics.dk", "Harving", "Harving2011"));
+            AddConnection(new ServerConnectionModel("jpics.dk", "streamer", "streamer"));
         }
 
         private void Init()

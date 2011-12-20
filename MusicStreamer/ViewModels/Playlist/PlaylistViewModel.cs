@@ -1,15 +1,12 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
-
-//using MusicStreamer.Models;
-using MusicStreamer.Exceptions;
 using System.Windows;
 using System.Xml.Serialization;
-using System.IO;
-
-using WMPLib;
-using System.Collections.ObjectModel;
+using MusicStreamer.Exceptions;
 using StreamerLib;
+using WMPLib;
 
 namespace MusicStreamer.ViewModels.Playlist
 {
@@ -17,7 +14,7 @@ namespace MusicStreamer.ViewModels.Playlist
     class PlaylistViewModel : PropertyAndErrorHandler
     {
 
-        string default_playlist = "streamerPlaylist_test";
+        private string default_playlist = "streamerPlaylist_test";
         PlayerEngineModel _player;
 
         public PlaylistViewModel(PlayerEngineModel player)
@@ -25,17 +22,7 @@ namespace MusicStreamer.ViewModels.Playlist
             _player = player;
 
             CurrentUIPlaylist = new ObservableCollection<PlaylistItemModel>();
-
-            
-
-            // måske skal denne bruges senere??
-            //player.MediaPlayer.NewStream += new WMPLib._WMPOCXEvents_NewStreamEventHandler(MediaPlayer_NewStream);
-
-            // SETTING UP HANDLERS
-
             _player.MediaPlayer.CurrentPlaylistChange += new WMPLib._WMPOCXEvents_CurrentPlaylistChangeEventHandler(MediaPlayer_CurrentPlaylistChange);
-
-            
         }
 
         private PlaylistItemModel _playing;
@@ -60,7 +47,6 @@ namespace MusicStreamer.ViewModels.Playlist
                 _currentPlaylist = value;
                 OnPropertyChanged("CurrentUIPlaylist");
             }
-            
         }
 
         private PlaylistItemModel _selectedPlaylistItem;
@@ -70,16 +56,10 @@ namespace MusicStreamer.ViewModels.Playlist
             set
             {
                 _selectedPlaylistItem = value;
-
-                // plays selected song immediately  !SHOULD NOT BE PLACED IN HERE!
-                //_p.MediaPlayer.URL = value.Url;
-                //_p.MediaPlayer.controls.play();
-
                 OnPropertyChanged("SelectedPlaylistItem");
             }
         }
 
-        public IWMPPlaylist CurrentDLLPlaylist { get; set; }
         public WMPLib.IWMPPlaylistCollection PlayListLibrary { get; set; }
 
         #region test-code
@@ -110,9 +90,6 @@ namespace MusicStreamer.ViewModels.Playlist
             }
         }
         #endregion
-
-
-        // impl. handlers
 
         void MediaPlayer_CurrentPlaylistChange(WMPPlaylistChangeEventType change)
         {
@@ -228,19 +205,47 @@ namespace MusicStreamer.ViewModels.Playlist
         public void LoadPlaylist(String selectedFile)
         {
             XmlSerializer mySerializer = new XmlSerializer(typeof(ObservableCollection<PlaylistItemModel>));
+
+            mySerializer.UnknownElement += new XmlElementEventHandler(mySerializer_UnknownElement);
+            mySerializer.UnknownNode += new XmlNodeEventHandler(mySerializer_UnknownNode);
+            mySerializer.UnknownAttribute += new XmlAttributeEventHandler(mySerializer_UnknownAttribute);
+
             FileStream fs = new FileStream(selectedFile, FileMode.Open);
 
-<<<<<<< HEAD
-            CurrentUIPlaylist = (ObservableCollection<PlaylistItemViewModel>) mySerializer.Deserialize(fs);
-            fs.Close();
-=======
+                
             CurrentUIPlaylist = (ObservableCollection<PlaylistItemModel>) mySerializer.Deserialize(fs);
->>>>>>> f16ba4c3415a0822b7107585744498f19cbaab13
+            fs.Close();
         }
+        #region serializer error-handlers
+        void mySerializer_UnknownAttribute(object sender, XmlAttributeEventArgs e)
+        {
+            ShowXmlParserError();
+        }
+
+        void mySerializer_UnknownElement(object sender, XmlElementEventArgs e)
+        {
+            ShowXmlParserError();
+        }
+
+        void mySerializer_UnknownNode(object sender, XmlNodeEventArgs e)
+        {
+            ShowXmlParserError();
+        }
+        private void ShowXmlParserError()
+        {
+            MessageBox.Show(
+                    "This playlist cannot be loaded, because contains invalid data.\nThis is properly because it was saved in an earlier version of MusicStreamer",
+                    "Cannot load playlist!",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+        }
+        #endregion
 
         internal void ClearPlaylist()
         {
             CurrentUIPlaylist.Clear();
         }
+
+        
     }
 }
